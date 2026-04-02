@@ -64,9 +64,12 @@ const services = [
   }
 ];
 
+type View = "home" | "privacy" | "terms";
+
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [view, setView] = useState<View>("home");
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -74,22 +77,183 @@ export default function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Scroll to top when changing view
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [view]);
+
   const whatsappLink = "https://wa.me/5359924051";
   const emailLink = "mailto:appscuba@gmail.com";
+
+  if (view === "privacy" || view === "terms") {
+    return (
+      <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-sky-500/30">
+        <nav className="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800 py-4">
+          <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <button onClick={() => setView("home")} className="flex items-center gap-2 group cursor-pointer">
+              <div className="w-8 h-8 bg-gradient-to-br from-sky-500 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg shadow-sky-500/20">
+                <Zap className="text-white w-5 h-5 fill-white" />
+              </div>
+              <span className="text-lg font-display font-bold text-white group-hover:text-sky-400 transition-colors">
+                PedritoTech
+              </span>
+            </button>
+            <button 
+              onClick={() => setView("home")}
+              className="text-sm font-bold text-slate-400 hover:text-white flex items-center gap-2 cursor-pointer"
+            >
+              <X className="w-5 h-5" />
+              Cerrar
+            </button>
+          </div>
+        </nav>
+
+        <main className="max-w-3xl mx-auto px-6 pt-32 pb-20">
+          {view === "privacy" ? (
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+              <h1 className="text-4xl md:text-5xl font-display font-black mb-8">Política de Privacidad</h1>
+              <div className="space-y-8 text-slate-400 leading-relaxed">
+                <p className="text-lg">En <strong>PedritoTech Solutions</strong>, valoramos tu privacidad. Esta política describe cómo manejamos tu información.</p>
+                
+                <section>
+                  <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <div className="w-1.5 h-6 bg-sky-500 rounded-full" />
+                    1. Información que Recopilamos
+                  </h2>
+                  <p className="mb-4">Solo recopilamos la información necesaria para brindarte nuestros servicios de software, la cual incluye:</p>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-sky-500 shrink-0 mt-0.5" />
+                      <span>Nombre de contacto para identificación del servicio.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-sky-500 shrink-0 mt-0.5" />
+                      <span>Número de WhatsApp o dirección de correo electrónico para comunicación.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-sky-500 shrink-0 mt-0.5" />
+                      <span>Detalles técnicos del dispositivo (modelo, versión de software) necesarios para el proceso técnico.</span>
+                    </li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <div className="w-1.5 h-6 bg-sky-500 rounded-full" />
+                    2. Uso de la Información
+                  </h2>
+                  <p className="mb-4">Tu información se utiliza exclusivamente para:</p>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-sky-500 shrink-0 mt-0.5" />
+                      <span>Comunicarnos contigo sobre el estado de tu servicio.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-sky-500 shrink-0 mt-0.5" />
+                      <span>Realizar los procesos técnicos solicitados (FRP, SIM Unlock, etc.).</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-sky-500 shrink-0 mt-0.5" />
+                      <span>Brindar soporte post-venta y garantía.</span>
+                    </li>
+                  </ul>
+                </section>
+
+                <section>
+                  <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <div className="w-1.5 h-6 bg-sky-500 rounded-full" />
+                    3. Protección de Datos
+                  </h2>
+                  <p>Implementamos medidas de seguridad técnicas para asegurar que tus datos y los de tu dispositivo no sean accedidos por terceros no autorizados. No vendemos ni compartimos tu información con empresas de marketing.</p>
+                </section>
+
+                <section>
+                  <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <div className="w-1.5 h-6 bg-sky-500 rounded-full" />
+                    4. Contacto
+                  </h2>
+                  <p>Si tienes dudas sobre tus datos, puedes contactarnos directamente en <strong>appscuba@gmail.com</strong>.</p>
+                </section>
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+              <h1 className="text-4xl md:text-5xl font-display font-black mb-8">Términos y Condiciones</h1>
+              <div className="space-y-8 text-slate-400 leading-relaxed">
+                <p className="text-lg">Al utilizar los servicios de <strong>PedritoTech Solutions</strong>, aceptas los siguientes términos:</p>
+
+                <section>
+                  <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <div className="w-1.5 h-6 bg-sky-500 rounded-full" />
+                    1. Propiedad del Dispositivo
+                  </h2>
+                  <p>El cliente declara ser el propietario legal del dispositivo entregado para servicio. PedritoTech Solutions no se hace responsable por dispositivos de procedencia ilícita. Nos reservamos el derecho de rechazar servicios si sospechamos de la legalidad del equipo.</p>
+                </section>
+
+                <section>
+                  <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <div className="w-1.5 h-6 bg-sky-500 rounded-full" />
+                    2. Naturaleza del Servicio
+                  </h2>
+                  <p>Nuestros servicios son estrictamente de <strong>Software Informático</strong>. No realizamos reparaciones físicas de hardware (pantallas, baterías, etc.) a menos que se especifique explícitamente en un presupuesto personalizado.</p>
+                </section>
+
+                <section>
+                  <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <div className="w-1.5 h-6 bg-sky-500 rounded-full" />
+                    3. Garantía
+                  </h2>
+                  <p>Ofrecemos garantía sobre el trabajo de software realizado. La garantía queda anulada si el cliente manipula el software posteriormente (root, cambios de ROM no autorizados) o si el dispositivo presenta fallas físicas posteriores al servicio.</p>
+                </section>
+
+                <section>
+                  <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <div className="w-1.5 h-6 bg-sky-500 rounded-full" />
+                    4. Pagos
+                  </h2>
+                  <p>Los precios se acuerdan antes de iniciar el servicio. El pago se realiza una vez completado el trabajo satisfactoriamente, según los métodos de pago electrónicos o en efectivo acordados.</p>
+                </section>
+
+                <section>
+                  <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <div className="w-1.5 h-6 bg-sky-500 rounded-full" />
+                    5. Limitación de Responsabilidad
+                  </h2>
+                  <p>PedritoTech Solutions no se hace responsable por la pérdida de datos si el cliente no realizó una copia de seguridad previa. Aunque siempre intentamos preservar la información, ciertos procesos técnicos requieren el borrado completo del dispositivo.</p>
+                </section>
+              </div>
+            </motion.div>
+          )}
+          
+          <button 
+            onClick={() => setView("home")}
+            className="mt-12 px-8 py-4 bg-slate-900 border border-slate-800 text-white font-bold rounded-2xl hover:bg-slate-800 transition-all cursor-pointer flex items-center gap-2"
+          >
+            <ArrowRight className="w-5 h-5 rotate-180" />
+            Volver al Inicio
+          </button>
+        </main>
+
+        <footer className="py-12 border-t border-slate-900 text-center text-sm text-slate-500">
+          <p>© 2026 PedritoTech Solutions. Todos los derechos reservados.</p>
+        </footer>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-slate-950 selection:bg-sky-500/30">
       {/* Navigation */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-slate-950/80 backdrop-blur-md border-b border-slate-800 py-4" : "bg-transparent py-6"}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <div className="flex items-center gap-2">
+          <button onClick={() => setView("home")} className="flex items-center gap-2 cursor-pointer">
             <div className="w-10 h-10 bg-gradient-to-br from-sky-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-sky-500/20">
               <Zap className="text-white w-6 h-6 fill-white" />
             </div>
             <span className="text-xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
               PedritoTech
             </span>
-          </div>
+          </button>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
@@ -357,8 +521,8 @@ export default function App() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left text-xs md:text-sm text-slate-500">
             <p>© 2026 PedritoTech Solutions. Todos los derechos reservados.</p>
             <div className="flex gap-6 md:gap-8">
-              <a href="#" className="hover:text-white transition-colors">Privacidad</a>
-              <a href="#" className="hover:text-white transition-colors">Términos</a>
+              <button onClick={() => setView("privacy")} className="hover:text-white transition-colors">Privacidad</button>
+              <button onClick={() => setView("terms")} className="hover:text-white transition-colors">Términos</button>
             </div>
           </div>
         </div>
