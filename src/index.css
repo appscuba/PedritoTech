@@ -10,11 +10,21 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
-    @apply bg-slate-950 text-slate-100 font-sans antialiased;
+    @apply bg-slate-950 text-slate-100 font-sans antialiased overflow-x-hidden;
   }
   
   h1, h2, h3, h4 {
     @apply font-display font-bold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
   }
 }
