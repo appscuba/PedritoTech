@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>PedritoTech Solutions — Software a Medida</title>
+<title>PedritoTech Solutions — Unlock Tools & Software a Medida</title>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -12,7 +12,6 @@
 --ok:#10b981;--w:#f59e0b;
 --g1:linear-gradient(135deg,#7c3aed,#06b6d4);
 --g2:linear-gradient(135deg,#f43f5e,#7c3aed);
---g3:linear-gradient(135deg,#06b6d4,#10b981);
 }
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--d);color:var(--t);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -20,98 +19,127 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 ::-webkit-scrollbar-track{background:var(--d)}
 ::-webkit-scrollbar-thumb{background:var(--p);border-radius:10px}
 
-/* BG */
-.bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
-.bg span{position:absolute;border-radius:50%;filter:blur(120px);opacity:.08}
-.bg .b1{width:500px;height:500px;background:var(--p);top:-150px;left:-150px;animation:o1 25s ease-in-out infinite}
-.bg .b2{width:400px;height:400px;background:var(--s);top:40%;right:-100px;animation:o2 25s ease-in-out infinite}
-.bg .b3{width:450px;height:450px;background:var(--a);bottom:-100px;left:20%;animation:o3 25s ease-in-out infinite}
-@keyframes o1{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,-60px)}}
-@keyframes o2{0%,100%{transform:translate(0,0)}50%{transform:translate(-60px,80px)}}
-@keyframes o3{0%,100%{transform:translate(0,0)}50%{transform:translate(70px,50px)}}
+.orbs{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
+.orbs span{position:absolute;border-radius:50%;filter:blur(120px);opacity:.07}
+.orbs .o1{width:500px;height:500px;background:var(--p);top:-150px;left:-150px;animation:m1 28s ease-in-out infinite}
+.orbs .o2{width:400px;height:400px;background:var(--s);top:40%;right:-100px;animation:m2 28s ease-in-out infinite}
+.orbs .o3{width:450px;height:450px;background:var(--a);bottom:-100px;left:20%;animation:m3 28s ease-in-out infinite}
+@keyframes m1{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,-60px)}}
+@keyframes m2{0%,100%{transform:translate(0,0)}50%{transform:translate(-60px,80px)}}
+@keyframes m3{0%,100%{transform:translate(0,0)}50%{transform:translate(70px,50px)}}
+.grid-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.01) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.01) 1px,transparent 1px);background-size:50px 50px}
 
-/* LOADER */
-.ld{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--d);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;transition:opacity .5s,visibility .5s}
-.ld.hide{opacity:0;visibility:hidden;pointer-events:none}
-.ld span{font-size:2rem;font-weight:800;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.lb{width:160px;height:3px;background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden}
-.lb i{display:block;height:100%;width:0;background:var(--g1);border-radius:10px;animation:lf 1.5s ease forwards}
+.loader{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--d);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;transition:opacity .5s,visibility .5s}
+.loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.loader span{font-size:2rem;font-weight:800;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.loader-bar{width:160px;height:3px;background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden}
+.loader-bar i{display:block;height:100%;width:0;background:var(--g1);border-radius:10px;animation:lf 1.5s ease forwards}
 @keyframes lf{to{width:100%}}
 
-/* NAV */
-.nv{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1rem 1.5rem;transition:.3s}
-.nv.on{background:rgba(3,7,18,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05);padding:.7rem 1.5rem}
-.ni{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
-.lg{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--t)}
-.lgb{width:36px;height:36px;background:var(--g1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
-.lgt .n{font-size:1.1rem;font-weight:800;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.lgt .u{font-size:.55rem;color:var(--tm);letter-spacing:2px;text-transform:uppercase}
-.lk{display:flex;list-style:none;gap:.2rem;align-items:center}
-.lk a{text-decoration:none;color:var(--tm);font-weight:500;padding:.45rem .8rem;border-radius:8px;font-size:.82rem;transition:.2s}
-.lk a:hover{color:var(--t);background:rgba(255,255,255,.04)}
-.lk .ca{background:var(--g1);color:#fff;font-weight:600}
-.br{display:none;flex-direction:column;cursor:pointer;gap:5px;z-index:1001}
-.br span{width:22px;height:2.5px;background:var(--t);border-radius:3px;transition:.3s}
-.br.on span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-.br.on span:nth-child(2){opacity:0}
-.br.on span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1rem 1.5rem;transition:.3s}
+.nav.on{background:rgba(3,7,18,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05);padding:.7rem 1.5rem}
+.nav-in{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--t)}
+.logo-box{width:36px;height:36px;background:var(--g1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.logo-t{display:flex;flex-direction:column}
+.logo-t .n{font-size:1.1rem;font-weight:800;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.logo-t .u{font-size:.55rem;color:var(--tm);letter-spacing:2px;text-transform:uppercase}
+.links{display:flex;list-style:none;gap:.2rem;align-items:center}
+.links a{text-decoration:none;color:var(--tm);font-weight:500;padding:.45rem .8rem;border-radius:8px;font-size:.82rem;transition:.2s;white-space:nowrap}
+.links a:hover{color:var(--t);background:rgba(255,255,255,.04)}
+.links .cta{background:var(--g1);color:#fff;font-weight:600}
+.burger{display:none;flex-direction:column;cursor:pointer;gap:5px;z-index:1001;padding:4px}
+.burger span{width:22px;height:2.5px;background:var(--t);border-radius:3px;transition:.3s}
+.burger.on span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.burger.on span:nth-child(2){opacity:0}
+.burger.on span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 
-/* HERO */
+/* HERO - UNLOCK FOCUSED */
 .hero{min-height:100vh;display:flex;align-items:center;position:relative;z-index:1;padding:7rem 1.5rem 3rem}
-.hi{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-.ht{animation:up .7s ease}
-.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.2);padding:.4rem 1rem;border-radius:50px;font-size:.72rem;color:var(--pl);margin-bottom:1.5rem;font-weight:500}
-.badge .d{width:7px;height:7px;background:var(--ok);border-radius:50%;animation:bl 2s infinite}
-@keyframes bl{0%,100%{opacity:1}50%{opacity:.5}}
-.hero h1{font-size:3rem;font-weight:900;line-height:1.08;margin-bottom:1.2rem;letter-spacing:-.5px}
+.hero-in{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.hero-text{animation:fadeUp .7s ease both}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(244,63,94,.1);border:1px solid rgba(244,63,94,.2);padding:.4rem 1rem;border-radius:50px;font-size:.72rem;color:#fb7185;margin-bottom:1.2rem;font-weight:500}
+.badge .dot{width:7px;height:7px;background:var(--ok);border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.5}}
+.hero h1{font-size:3rem;font-weight:900;line-height:1.08;margin-bottom:.8rem;letter-spacing:-.5px}
 .g{background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .g2{background:var(--g2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero p{font-size:1.02rem;color:var(--tm);margin-bottom:2rem;max-width:500px;line-height:1.7}
-.hbtns{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2.5rem}
-.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.85rem 1.6rem;border-radius:11px;text-decoration:none;font-weight:600;font-size:.88rem;transition:.3s;cursor:pointer;border:none;font-family:inherit}
-.bp{background:var(--g1);color:#fff;box-shadow:0 3px 16px rgba(124,58,237,.3)}
-.bp:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(124,58,237,.5)}
-.bw{background:#25D366;color:#fff;box-shadow:0 3px 16px rgba(37,211,102,.3)}
-.bw:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(37,211,102,.5)}
-.bg2{background:transparent;color:var(--t);border:1px solid rgba(255,255,255,.06)}
-.bg2:hover{background:rgba(255,255,255,.04);transform:translateY(-2px)}
-.sts{display:flex;gap:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.06)}
-.st h3{font-size:1.8rem;font-weight:900;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.st p{font-size:.7rem;color:var(--tm);text-transform:uppercase;letter-spacing:1px;margin:0}
+.hero p{font-size:1rem;color:var(--tm);margin-bottom:1.5rem;max-width:500px;line-height:1.7}
 
-/* Terminal */
-.hv{display:flex;justify-content:center;align-items:center;animation:up .7s ease .2s both}
-.tw{position:relative}
-.tglow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:280px;height:220px;background:var(--p);border-radius:50%;filter:blur(80px);opacity:.1}
-.term{position:relative;width:360px;background:rgba(11,17,32,.9);border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);z-index:2}
-.tbar{display:flex;align-items:center;gap:.5rem;padding:.7rem 1rem;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.06)}
-.td{width:10px;height:10px;border-radius:50%}
-.td:nth-child(1){background:#f43f5e}.td:nth-child(2){background:#f59e0b}.td:nth-child(3){background:#10b981}
-.ttl{font-size:.7rem;color:var(--tm);margin-left:.5rem}
-.tbody{padding:1.2rem;font-family:'Courier New',monospace;font-size:.75rem;line-height:1.8}
-.tl{margin-bottom:.15rem}
-.tp{color:var(--ok)}.tc{color:var(--pl)}.ts{color:var(--w)}.tk{color:var(--s)}.tf{color:#818cf8}.tcm{color:var(--tm)}
-.cblink{display:inline-block;width:7px;height:13px;background:var(--pl);margin-left:2px;animation:bc 1s infinite;vertical-align:middle}
-@keyframes bc{0%,100%{opacity:1}50%{opacity:0}}
-.tfc{position:absolute;background:rgba(11,17,32,.85);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:.5rem .8rem;font-size:.66rem;display:flex;align-items:center;gap:.4rem;animation:fc 6s infinite ease-in-out;white-space:nowrap;z-index:3;box-shadow:0 8px 20px rgba(0,0,0,.3)}
-.tfc:nth-child(1){top:0;right:-40px}.tfc:nth-child(2){bottom:20px;left:-50px;animation-delay:-2s}.tfc:nth-child(3){bottom:60px;right:-45px;animation-delay:-4s}
-@keyframes fc{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes up{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+/* Quick unlock chips */
+.unlock-chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.8rem}
+.uc{display:inline-flex;align-items:center;gap:.3rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:.35rem .8rem;border-radius:50px;font-size:.75rem;color:var(--t);transition:.2s}
+.uc:hover{background:rgba(124,58,237,.15);border-color:rgba(124,58,237,.3)}
+
+.hero-btns{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2rem}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.85rem 1.6rem;border-radius:11px;text-decoration:none;font-weight:600;font-size:.88rem;transition:.3s;cursor:pointer;border:none;font-family:inherit}
+.btn-primary{background:var(--g1);color:#fff;box-shadow:0 3px 16px rgba(124,58,237,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(124,58,237,.5)}
+.btn-wa{background:#25D366;color:#fff;box-shadow:0 3px 16px rgba(37,211,102,.3)}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(37,211,102,.5)}
+.btn-ghost{background:transparent;color:var(--t);border:1px solid rgba(255,255,255,.06)}
+.btn-ghost:hover{background:rgba(255,255,255,.04);transform:translateY(-2px)}
+.btn-unlock{background:linear-gradient(135deg,#f43f5e,#7c3aed);color:#fff;box-shadow:0 3px 16px rgba(244,63,94,.3);font-weight:700}
+.btn-unlock:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(244,63,94,.5)}
+.stats{display:flex;gap:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.06)}
+.stat h3{font-size:1.8rem;font-weight:900;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat p{font-size:.7rem;color:var(--tm);text-transform:uppercase;letter-spacing:1px;margin:0}
+
+/* Phone visual */
+.hero-vis{display:flex;justify-content:center;align-items:center;animation:fadeUp .7s ease .2s both}
+.ph-wrap{position:relative}
+.ph-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:250px;height:250px;background:var(--a);border-radius:50%;filter:blur(80px);opacity:.15}
+.phone{position:relative;width:220px;height:440px;background:linear-gradient(160deg,#151528,#0a0a18);border-radius:36px;border:1.5px solid rgba(255,255,255,.07);padding:8px;box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 40px rgba(244,63,94,.1);z-index:2}
+.phone-screen{width:100%;height:100%;background:linear-gradient(180deg,#0f172a,#030712);border-radius:28px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+.notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:90px;height:20px;background:#030712;border-radius:0 0 12px 12px}
+.scr{text-align:center;padding:1.5rem}
+.scr-icon{font-size:3rem;display:block;margin-bottom:.6rem;animation:unlockB 3s infinite}
+@keyframes unlockB{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.scr-title{font-size:1rem;font-weight:700;background:var(--g2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.2rem}
+.scr-sub{font-size:.65rem;color:var(--tm);margin-bottom:1rem}
+.prog{width:70%;margin:0 auto;height:4px;background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden}
+.prog span{display:block;height:100%;background:var(--g2);border-radius:10px;animation:barA 4s infinite ease-in-out}
+@keyframes barA{0%{width:0}55%{width:100%}80%{width:100%}100%{width:0}}
+
+.fcard{position:absolute;background:rgba(11,17,32,.85);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:.5rem .8rem;font-size:.66rem;display:flex;align-items:center;gap:.4rem;animation:floatC 6s infinite ease-in-out;white-space:nowrap;z-index:3;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.fcard:nth-child(1){top:5%;right:-50px}
+.fcard:nth-child(2){bottom:28%;left:-65px;animation-delay:-2s}
+.fcard:nth-child(3){bottom:5%;right:-55px;animation-delay:-4s}
+@keyframes floatC{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+
+/* UNLOCK BANNER - Right below hero */
+.unlock-banner{position:relative;z-index:1;background:linear-gradient(135deg,rgba(244,63,94,.08),rgba(124,58,237,.06));border:1px solid rgba(244,63,94,.15);border-radius:18px;max-width:1200px;margin:-2rem auto 0;padding:2.5rem 2rem}
+.ub-inner{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+.ub-text h3{font-size:1.4rem;font-weight:800;margin-bottom:.5rem}
+.ub-text h3 span{color:#fb7185}
+.ub-text p{font-size:.88rem;color:var(--tm);line-height:1.7;margin-bottom:1.2rem}
+.ub-items{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.ub-item{display:flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);padding:.5rem 1rem;border-radius:10px;font-size:.82rem;cursor:pointer;transition:.2s;text-decoration:none;color:var(--t)}
+.ub-item:hover{background:rgba(244,63,94,.1);border-color:rgba(244,63,94,.3)}
+.ub-visual{display:flex;justify-content:center}
+.ub-phone{width:160px;height:320px;background:linear-gradient(160deg,#151528,#0a0a18);border-radius:28px;border:1px solid rgba(255,255,255,.06);padding:6px;box-shadow:0 15px 40px rgba(0,0,0,.4)}
+.ub-screen{width:100%;height:100%;background:linear-gradient(180deg,#0f172a,#030712);border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.ub-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:70px;height:16px;background:#030712;border-radius:0 0 10px 10px}
+.ub-list{text-align:center;padding:1rem}
+.ub-list .li{display:flex;align-items:center;gap:.5rem;padding:.5rem 0;font-size:.72rem;color:var(--tm)}
+.ub-list .li .ic{font-size:.9rem}
+.ub-list .li.done{color:var(--ok)}
 
 /* SECTIONS */
 section{position:relative;z-index:1;padding:4.5rem 1.5rem}
-.w{max-width:1200px;margin:0 auto}
+.wrap{max-width:1200px;margin:0 auto}
 .sh{text-align:center;margin-bottom:2.5rem}
-.slab{display:inline-flex;align-items:center;gap:.4rem;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.15);padding:.35rem 1rem;border-radius:50px;font-size:.72rem;color:var(--pl);margin-bottom:.8rem;font-weight:500}
+.sl{display:inline-flex;align-items:center;gap:.4rem;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.15);padding:.35rem 1rem;border-radius:50px;font-size:.72rem;color:var(--pl);margin-bottom:.8rem;font-weight:500}
 .sh h2{font-size:2rem;font-weight:900;margin-bottom:.6rem;letter-spacing:-.5px}
 .sh p{color:var(--tm);max-width:540px;margin:0 auto;font-size:.92rem;line-height:1.7}
 
 /* TABS */
-.tabs{display:flex;justify-content:center;gap:.4rem;flex-wrap:wrap;margin-bottom:2rem}
-.tab{padding:.5rem 1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;color:var(--tm);font-size:.8rem;font-weight:600;cursor:pointer;transition:.3s;font-family:inherit}
-.tab:hover{background:rgba(255,255,255,.05);color:var(--t)}
-.tab.on{background:var(--g1);color:#fff;border-color:transparent;box-shadow:0 3px 12px rgba(124,58,237,.3)}
-.panel{display:none}.panel.on{display:block;animation:up .4s ease}
+.tabs-wrap{display:flex;justify-content:center;gap:.4rem;flex-wrap:wrap;margin-bottom:2rem}
+.tab-btn{padding:.5rem 1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;color:var(--tm);font-size:.8rem;font-weight:600;cursor:pointer;transition:.3s;font-family:inherit}
+.tab-btn:hover{background:rgba(255,255,255,.05);color:var(--t)}
+.tab-btn.active{background:var(--g1);color:#fff;border-color:transparent;box-shadow:0 3px 12px rgba(124,58,237,.3)}
+.tab-content{display:none}.tab-content.active{display:block;animation:fadeUp .4s ease}
 .grd{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.2rem}
 
 /* CARDS */
@@ -128,6 +156,8 @@ section{position:relative;z-index:1;padding:4.5rem 1.5rem}
 .cf .ok{color:var(--ok);font-size:.65rem}
 .cbtn{display:inline-flex;align-items:center;gap:.3rem;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.15);color:var(--pl);padding:.45rem .9rem;border-radius:9px;text-decoration:none;font-size:.74rem;font-weight:600;transition:.3s}
 .cbtn:hover{background:var(--g1);color:#fff;border-color:transparent}
+.cbtn.pk{background:rgba(244,63,94,.1);border-color:rgba(244,63,94,.15);color:#fb7185}
+.cbtn.pk:hover{background:var(--g2);color:#fff;border-color:transparent}
 
 /* WHY */
 .wbg{background:var(--d2)}
@@ -141,10 +171,10 @@ section{position:relative;z-index:1;padding:4.5rem 1.5rem}
 /* PROCESS */
 .pgrd{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;position:relative}
 .pgrd::before{content:'';position:absolute;top:32px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,transparent,rgba(124,58,237,.2),rgba(6,182,212,.2),transparent)}
-.pc{text-align:center;position:relative;padding:1rem}
+.pc2{text-align:center;position:relative;padding:1rem}
 .pn{width:44px;height:44px;border-radius:50%;background:var(--g1);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;margin:0 auto .8rem;position:relative;z-index:2}
-.pc h3{font-size:.88rem;font-weight:700;margin-bottom:.2rem}
-.pc p{font-size:.74rem;color:var(--tm);line-height:1.6}
+.pc2 h3{font-size:.88rem;font-weight:700;margin-bottom:.2rem}
+.pc2 p{font-size:.74rem;color:var(--tm);line-height:1.6}
 
 /* PAYMENTS */
 .paybg{background:var(--d2)}
@@ -158,9 +188,10 @@ section{position:relative;z-index:1;padding:4.5rem 1.5rem}
 .pyb{display:inline-flex;align-items:center;gap:.2rem;background:rgba(16,185,129,.1);color:var(--ok);padding:.22rem .6rem;border-radius:50px;font-size:.64rem;font-weight:600;margin-top:.7rem}
 
 /* CTA */
-.cta{max-width:780px;margin:0 auto;background:linear-gradient(135deg,rgba(124,58,237,.08),rgba(6,182,212,.05));border:1px solid rgba(124,58,237,.15);border-radius:22px;padding:2.8rem 2.2rem;text-align:center}
-.cta h2{font-size:1.9rem;font-weight:900;margin-bottom:.5rem;letter-spacing:-.5px}
-.cta>p{color:var(--tm);font-size:.92rem;margin-bottom:1.8rem;max-width:480px;margin-left:auto;margin-right:auto}
+.cta-section{padding:4.5rem 1.5rem}
+.cta-box{max-width:780px;margin:0 auto;background:linear-gradient(135deg,rgba(124,58,237,.08),rgba(6,182,212,.05));border:1px solid rgba(124,58,237,.15);border-radius:22px;padding:2.8rem 2.2rem;text-align:center}
+.cta-box h2{font-size:1.9rem;font-weight:900;margin-bottom:.5rem;letter-spacing:-.5px}
+.cta-box>p{color:var(--tm);font-size:.92rem;margin-bottom:1.8rem;max-width:480px;margin-left:auto;margin-right:auto}
 .ctbtns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
 .ccrds{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.8rem;max-width:680px;margin:2.2rem auto 0}
 .ccrd{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:11px;padding:.8rem;display:flex;align-items:center;gap:.7rem;transition:.3s;text-decoration:none;color:var(--t)}
@@ -222,13 +253,17 @@ section{position:relative;z-index:1;padding:4.5rem 1.5rem}
 .rv.show{opacity:1;transform:translateY(0)}
 
 @media(max-width:960px){
-.hi{grid-template-columns:1fr;text-align:center;gap:2.5rem}
-.hero p{margin:0 auto 2rem}
-.hbtns{justify-content:center}
-.sts{justify-content:center}
-.hv{order:-1}
-.tfc{display:none}
-.term{width:300px}
+.hero-in{grid-template-columns:1fr;text-align:center;gap:2.5rem}
+.hero p{margin:0 auto 1.5rem}
+.hero-btns{justify-content:center}
+.unlock-chips{justify-content:center}
+.stats{justify-content:center}
+.hero-vis{order:-1}
+.fcard{display:none}
+.phone{width:190px;height:380px}
+.ub-inner{grid-template-columns:1fr;text-align:center}
+.ub-items{justify-content:center}
+.ub-visual{order:-1}
 .wgrd{grid-template-columns:repeat(2,1fr)}
 .pgrd{grid-template-columns:repeat(2,1fr)}
 .pgrd::before{display:none}
@@ -236,12 +271,13 @@ section{position:relative;z-index:1;padding:4.5rem 1.5rem}
 .tgrd{grid-template-columns:repeat(2,1fr)}
 .fi{flex-direction:column;text-align:center}
 .flk{justify-content:center;flex-wrap:wrap}
+.unlock-banner{margin:-1rem 1rem 0;padding:2rem 1.5rem}
 }
 @media(max-width:700px){
-.lk{position:fixed;top:0;right:-100%;width:75%;height:100vh;background:rgba(11,17,32,.97);flex-direction:column;justify-content:center;padding:2rem;gap:.2rem;transition:right .35s;border-left:1px solid rgba(255,255,255,.05)}
-.lk.open{right:0}
-.lk a{padding:.6rem 1rem;width:100%;text-align:center;font-size:.9rem}
-.br{display:flex}
+.links{position:fixed;top:0;right:-100%;width:75%;height:100vh;background:rgba(11,17,32,.97);flex-direction:column;justify-content:center;padding:2rem;gap:.2rem;transition:right .35s;border-left:1px solid rgba(255,255,255,.05)}
+.links.open{right:0}
+.links a{padding:.6rem 1rem;width:100%;text-align:center;font-size:.9rem}
+.burger{display:flex}
 .hero{padding:6rem 1.2rem 2rem}
 .hero h1{font-size:1.8rem}
 .sh h2{font-size:1.5rem}
@@ -250,79 +286,115 @@ section{position:relative;z-index:1;padding:4.5rem 1.5rem}
 .pgrd{grid-template-columns:1fr}
 .pygrd{grid-template-columns:1fr}
 .tgrd{grid-template-columns:1fr}
-.sts{flex-direction:column;gap:.8rem;align-items:center}
-.term{width:260px}
-.tbody{font-size:.65rem;padding:.9rem}
-.cta{padding:2rem 1.3rem}
-.cta h2{font-size:1.3rem}
-.hbtns,.ctbtns{flex-direction:column;align-items:center}
+.stats{flex-direction:column;gap:.8rem;align-items:center}
+.cta-box{padding:2rem 1.3rem}
+.cta-box h2{font-size:1.3rem}
+.hero-btns,.ctbtns{flex-direction:column;align-items:center}
 .btn{width:100%;justify-content:center}
-.tabs{gap:.3rem}
-.tab{padding:.42rem .7rem;font-size:.7rem}
+.tabs-wrap{gap:.3rem}
+.tab-btn{padding:.42rem .7rem;font-size:.7rem}
+.unlock-banner{margin:-1rem .5rem 0;padding:1.5rem 1rem}
+.ub-items{flex-direction:column;align-items:center}
 }
 </style>
 </head>
 <body>
 
-<div class="ld" id="ld"><span>PedritoTech</span><div class="lb"><i></i></div></div>
+<!-- LOADER -->
+<div class="loader" id="loader"><span>PedritoTech</span><div class="loader-bar"><i></i></div></div>
 
-<div class="bg"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+<!-- BG -->
+<div class="orbs"><span class="o1"></span><span class="o2"></span><span class="o3"></span></div>
+<div class="grid-bg"></div>
 
 <!-- NAV -->
-<nav class="nv" id="nv">
-<div class="ni">
-<a href="#" class="lg"><div class="lgb">⚡</div><div class="lgt"><span class="n">PedritoTech</span><span class="u">Solutions</span></div></a>
-<ul class="lk" id="lk">
+<nav class="nav" id="nav">
+<div class="nav-in">
+<a href="#" class="logo"><div class="logo-box">⚡</div><div class="logo-t"><span class="n">PedritoTech</span><span class="u">Solutions</span></div></a>
+<ul class="links" id="links">
+<li><a href="#unlock">🔓 Unlock</a></li>
 <li><a href="#servicios">Servicios</a></li>
 <li><a href="#nosotros">Nosotros</a></li>
 <li><a href="#proceso">Proceso</a></li>
 <li><a href="#pagos">Pagos</a></li>
-<li><a href="#faq">FAQ</a></li>
-<li><a href="https://wa.me/5359924051" target="_blank" class="ca">💬 WhatsApp</a></li>
+<li><a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20un%20servicio%20de%20unlock" target="_blank" class="cta">🔓 Unlock Ahora</a></li>
 </ul>
-<div class="br" id="br"><span></span><span></span><span></span></div>
+<div class="burger" id="burger"><span></span><span></span><span></span></div>
 </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO - UNLOCK FIRST -->
 <section class="hero" id="inicio">
-<div class="hi">
-<div class="ht">
-<div class="badge"><span class="d"></span> Desarrollo de Software a Medida</div>
-<h1>Creamos el <span class="g">software</span><br>que tu <span class="g2">negocio necesita</span></h1>
-<p>Desarrollo web, aplicaciones a medida, soluciones para negocios, despliegue de servidores y herramientas de unlock. Todo bajo un mismo techo tecnológico.</p>
-<div class="hbtns">
-<a href="https://wa.me/5359924051?text=Hola%2C%20quiero%20cotizar%20un%20proyecto%20de%20software" target="_blank" class="btn bw">💬 Cotizar proyecto</a>
-<a href="#servicios" class="btn bg2">Explorar servicios ↓</a>
+<div class="hero-in">
+<div class="hero-text">
+<div class="badge"><span class="dot"></span> Unlock Tools — Servicio Remoto</div>
+<h1>Desbloquea tu<br><span class="g">dispositivo</span> al<br><span class="g2">instante</span></h1>
+<p>Eliminación de FRP, liberación de SIM, reparación de IMEI y más. Servicio remoto profesional, rápido y garantizado. También desarrollamos software a medida para tu negocio.</p>
+<div class="unlock-chips">
+<span class="uc">🛡️ FRP Bypass</span>
+<span class="uc">📡 SIM Unlock</span>
+<span class="uc">🔧 IMEI Repair</span>
+<span class="uc">🍎 iOS Services</span>
 </div>
-<div class="sts">
-<div class="st"><h3 id="c1">0+</h3><p>Proyectos entregados</p></div>
-<div class="st"><h3>100%</h3><p>Código a medida</p></div>
-<div class="st"><h3>24/7</h3><p>Soporte técnico</p></div>
+<div class="hero-btns">
+<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20un%20servicio%20de%20unlock%20remoto" target="_blank" class="btn btn-unlock">🔓 Desbloquear Ahora</a>
+<a href="https://wa.me/5359924051?text=Hola%2C%20quiero%20información%20sobre%20sus%20servicios" target="_blank" class="btn btn-wa">💬 WhatsApp</a>
+<a href="#servicios" class="btn btn-ghost">Ver más servicios ↓</a>
+</div>
+<div class="stats">
+<div class="stat"><h3 id="c1">0+</h3><p>Dispositivos unlockeados</p></div>
+<div class="stat"><h3>99%</h3><p>Tasa de éxito</p></div>
+<div class="stat"><h3>24/7</h3><p>Soporte remoto</p></div>
 </div>
 </div>
-<div class="hv">
-<div class="tw">
-<div class="tglow"></div>
-<div class="tfc"><span>🚀</span> Deploy exitoso</div>
-<div class="tfc"><span>✅</span> 0 errores</div>
-<div class="tfc"><span>⚡</span> 100% uptime</div>
-<div class="term">
-<div class="tbar"><div class="td"></div><div class="td"></div><div class="td"></div><span class="ttl">pedritotech — deploy</span></div>
-<div class="tbody">
-<div class="tl"><span class="tp">❯ </span><span class="tc">npx create-app</span> <span class="ts">mi-negocio</span></div>
-<div class="tl"><span class="tcm">✓ Proyecto creado</span></div>
-<div class="tl">&nbsp;</div>
-<div class="tl"><span class="tp">❯ </span><span class="tc">npm install</span> <span class="ts">--production</span></div>
-<div class="tl"><span class="tcm">✓ 247 packages listos</span></div>
-<div class="tl">&nbsp;</div>
-<div class="tl"><span class="tp">❯ </span><span class="tc">npm run</span> <span class="ts">build</span></div>
-<div class="tl"><span class="tk">const</span> <span class="tf">app</span> = <span class="tc">createServer</span>();</div>
-<div class="tl"><span class="tf">app</span>.<span class="tc">deploy</span>(<span class="ts">'cloud'</span>);</div>
-<div class="tl"><span class="tcm">✓ Build completado</span></div>
-<div class="tl"><span class="tcm">✓ Servidor online</span></div>
-<div class="tl">&nbsp;</div>
-<div class="tl"><span class="tp">❯ </span><span class="cblink"></span></div>
+<div class="hero-vis">
+<div class="ph-wrap">
+<div class="ph-glow"></div>
+<div class="fcard"><span>✅</span> FRP Eliminado</div>
+<div class="fcard"><span>📡</span> SIM Liberada</div>
+<div class="fcard"><span>🔓</span> 100% Remote</div>
+<div class="phone">
+<div class="phone-screen">
+<div class="notch"></div>
+<div class="scr">
+<span class="scr-icon">🔓</span>
+<div class="scr-title">UNLOCKING...</div>
+<div class="scr-sub">Proceso remoto activo</div>
+<div class="prog"><span></span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- UNLOCK BANNER - Quick access right below hero -->
+<section style="padding:0 1.5rem 2rem;position:relative;z-index:1">
+<div class="unlock-banner rv">
+<div class="ub-inner">
+<div class="ub-text">
+<h3>🔓 <span>Contrata tu Unlock</span> ahora</h3>
+<p>Selecciona el servicio que necesitas y contáctanos directamente por WhatsApp. Proceso 100% remoto, rápido y seguro.</p>
+<div class="ub-items">
+<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20eliminar%20FRP%20de%20mi%20dispositivo" target="_blank" class="ub-item">🛡️ Eliminar FRP</a>
+<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20liberar%20SIM%20de%20mi%20teléfono" target="_blank" class="ub-item">📡 Liberar SIM</a>
+<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20reparar%20el%20IMEI%20de%20mi%20dispositivo" target="_blank" class="ub-item">🔧 Reparar IMEI</a>
+<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20servicios%20para%20mi%20iPhone" target="_blank" class="ub-item">🍎 Servicios iOS</a>
+</div>
+<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20un%20servicio%20de%20unlock" target="_blank" class="btn btn-unlock" style="display:inline-flex">🔓 Contratar Unlock Ahora</a>
+</div>
+<div class="ub-visual">
+<div class="ub-phone">
+<div class="ub-screen">
+<div class="ub-notch"></div>
+<div class="ub-list">
+<div class="li done"><span class="ic">🛡️</span> FRP — Eliminado</div>
+<div class="li done"><span class="ic">📡</span> SIM — Liberada</div>
+<div class="li done"><span class="ic">🔧</span> IMEI — Reparado</div>
+<div class="li"><span class="ic">🍎</span> iCloud — Listo</div>
+<div class="li"><span class="ic">✅</span> ¡Todo funciona!</div>
+</div>
 </div>
 </div>
 </div>
@@ -332,55 +404,60 @@ section{position:relative;z-index:1;padding:4.5rem 1.5rem}
 
 <!-- SERVICES -->
 <section id="servicios">
-<div class="w">
+<div class="wrap">
 <div class="sh rv">
-<div class="slab">💻 Servicios</div>
-<h2>Soluciones de <span class="g">Software</span> integrales</h2>
-<p>Desde una página web hasta un sistema completo de gestión. Creamos tecnología que hace crecer tu negocio.</p>
+<div class="sl">💻 Todos los Servicios</div>
+<h2>Soluciones <span class="g">integrales</span></h2>
+<p>Desde desbloqueo de dispositivos hasta desarrollo web completo. Todo lo que necesitas, en un solo lugar.</p>
 </div>
-<div class="tabs rv">
-<button class="tab on" data-t="dev">⚡ Desarrollo</button>
-<button class="tab" data-t="web">🌐 Web</button>
-<button class="tab" data-t="biz">🏢 Negocios</button>
-<button class="tab" data-t="inf">🖧 Infraestructura</button>
-<button class="tab" data-t="tl">🔓 Tools</button>
+<div class="tabs-wrap rv">
+<button class="tab-btn active" data-t="unlock">🔓 Unlock</button>
+<button class="tab-btn" data-t="web">🌐 Web</button>
+<button class="tab-btn" data-t="dev">⚡ Desarrollo</button>
+<button class="tab-btn" data-t="biz">🏢 Negocios</button>
+<button class="tab-btn" data-t="inf">🖧 Infraestructura</button>
 </div>
-<div class="panel on" id="p-dev">
+
+<div class="tab-content active" id="p-unlock">
 <div class="grd">
-<div class="cd rv"><div class="ci p">💻</div><h3>Software a Medida</h3><p>Aplicaciones diseñadas específicamente para las necesidades de tu negocio.</p><ul class="cf"><li><span class="ok">✓</span> Análisis de requerimientos</li><li><span class="ok">✓</span> Desarrollo desde cero</li><li><span class="ok">✓</span> Código limpio y escalable</li></ul><a href="https://wa.me/5359924051?text=Quiero%20software%20a%20medida" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci c">📱</div><h3>Aplicaciones Móviles</h3><p>Apps nativas y multiplataforma para Android.</p><ul class="cf"><li><span class="ok">✓</span> Apps Android nativas</li><li><span class="ok">✓</span> Interfaces modernas</li><li><span class="ok">✓</span> Notificaciones push</li></ul><a href="https://wa.me/5359924051?text=Quiero%20una%20app%20móvil" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci gr">🔧</div><h3>Automatización</h3><p>Scripts y herramientas que automatizan tareas repetitivas.</p><ul class="cf"><li><span class="ok">✓</span> Bots personalizados</li><li><span class="ok">✓</span> Integración de APIs</li><li><span class="ok">✓</span> Procesos automatizados</li></ul><a href="https://wa.me/5359924051?text=Quiero%20automatizar%20procesos" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci pk">🛡️</div><h3>Eliminación FRP</h3><p>Remove Factory Reset Protection de Google en Android de todas las marcas.</p><ul class="cf"><li><span class="ok">✓</span> Samsung, Xiaomi, Huawei</li><li><span class="ok">✓</span> Todas las versiones</li><li><span class="ok">✓</span> Proceso 100% remoto</li></ul><a href="https://wa.me/5359924051?text=Necesito%20eliminar%20FRP" target="_blank" class="cbtn pk">Contratar →</a></div>
+<div class="cd rv"><div class="ci c">📡</div><h3>Liberación SIM</h3><p>Desbloquea tu dispositivo para usarlo con cualquier operador del mundo.</p><ul class="cf"><li><span class="ok">✓</span> Todas las operadoras</li><li><span class="ok">✓</span> Código oficial</li><li><span class="ok">✓</span> iPhone y Android</li></ul><a href="https://wa.me/5359924051?text=Necesito%20liberación%20SIM" target="_blank" class="cbtn pk">Contratar →</a></div>
+<div class="cd rv"><div class="ci pk">🔧</div><h3>Reparación IMEI</h3><p>Restauración de IMEI null/0 con herramientas profesionales.</p><ul class="cf"><li><span class="ok">✓</span> IMEI reparado</li><li><span class="ok">✓</span> Base band restoration</li><li><span class="ok">✓</span> Todas las marcas</li></ul><a href="https://wa.me/5359924051?text=Necesito%20reparar%20IMEI" target="_blank" class="cbtn pk">Contratar →</a></div>
+<div class="cd rv"><div class="ci a">🍎</div><h3>Servicios iOS</h3><p>iCloud removal, bypass de activación y liberación para iPhone/iPad.</p><ul class="cf"><li><span class="ok">✓</span> iCloud removal</li><li><span class="ok">✓</span> Bypass activación</li><li><span class="ok">✓</span> Eliminación MDM</li></ul><a href="https://wa.me/5359924051?text=Necesito%20servicio%20iOS" target="_blank" class="cbtn pk">Contratar →</a></div>
 </div>
 </div>
-<div class="panel" id="p-web">
+
+<div class="tab-content" id="p-web">
 <div class="grd">
 <div class="cd rv"><div class="ci p">🌐</div><h3>Páginas Web</h3><p>Sitios web profesionales, modernos y optimizados para buscadores.</p><ul class="cf"><li><span class="ok">✓</span> Diseño responsive</li><li><span class="ok">✓</span> SEO integrado</li><li><span class="ok">✓</span> Panel administrable</li></ul><a href="https://wa.me/5359924051?text=Quiero%20una%20página%20web" target="_blank" class="cbtn">Consultar →</a></div>
 <div class="cd rv"><div class="ci c">🛒</div><h3>Tiendas Online</h3><p>E-commerce con catálogo, carrito y pasarela de pago.</p><ul class="cf"><li><span class="ok">✓</span> Catálogo de productos</li><li><span class="ok">✓</span> Pagos integrados</li><li><span class="ok">✓</span> Panel admin</li></ul><a href="https://wa.me/5359924051?text=Quiero%20una%20tienda%20online" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci a">🎨</div><h3>Landing Pages</h3><p>Páginas de alto impacto para convertir visitantes en clientes.</p><ul class="cf"><li><span class="ok">✓</span> Diseño persuasivo</li><li><span class="ok">✓</span> Formularios de contacto</li><li><span class="ok">✓</span> Entrega rápida</li></ul><a href="https://wa.me/5359924051?text=Quiero%20una%20landing%20page" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci gr">✏️</div><h3>Rediseño Web</h3><p>¿Tu web se ve antigua? La renovamos con tecnología actual.</p><ul class="cf"><li><span class="ok">✓</span> Diseño moderno</li><li><span class="ok">✓</span> Mejora de rendimiento</li><li><span class="ok">✓</span> Migración segura</li></ul><a href="https://wa.me/5359924051?text=Quiero%20rediseñar%20mi%20web" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci a">🎨</div><h3>Landing Pages</h3><p>Páginas de alto impacto para convertir visitantes en clientes.</p><ul class="cf"><li><span class="ok">✓</span> Diseño persuasivo</li><li><span class="ok">✓</span> Formularios</li><li><span class="ok">✓</span> Entrega rápida</li></ul><a href="https://wa.me/5359924051?text=Quiero%20una%20landing%20page" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci gr">✏️</div><h3>Rediseño Web</h3><p>¿Tu web se ve antigua? La renovamos con tecnología actual.</p><ul class="cf"><li><span class="ok">✓</span> Diseño moderno</li><li><span class="ok">✓</span> Mejora rendimiento</li><li><span class="ok">✓</span> Migración segura</li></ul><a href="https://wa.me/5359924051?text=Quiero%20rediseñar%20mi%20web" target="_blank" class="cbtn">Consultar →</a></div>
 </div>
 </div>
-<div class="panel" id="p-biz">
+
+<div class="tab-content" id="p-dev">
+<div class="grd">
+<div class="cd rv"><div class="ci p">💻</div><h3>Software a Medida</h3><p>Aplicaciones diseñadas específicamente para tu negocio.</p><ul class="cf"><li><span class="ok">✓</span> Análisis de requerimientos</li><li><span class="ok">✓</span> Desarrollo desde cero</li><li><span class="ok">✓</span> Código escalable</li></ul><a href="https://wa.me/5359924051?text=Quiero%20software%20a%20medida" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci c">📱</div><h3>Aplicaciones Móviles</h3><p>Apps nativas y multiplataforma para Android.</p><ul class="cf"><li><span class="ok">✓</span> Apps Android nativas</li><li><span class="ok">✓</span> Interfaces modernas</li><li><span class="ok">✓</span> Notificaciones push</li></ul><a href="https://wa.me/5359924051?text=Quiero%20una%20app%20móvil" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci gr">🔧</div><h3>Automatización</h3><p>Scripts que automatizan tareas repetitivas.</p><ul class="cf"><li><span class="ok">✓</span> Bots personalizados</li><li><span class="ok">✓</span> Integración de APIs</li><li><span class="ok">✓</span> Procesos automáticos</li></ul><a href="https://wa.me/5359924051?text=Quiero%20automatizar%20procesos" target="_blank" class="cbtn">Consultar →</a></div>
+</div>
+</div>
+
+<div class="tab-content" id="p-biz">
 <div class="grd">
 <div class="cd rv"><div class="ci p">🏢</div><h3>Sistemas de Gestión</h3><p>CRM, inventario, facturación y control total de tu negocio.</p><ul class="cf"><li><span class="ok">✓</span> CRM personalizado</li><li><span class="ok">✓</span> Control de inventario</li><li><span class="ok">✓</span> Reportes en tiempo real</li></ul><a href="https://wa.me/5359924051?text=Necesito%20sistema%20de%20gestión" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci c">🎯</div><h3>Soluciones para PYMES</h3><p>Software accesible para pequeños negocios que necesitan digitalizarse.</p><ul class="cf"><li><span class="ok">✓</span> Presupuesto adaptado</li><li><span class="ok">✓</span> Escalable según creces</li><li><span class="ok">✓</span> Capacitación incluida</li></ul><a href="https://wa.me/5359924051?text=Necesito%20soluciones%20para%20mi%20negocio" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci pk">📊</div><h3>Dashboards</h3><p>Paneles de control visuales para monitorear métricas clave.</p><ul class="cf"><li><span class="ok">✓</span> Gráficos interactivos</li><li><span class="ok">✓</span> KPIs personalizados</li><li><span class="ok">✓</span> Acceso remoto</li></ul><a href="https://wa.me/5359924051?text=Necesito%20un%20dashboard" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci a">🎨</div><h3>Branding Digital</h3><p>Logos, identidad visual y diseño gráfico para tu marca.</p><ul class="cf"><li><span class="ok">✓</span> Diseño de logos</li><li><span class="ok">✓</span> Identidad visual completa</li><li><span class="ok">✓</span> Material publicitario</li></ul><a href="https://wa.me/5359924051?text=Necesito%20branding" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci c">🎯</div><h3>Soluciones para PYMES</h3><p>Software accesible para pequeños negocios.</p><ul class="cf"><li><span class="ok">✓</span> Presupuesto adaptado</li><li><span class="ok">✓</span> Escalable según creces</li><li><span class="ok">✓</span> Capacitación incluida</li></ul><a href="https://wa.me/5359924051?text=Necesito%20soluciones%20para%20mi%20negocio" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci pk">📊</div><h3>Dashboards</h3><p>Paneles de control para monitorear métricas clave.</p><ul class="cf"><li><span class="ok">✓</span> Gráficos interactivos</li><li><span class="ok">✓</span> KPIs personalizados</li><li><span class="ok">✓</span> Acceso remoto</li></ul><a href="https://wa.me/5359924051?text=Necesito%20un%20dashboard" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci a">🎨</div><h3>Branding Digital</h3><p>Logos, identidad visual y diseño para tu marca.</p><ul class="cf"><li><span class="ok">✓</span> Diseño de logos</li><li><span class="ok">✓</span> Identidad visual</li><li><span class="ok">✓</span> Material publicitario</li></ul><a href="https://wa.me/5359924051?text=Necesito%20branding" target="_blank" class="cbtn">Consultar →</a></div>
 </div>
 </div>
-<div class="panel" id="p-inf">
+
+<div class="tab-content" id="p-inf">
 <div class="grd">
-<div class="cd rv"><div class="ci c">🖧</div><h3>Despliegue de Servidores</h3><p>Configuración de servidores web, bases de datos y aplicaciones en la nube.</p><ul class="cf"><li><span class="ok">✓</span> Apache, Nginx, Node.js</li><li><span class="ok">✓</span> MySQL / PostgreSQL</li><li><span class="ok">✓</span> SSL y seguridad</li></ul><a href="https://wa.me/5359924051?text=Necesito%20desplegar%20un%20servidor" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci p">🖥️</div><h3>Instalación de Sistemas</h3><p>Instalación y configuración de sistemas operativos con optimización.</p><ul class="cf"><li><span class="ok">✓</span> Windows 10 / 11</li><li><span class="ok">✓</span> Linux (Ubuntu, Mint)</li><li><span class="ok">✓</span> Drivers y software</li></ul><a href="https://wa.me/5359924051?text=Necesito%20instalar%20un%20sistema" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci gr">🔒</div><h3>Seguridad Informática</h3><p>Protección de datos, firewalls, backups y auditorías de seguridad.</p><ul class="cf"><li><span class="ok">✓</span> Configuración firewalls</li><li><span class="ok">✓</span> Backup automatizado</li><li><span class="ok">✓</span> Limpieza de malware</li></ul><a href="https://wa.me/5359924051?text=Necesito%20seguridad%20informática" target="_blank" class="cbtn">Consultar →</a></div>
-</div>
-</div>
-<div class="panel" id="p-tl">
-<div class="grd">
-<div class="cd rv"><div class="ci p">🛡️</div><h3>Eliminación FRP</h3><p>Remove Factory Reset Protection de Google en Android.</p><ul class="cf"><li><span class="ok">✓</span> Samsung, Xiaomi, Huawei</li><li><span class="ok">✓</span> Todas las versiones</li><li><span class="ok">✓</span> Proceso remoto</li></ul><a href="https://wa.me/5359924051?text=Necesito%20eliminar%20FRP" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci c">📡</div><h3>Liberación SIM</h3><p>Desbloquea tu dispositivo para cualquier operador.</p><ul class="cf"><li><span class="ok">✓</span> Todas las operadoras</li><li><span class="ok">✓</span> Código oficial</li><li><span class="ok">✓</span> iPhone y Android</li></ul><a href="https://wa.me/5359924051?text=Necesito%20liberación%20SIM" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci pk">🔧</div><h3>Reparación IMEI</h3><p>Restauración de IMEI null/0 con herramientas profesionales.</p><ul class="cf"><li><span class="ok">✓</span> IMEI reparado</li><li><span class="ok">✓</span> Base band restoration</li><li><span class="ok">✓</span> Todas las marcas</li></ul><a href="https://wa.me/5359924051?text=Necesito%20reparar%20IMEI" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci a">🍎</div><h3>Servicios iOS</h3><p>iCloud removal, bypass de activación y liberación para iPhone.</p><ul class="cf"><li><span class="ok">✓</span> iCloud removal</li><li><span class="ok">✓</span> Bypass activación</li><li><span class="ok">✓</span> Eliminación MDM</li></ul><a href="https://wa.me/5359924051?text=Necesito%20servicio%20iOS" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci c">🖧</div><h3>Despliegue de Servidores</h3><p>Servidores web, bases de datos y aplicaciones en la nube.</p><ul class="cf"><li><span class="ok">✓</span> Apache, Nginx, Node.js</li><li><span class="ok">✓</span> MySQL / PostgreSQL</li><li><span class="ok">✓</span> SSL y seguridad</li></ul><a href="https://wa.me/5359924051?text=Necesito%20desplegar%20un%20servidor" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci p">🖥️</div><h3>Instalación de Sistemas</h3><p>Instalación y configuración de sistemas operativos.</p><ul class="cf"><li><span class="ok">✓</span> Windows 10 / 11</li><li><span class="ok">✓</span> Linux (Ubuntu, Mint)</li><li><span class="ok">✓</span> Drivers y software</li></ul><a href="https://wa.me/5359924051?text=Necesito%20instalar%20un%20sistema" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci gr">🔒</div><h3>Seguridad Informática</h3><p>Protección de datos, firewalls, backups y auditorías.</p><ul class="cf"><li><span class="ok">✓</span> Configuración firewalls</li><li><span class="ok">✓</span> Backup automatizado</li><li><span class="ok">✓</span> Limpieza de malware</li></ul><a href="https://wa.me/5359924051?text=Necesito%20seguridad%20informática" target="_blank" class="cbtn">Consultar →</a></div>
 </div>
 </div>
 </div>
@@ -388,11 +465,11 @@ section{position:relative;z-index:1;padding:4.5rem 1.5rem}
 
 <!-- WHY -->
 <section id="nosotros" class="wbg">
-<div class="w">
+<div class="wrap">
 <div class="sh rv">
-<div class="slab">💎 ¿Por qué elegirnos?</div>
+<div class="sl">💎 ¿Por qué elegirnos?</div>
 <h2>Lo que nos <span class="g">diferencia</span></h2>
-<p>Compromiso con la excelencia en cada línea de código</p>
+<p>Compromiso con la excelencia en cada proyecto</p>
 </div>
 <div class="wgrd">
 <div class="wc rv"><span class="wi">🚀</span><h3>Entrega Rápida</h3><p>Proyectos entregados a tiempo sin sacrificar calidad.</p></div>
@@ -405,26 +482,26 @@ section{position:relative;z-index:1;padding:4.5rem 1.5rem}
 
 <!-- PROCESS -->
 <section id="proceso">
-<div class="w">
+<div class="wrap">
 <div class="sh rv">
-<div class="slab">📋 Proceso</div>
+<div class="sl">📋 Proceso</div>
 <h2>Cómo <span class="g">trabajamos</span></h2>
-<p>De la idea al producto final en 4 pasos</p>
+<p>De la consulta al producto final en 4 pasos</p>
 </div>
 <div class="pgrd">
-<div class="pc rv"><div class="pn">1</div><h3>Consulta</h3><p>Cuéntanos tu idea por WhatsApp. Te asesoramos sin compromiso.</p></div>
-<div class="pc rv"><div class="pn">2</div><h3>Propuesta</h3><p>Solución a medida con alcance, tiempos y costos claros.</p></div>
-<div class="pc rv"><div class="pn">3</div><h3>Desarrollo</h3><p>Creamos tu software con actualizaciones constantes.</p></div>
-<div class="pc rv"><div class="pn">4</div><h3>Entrega</h3><p>Producto finalizado con capacitación y soporte incluido.</p></div>
+<div class="pc2 rv"><div class="pn">1</div><h3>Consulta</h3><p>Cuéntanos qué necesitas por WhatsApp. Te asesoramos sin compromiso.</p></div>
+<div class="pc2 rv"><div class="pn">2</div><h3>Propuesta</h3><p>Solución a medida con alcance, tiempos y costos claros.</p></div>
+<div class="pc2 rv"><div class="pn">3</div><h3>Ejecución</h3><p>Realizamos el servicio con actualizaciones constantes.</p></div>
+<div class="pc2 rv"><div class="pn">4</div><h3>Entrega</h3><p>Trabajo terminado con garantía y soporte incluido.</p></div>
 </div>
 </div>
 </section>
 
 <!-- PAYMENTS -->
 <section id="pagos" class="paybg">
-<div class="w">
+<div class="wrap">
 <div class="sh rv">
-<div class="slab">💳 Pagos</div>
+<div class="sl">💳 Pagos</div>
 <h2>Métodos de <span class="g">pago</span></h2>
 <p>Opciones flexibles para tu comodidad</p>
 </div>
@@ -438,28 +515,28 @@ section{position:relative;z-index:1;padding:4.5rem 1.5rem}
 
 <!-- TESTIMONIALS -->
 <section class="tbg">
-<div class="w">
+<div class="wrap">
 <div class="sh rv">
-<div class="slab">⭐ Opiniones</div>
+<div class="sl">⭐ Opiniones</div>
 <h2>Nuestros <span class="g">clientes</span></h2>
 </div>
 <div class="tgrd">
-<div class="tt rv"><div class="tt-stars">★★★★★</div><blockquote>"Me crearon un sistema de inventario para mi tienda. Ahora controlo todo desde el celular."</blockquote><div class="tt-a"><div class="tt-av">MR</div><div><strong>Miguel R.</strong><span>Sistema de gestión</span></div></div></div>
-<div class="tt rv"><div class="tt-stars">★★★★★</div><blockquote>"La página web que me diseñaron es hermosa y funcional. Mis clientes me encuentran en Google."</blockquote><div class="tt-a"><div class="tt-av">YS</div><div><strong>Yanet S.</strong><span>Página web + SEO</span></div></div></div>
-<div class="tt rv"><div class="tt-stars">★★★★★</div><blockquote>"Desplegaron mi servidor con todo configurado perfecto. Soporte de primera."</blockquote><div class="tt-a"><div class="tt-av">DL</div><div><strong>Daniel L.</strong><span>Servidor cloud</span></div></div></div>
+<div class="tt rv"><div class="tt-stars">★★★★★</div><blockquote>"Me desbloquearon el Samsung en 20 minutos. Servicio rápido, profesional y a buen precio."</blockquote><div class="tt-a"><div class="tt-av">CM</div><div><strong>Carlos M.</strong><span>FRP — Samsung A54</span></div></div></div>
+<div class="tt rv"><div class="tt-stars">★★★★★</div><blockquote>"Me crearon una página web profesional y el logo de mi negocio. Ahora mis clientes me encuentran en Google."</blockquote><div class="tt-a"><div class="tt-av">YS</div><div><strong>Yanet S.</strong><span>Web + Logo</span></div></div></div>
+<div class="tt rv"><div class="tt-stars">★★★★★</div><blockquote>"Desplegaron mi servidor con todo configurado perfecto. Excelente soporte técnico post-entrega."</blockquote><div class="tt-a"><div class="tt-av">DL</div><div><strong>Daniel L.</strong><span>Servidor cloud</span></div></div></div>
 </div>
 </div>
 </section>
 
 <!-- CTA -->
-<section>
-<div class="w">
-<div class="cta rv">
-<h2>¿Tienes un <span class="g">proyecto</span> en mente?</h2>
-<p>Conversemos sobre cómo podemos convertir tu idea en software funcional.</p>
+<section class="cta-section">
+<div class="wrap">
+<div class="cta-box rv">
+<h2>¿Necesitas un <span class="g">unlock</span> o un <span class="g2">proyecto</span>?</h2>
+<p>Contáctanos ahora. Te respondemos en minutos por WhatsApp.</p>
 <div class="ctbtns">
-<a href="https://wa.me/5359924051?text=Hola%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" class="btn bw">💬 WhatsApp</a>
-<a href="#servicios" class="btn bg2">Ver servicios</a>
+<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20un%20servicio%20de%20unlock" target="_blank" class="btn btn-unlock">🔓 Contratar Unlock</a>
+<a href="https://wa.me/5359924051?text=Hola%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" class="btn btn-wa">💬 Cotizar Proyecto</a>
 </div>
 <div class="ccrds">
 <a href="https://wa.me/5359924051" target="_blank" class="ccrd"><div class="cci w">💬</div><div><strong>WhatsApp</strong><span>+53 59924051</span></div></a>
@@ -472,18 +549,18 @@ section{position:relative;z-index:1;padding:4.5rem 1.5rem}
 
 <!-- FAQ -->
 <section id="faq" class="wbg">
-<div class="w">
+<div class="wrap">
 <div class="sh rv">
-<div class="slab">❓ FAQ</div>
+<div class="sl">❓ FAQ</div>
 <h2>Preguntas <span class="g">frecuentes</span></h2>
 </div>
 <div class="fl">
-<div class="fq rv"><button class="fq-btn">¿Qué tipo de software desarrollan?<span class="fq-t">+</span></button><div class="fq-a"><p>Desarrollamos todo tipo de software: aplicaciones web, de escritorio, móviles, sistemas de gestión, CRM, tiendas online, automatizaciones y más.</p></div></div>
-<div class="fq rv"><button class="fq-btn">¿Cuánto cuesta un proyecto?<span class="fq-t">+</span></button><div class="fq-a"><p>Depende de la complejidad. Ofrecemos opciones para todos los presupuestos. Contáctanos por WhatsApp y te damos una cotización gratuita.</p></div></div>
-<div class="fq rv"><button class="fq-btn">¿Cuánto tarda una página web?<span class="fq-t">+</span></button><div class="fq-a"><p>Una landing page en 3-5 días, un sitio completo en 1-2 semanas, sistemas complejos en 3-4 semanas.</p></div></div>
-<div class="fq rv"><button class="fq-btn">¿Ofrecen soporte post-entrega?<span class="fq-t">+</span></button><div class="fq-a"><p>¡Sí! Todos los proyectos incluyen soporte después de la entrega con cualquier ajuste o duda.</p></div></div>
+<div class="fq rv"><button class="fq-btn">¿El desbloqueo remoto es seguro?<span class="fq-t">+</span></button><div class="fq-a"><p>Sí, usamos herramientas profesionales. Tu dispositivo no pierde garantía ni se daña. Trabajamos con conexión remota segura.</p></div></div>
+<div class="fq rv"><button class="fq-btn">¿Cuánto tarda un unlock?<span class="fq-t">+</span></button><div class="fq-a"><p>La mayoría se completa entre 15 minutos y 2 horas. Casos complejos pueden tomar hasta 24 horas.</p></div></div>
+<div class="fq rv"><button class="fq-btn">¿Cuánto cuesta un proyecto web?<span class="fq-t">+</span></button><div class="fq-a"><p>Depende de la complejidad. Ofrecemos opciones para todos los presupuestos. Contáctanos y te damos cotización gratuita.</p></div></div>
 <div class="fq rv"><button class="fq-btn">¿Puedo pagar en CUP?<span class="fq-t">+</span></button><div class="fq-a"><p>Sí, aceptamos Enzona y TransferMóvil en CUP. También criptomonedas (USDT, BTC, ETH).</p></div></div>
-<div class="fq rv"><button class="fq-btn">¿Trabajan con negocios pequeños?<span class="fq-t">+</span></button><div class="fq-a"><p>¡Claro! Tenemos soluciones adaptadas para PYMES y emprendedores que necesitan digitalizarse.</p></div></div>
+<div class="fq rv"><button class="fq-btn">¿Ofrecen garantía?<span class="fq-t">+</span></button><div class="fq-a"><p>¡Sí! Todos los servicios incluyen garantía. La liberación de SIM tiene garantía de por vida.</p></div></div>
+<div class="fq rv"><button class="fq-btn">¿Trabajan con negocios pequeños?<span class="fq-t">+</span></button><div class="fq-a"><p>¡Claro! Tenemos soluciones adaptadas para PYMES y emprendedores.</p></div></div>
 </div>
 </div>
 </section>
@@ -493,9 +570,9 @@ section{position:relative;z-index:1;padding:4.5rem 1.5rem}
 <div class="fi">
 <div class="fb"><div class="fbi">⚡</div><span>PedritoTech Solutions</span></div>
 <ul class="flk">
+<li><a href="#unlock">Unlock</a></li>
 <li><a href="#servicios">Servicios</a></li>
 <li><a href="#nosotros">Nosotros</a></li>
-<li><a href="#proceso">Proceso</a></li>
 <li><a href="#pagos">Pagos</a></li>
 <li><a href="#faq">FAQ</a></li>
 </ul>
@@ -509,8 +586,8 @@ section{position:relative;z-index:1;padding:4.5rem 1.5rem}
 
 <!-- WA -->
 <div class="waf">
-<div class="watip">💬 ¿Tienes un proyecto? ¡Hablemos!</div>
-<a href="https://wa.me/5359924051?text=Hola%2C%20quiero%20información%20sobre%20sus%20servicios" target="_blank" class="wabtn">💬</a>
+<div class="watip">🔓 ¿Necesitas un unlock? ¡Escríbenos!</div>
+<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20un%20servicio%20de%20unlock" target="_blank" class="wabtn">💬</a>
 </div>
 <button class="stp" id="stp">↑</button>
 
@@ -519,15 +596,15 @@ section{position:relative;z-index:1;padding:4.5rem 1.5rem}
 'use strict';
 
 // Loader
-var ld=document.getElementById('ld');
+var ld=document.getElementById('loader');
 setTimeout(function(){ld.classList.add('hide');},1500);
 
 // Nav scroll
-var nv=document.getElementById('nv');
+var nv=document.getElementById('nav');
 window.addEventListener('scroll',function(){nv.classList.toggle('on',window.scrollY>40);},{passive:true});
 
 // Burger
-var br=document.getElementById('br'),lk=document.getElementById('lk');
+var br=document.getElementById('burger'),lk=document.getElementById('links');
 br.addEventListener('click',function(){br.classList.toggle('on');lk.classList.toggle('open');});
 lk.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){br.classList.remove('on');lk.classList.remove('open');});});
 
@@ -535,30 +612,28 @@ lk.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function
 var cd=false,c1=document.getElementById('c1');
 function countUp(){
 if(cd)return;cd=true;
-var n=0,t=setInterval(function(){n+=7;if(n>=300){n=300;clearInterval(t);}c1.textContent=n+'+';},20);
+var n=0,t=setInterval(function(){n+=8;if(n>=2500){n=2500;clearInterval(t);}c1.textContent=n.toLocaleString()+'+';},20);
 }
-if('IntersectionObserver' in window){
-var co=new IntersectionObserver(function(e){if(e[0].isIntersecting)countUp();},{threshold:.5});
-co.observe(c1);
+if(typeof IntersectionObserver!=='undefined'){
+new IntersectionObserver(function(e){if(e[0].isIntersecting)countUp();},{threshold:.5}).observe(c1);
 }
 
 // Tabs
-document.querySelectorAll('.tab').forEach(function(b){
+document.querySelectorAll('.tab-btn').forEach(function(b){
 b.addEventListener('click',function(){
-document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
-document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on');});
-b.classList.add('on');
+document.querySelectorAll('.tab-btn').forEach(function(t){t.classList.remove('active');});
+document.querySelectorAll('.tab-content').forEach(function(p){p.classList.remove('active');});
+b.classList.add('active');
 var panel=document.getElementById('p-'+b.dataset.t);
-if(panel)panel.classList.add('on');
+if(panel)panel.classList.add('active');
 });
 });
 
 // Reveal
-if('IntersectionObserver' in window){
-var ro=new IntersectionObserver(function(entries){
+if(typeof IntersectionObserver!=='undefined'){
+new IntersectionObserver(function(entries){
 entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('show');});
-},{threshold:.08});
-document.querySelectorAll('.rv').forEach(function(el){ro.observe(el);});
+},{threshold:.08}).observe(document.querySelectorAll('.rv'));
 }
 
 // FAQ
