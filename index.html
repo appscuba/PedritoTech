@@ -1,1012 +1,590 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PedritoTech Solutions — Software a Medida para tu Negocio</title>
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PedritoTech Solutions — Software a Medida</title>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--p:#7c3aed;--pl:#a78bfa;--s:#06b6d4;--a:#f43f5e;
+--d:#030712;--d2:#0b1120;--t:#f1f5f9;--tm:#94a3b8;
+--ok:#10b981;--w:#f59e0b;
+--g1:linear-gradient(135deg,#7c3aed,#06b6d4);
+--g2:linear-gradient(135deg,#f43f5e,#7c3aed);
+--g3:linear-gradient(135deg,#06b6d4,#10b981);
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--d);color:var(--t);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--d)}
+::-webkit-scrollbar-thumb{background:var(--p);border-radius:10px}
 
-        :root {
-            --p: #7c3aed;
-            --pl: #a78bfa;
-            --s: #06b6d4;
-            --a: #f43f5e;
-            --d: #030712;
-            --d2: #0b1120;
-            --t: #f1f5f9;
-            --tm: #94a3b8;
-            --ok: #10b981;
-            --w: #f59e0b;
-            --g1: linear-gradient(135deg, #7c3aed, #06b6d4);
-            --g2: linear-gradient(135deg, #f43f5e, #7c3aed);
-            --g3: linear-gradient(135deg, #06b6d4, #10b981);
-            --g4: linear-gradient(135deg, #f59e0b, #f43f5e);
-        }
+/* BG */
+.bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
+.bg span{position:absolute;border-radius:50%;filter:blur(120px);opacity:.08}
+.bg .b1{width:500px;height:500px;background:var(--p);top:-150px;left:-150px;animation:o1 25s ease-in-out infinite}
+.bg .b2{width:400px;height:400px;background:var(--s);top:40%;right:-100px;animation:o2 25s ease-in-out infinite}
+.bg .b3{width:450px;height:450px;background:var(--a);bottom:-100px;left:20%;animation:o3 25s ease-in-out infinite}
+@keyframes o1{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,-60px)}}
+@keyframes o2{0%,100%{transform:translate(0,0)}50%{transform:translate(-60px,80px)}}
+@keyframes o3{0%,100%{transform:translate(0,0)}50%{transform:translate(70px,50px)}}
 
-        html { scroll-behavior: smooth; }
+/* LOADER */
+.ld{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--d);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;transition:opacity .5s,visibility .5s}
+.ld.hide{opacity:0;visibility:hidden;pointer-events:none}
+.ld span{font-size:2rem;font-weight:800;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.lb{width:160px;height:3px;background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden}
+.lb i{display:block;height:100%;width:0;background:var(--g1);border-radius:10px;animation:lf 1.5s ease forwards}
+@keyframes lf{to{width:100%}}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--d);
-            color: var(--t);
-            overflow-x: hidden;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
+/* NAV */
+.nv{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1rem 1.5rem;transition:.3s}
+.nv.on{background:rgba(3,7,18,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05);padding:.7rem 1.5rem}
+.ni{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.lg{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--t)}
+.lgb{width:36px;height:36px;background:var(--g1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.lgt .n{font-size:1.1rem;font-weight:800;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.lgt .u{font-size:.55rem;color:var(--tm);letter-spacing:2px;text-transform:uppercase}
+.lk{display:flex;list-style:none;gap:.2rem;align-items:center}
+.lk a{text-decoration:none;color:var(--tm);font-weight:500;padding:.45rem .8rem;border-radius:8px;font-size:.82rem;transition:.2s}
+.lk a:hover{color:var(--t);background:rgba(255,255,255,.04)}
+.lk .ca{background:var(--g1);color:#fff;font-weight:600}
+.br{display:none;flex-direction:column;cursor:pointer;gap:5px;z-index:1001}
+.br span{width:22px;height:2.5px;background:var(--t);border-radius:3px;transition:.3s}
+.br.on span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.br.on span:nth-child(2){opacity:0}
+.br.on span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: var(--d); }
-        ::-webkit-scrollbar-thumb { background: var(--p); border-radius: 10px; }
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;z-index:1;padding:7rem 1.5rem 3rem}
+.hi{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.ht{animation:up .7s ease}
+.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.2);padding:.4rem 1rem;border-radius:50px;font-size:.72rem;color:var(--pl);margin-bottom:1.5rem;font-weight:500}
+.badge .d{width:7px;height:7px;background:var(--ok);border-radius:50%;animation:bl 2s infinite}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.5}}
+.hero h1{font-size:3rem;font-weight:900;line-height:1.08;margin-bottom:1.2rem;letter-spacing:-.5px}
+.g{background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.g2{background:var(--g2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:1.02rem;color:var(--tm);margin-bottom:2rem;max-width:500px;line-height:1.7}
+.hbtns{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.85rem 1.6rem;border-radius:11px;text-decoration:none;font-weight:600;font-size:.88rem;transition:.3s;cursor:pointer;border:none;font-family:inherit}
+.bp{background:var(--g1);color:#fff;box-shadow:0 3px 16px rgba(124,58,237,.3)}
+.bp:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(124,58,237,.5)}
+.bw{background:#25D366;color:#fff;box-shadow:0 3px 16px rgba(37,211,102,.3)}
+.bw:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(37,211,102,.5)}
+.bg2{background:transparent;color:var(--t);border:1px solid rgba(255,255,255,.06)}
+.bg2:hover{background:rgba(255,255,255,.04);transform:translateY(-2px)}
+.sts{display:flex;gap:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.06)}
+.st h3{font-size:1.8rem;font-weight:900;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.st p{font-size:.7rem;color:var(--tm);text-transform:uppercase;letter-spacing:1px;margin:0}
 
-        /* ===== BG ===== */
-        .orbs {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 0; pointer-events: none; overflow: hidden;
-        }
-        .orbs span {
-            position: absolute; border-radius: 50%;
-            filter: blur(100px); opacity: .08;
-            animation: oM 30s infinite ease-in-out;
-        }
-        .orbs span:nth-child(1) { width: 500px; height: 500px; background: var(--p); top: -150px; left: -150px; }
-        .orbs span:nth-child(2) { width: 400px; height: 400px; background: var(--s); top: 40%; right: -120px; animation-delay: -10s; }
-        .orbs span:nth-child(3) { width: 450px; height: 450px; background: var(--a); bottom: -100px; left: 20%; animation-delay: -20s; }
-        @keyframes oM {
-            0%, 100% { transform: translate(0, 0); }
-            33% { transform: translate(100px, -80px); }
-            66% { transform: translate(-80px, 100px); }
-        }
+/* Terminal */
+.hv{display:flex;justify-content:center;align-items:center;animation:up .7s ease .2s both}
+.tw{position:relative}
+.tglow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:280px;height:220px;background:var(--p);border-radius:50%;filter:blur(80px);opacity:.1}
+.term{position:relative;width:360px;background:rgba(11,17,32,.9);border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);z-index:2}
+.tbar{display:flex;align-items:center;gap:.5rem;padding:.7rem 1rem;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.06)}
+.td{width:10px;height:10px;border-radius:50%}
+.td:nth-child(1){background:#f43f5e}.td:nth-child(2){background:#f59e0b}.td:nth-child(3){background:#10b981}
+.ttl{font-size:.7rem;color:var(--tm);margin-left:.5rem}
+.tbody{padding:1.2rem;font-family:'Courier New',monospace;font-size:.75rem;line-height:1.8}
+.tl{margin-bottom:.15rem}
+.tp{color:var(--ok)}.tc{color:var(--pl)}.ts{color:var(--w)}.tk{color:var(--s)}.tf{color:#818cf8}.tcm{color:var(--tm)}
+.cblink{display:inline-block;width:7px;height:13px;background:var(--pl);margin-left:2px;animation:bc 1s infinite;vertical-align:middle}
+@keyframes bc{0%,100%{opacity:1}50%{opacity:0}}
+.tfc{position:absolute;background:rgba(11,17,32,.85);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:.5rem .8rem;font-size:.66rem;display:flex;align-items:center;gap:.4rem;animation:fc 6s infinite ease-in-out;white-space:nowrap;z-index:3;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.tfc:nth-child(1){top:0;right:-40px}.tfc:nth-child(2){bottom:20px;left:-50px;animation-delay:-2s}.tfc:nth-child(3){bottom:60px;right:-45px;animation-delay:-4s}
+@keyframes fc{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes up{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
 
-        .grid-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 0; pointer-events: none;
-            background-image:
-                linear-gradient(rgba(255,255,255,.01) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,.01) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
+/* SECTIONS */
+section{position:relative;z-index:1;padding:4.5rem 1.5rem}
+.w{max-width:1200px;margin:0 auto}
+.sh{text-align:center;margin-bottom:2.5rem}
+.slab{display:inline-flex;align-items:center;gap:.4rem;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.15);padding:.35rem 1rem;border-radius:50px;font-size:.72rem;color:var(--pl);margin-bottom:.8rem;font-weight:500}
+.sh h2{font-size:2rem;font-weight:900;margin-bottom:.6rem;letter-spacing:-.5px}
+.sh p{color:var(--tm);max-width:540px;margin:0 auto;font-size:.92rem;line-height:1.7}
 
-        canvas#pc { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+/* TABS */
+.tabs{display:flex;justify-content:center;gap:.4rem;flex-wrap:wrap;margin-bottom:2rem}
+.tab{padding:.5rem 1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;color:var(--tm);font-size:.8rem;font-weight:600;cursor:pointer;transition:.3s;font-family:inherit}
+.tab:hover{background:rgba(255,255,255,.05);color:var(--t)}
+.tab.on{background:var(--g1);color:#fff;border-color:transparent;box-shadow:0 3px 12px rgba(124,58,237,.3)}
+.panel{display:none}.panel.on{display:block;animation:up .4s ease}
+.grd{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.2rem}
 
-        /* ===== LOADER ===== */
-        .ld {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--d); z-index: 9999;
-            display: flex; align-items: center; justify-content: center;
-            flex-direction: column; gap: 1rem;
-            transition: opacity .5s, visibility .5s;
-        }
-        .ld.hide { opacity: 0; visibility: hidden; }
-        .ld span {
-            font-size: 2rem; font-weight: 800;
-            background: var(--g1); -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .ld-bar { width: 160px; height: 3px; background: rgba(255,255,255,.06); border-radius: 10px; overflow: hidden; }
-        .ld-bar i { display: block; height: 100%; width: 0; background: var(--g1); border-radius: 10px; animation: ld 1.6s ease forwards; }
-        @keyframes ld { to { width: 100%; } }
+/* CARDS */
+.cd{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.8rem;transition:.3s;position:relative;overflow:hidden}
+.cd::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--g1);opacity:0;transition:.3s}
+.cd:hover{transform:translateY(-4px);border-color:rgba(124,58,237,.15);box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.cd:hover::before{opacity:1}
+.ci{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1rem}
+.ci.p{background:rgba(124,58,237,.1)}.ci.c{background:rgba(6,182,212,.1)}.ci.pk{background:rgba(244,63,94,.1)}.ci.a{background:rgba(245,158,11,.1)}.ci.gr{background:rgba(16,185,129,.1)}.ci.b{background:rgba(59,130,246,.1)}
+.cd h3{font-size:1.02rem;font-weight:700;margin-bottom:.3rem}
+.cd>p{color:var(--tm);font-size:.8rem;margin-bottom:.8rem;line-height:1.7}
+.cf{list-style:none;margin-bottom:1rem}
+.cf li{padding:.15rem 0;font-size:.74rem;color:var(--tm);display:flex;align-items:center;gap:.4rem}
+.cf .ok{color:var(--ok);font-size:.65rem}
+.cbtn{display:inline-flex;align-items:center;gap:.3rem;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.15);color:var(--pl);padding:.45rem .9rem;border-radius:9px;text-decoration:none;font-size:.74rem;font-weight:600;transition:.3s}
+.cbtn:hover{background:var(--g1);color:#fff;border-color:transparent}
 
-        /* ===== NAV ===== */
-        .nv {
-            position: fixed; top: 0; left: 0; width: 100%;
-            z-index: 1000; padding: 1rem 1.5rem;
-            transition: .3s;
-        }
-        .nv.on { background: rgba(3,7,18,.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,.05); padding: .7rem 1.5rem; }
-        .nv-in { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .lg { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--t); }
-        .lg-b { width: 36px; height: 36px; background: var(--g1); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
-        .lg-t { display: flex; flex-direction: column; }
-        .lg-t .n { font-size: 1.1rem; font-weight: 800; background: var(--g1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .lg-t .u { font-size: .55rem; color: var(--tm); letter-spacing: 2px; text-transform: uppercase; }
+/* WHY */
+.wbg{background:var(--d2)}
+.wgrd{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.wc{text-align:center;padding:1.6rem 1rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:14px;transition:.3s}
+.wc:hover{transform:translateY(-4px);border-color:rgba(124,58,237,.12)}
+.wc .wi{font-size:1.6rem;display:block;margin-bottom:.6rem}
+.wc h3{font-size:.88rem;font-weight:700;margin-bottom:.2rem}
+.wc p{font-size:.74rem;color:var(--tm);line-height:1.6}
 
-        .lk { display: flex; list-style: none; gap: .2rem; align-items: center; }
-        .lk a { text-decoration: none; color: var(--tm); font-weight: 500; padding: .45rem .8rem; border-radius: 8px; font-size: .82rem; transition: .2s; }
-        .lk a:hover { color: var(--t); background: rgba(255,255,255,.04); }
-        .lk .c { background: var(--g1); color: #fff; font-weight: 600; }
+/* PROCESS */
+.pgrd{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;position:relative}
+.pgrd::before{content:'';position:absolute;top:32px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,transparent,rgba(124,58,237,.2),rgba(6,182,212,.2),transparent)}
+.pc{text-align:center;position:relative;padding:1rem}
+.pn{width:44px;height:44px;border-radius:50%;background:var(--g1);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;margin:0 auto .8rem;position:relative;z-index:2}
+.pc h3{font-size:.88rem;font-weight:700;margin-bottom:.2rem}
+.pc p{font-size:.74rem;color:var(--tm);line-height:1.6}
 
-        .bg { display: none; flex-direction: column; cursor: pointer; gap: 5px; z-index: 1001; }
-        .bg span { width: 22px; height: 2.5px; background: var(--t); border-radius: 3px; transition: .3s; }
-        .bg.on span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .bg.on span:nth-child(2) { opacity: 0; }
-        .bg.on span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+/* PAYMENTS */
+.paybg{background:var(--d2)}
+.pygrd{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.py{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:1.8rem 1.5rem;text-align:center;transition:.3s}
+.py:hover{transform:translateY(-3px);border-color:rgba(124,58,237,.12)}
+.pyi{width:50px;height:50px;border-radius:14px;margin:0 auto .8rem;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.pyi.e{background:rgba(255,107,0,.1)}.pyi.t{background:rgba(0,102,204,.1)}.pyi.c{background:rgba(247,147,26,.1)}
+.py h3{font-size:.95rem;font-weight:700;margin-bottom:.2rem}
+.py>p{font-size:.78rem;color:var(--tm);line-height:1.6}
+.pyb{display:inline-flex;align-items:center;gap:.2rem;background:rgba(16,185,129,.1);color:var(--ok);padding:.22rem .6rem;border-radius:50px;font-size:.64rem;font-weight:600;margin-top:.7rem}
 
-        /* ===== HERO ===== */
-        .hero {
-            min-height: 100vh; display: flex; align-items: center;
-            position: relative; z-index: 1; padding: 7rem 1.5rem 3rem;
-        }
-        .hero-in { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+/* CTA */
+.cta{max-width:780px;margin:0 auto;background:linear-gradient(135deg,rgba(124,58,237,.08),rgba(6,182,212,.05));border:1px solid rgba(124,58,237,.15);border-radius:22px;padding:2.8rem 2.2rem;text-align:center}
+.cta h2{font-size:1.9rem;font-weight:900;margin-bottom:.5rem;letter-spacing:-.5px}
+.cta>p{color:var(--tm);font-size:.92rem;margin-bottom:1.8rem;max-width:480px;margin-left:auto;margin-right:auto}
+.ctbtns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.ccrds{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.8rem;max-width:680px;margin:2.2rem auto 0}
+.ccrd{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:11px;padding:.8rem;display:flex;align-items:center;gap:.7rem;transition:.3s;text-decoration:none;color:var(--t)}
+.ccrd:hover{border-color:rgba(124,58,237,.12);transform:translateY(-2px)}
+.cci{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.cci.w{background:rgba(37,211,102,.1)}.cci.ph{background:rgba(124,58,237,.1)}.cci.t{background:rgba(6,182,212,.1)}
+.ccrd strong{display:block;font-size:.8rem}
+.ccrd span{font-size:.7rem;color:var(--tm)}
 
-        .hero-text { animation: up .8s ease; }
-        .badge {
-            display: inline-flex; align-items: center; gap: .5rem;
-            background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.2);
-            padding: .4rem 1rem; border-radius: 50px; font-size: .72rem;
-            color: var(--pl); margin-bottom: 1.5rem; font-weight: 500;
-        }
-        .badge .d { width: 7px; height: 7px; background: var(--ok); border-radius: 50%; animation: bl 2s infinite; }
-        @keyframes bl { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(16,185,129,.4)} 50%{opacity:.6;box-shadow:0 0 0 6px rgba(16,185,129,0)} }
+/* TESTIMONIALS */
+.tbg{background:var(--d2)}
+.tgrd{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.tt{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:1.6rem;transition:.3s}
+.tt:hover{transform:translateY(-3px);border-color:rgba(124,58,237,.1)}
+.tt-stars{color:var(--w);margin-bottom:.5rem;font-size:.75rem;letter-spacing:2px}
+.tt blockquote{color:var(--tm);font-size:.82rem;font-style:italic;margin-bottom:.8rem;line-height:1.7}
+.tt-a{display:flex;align-items:center;gap:.5rem;padding-top:.7rem;border-top:1px solid rgba(255,255,255,.05)}
+.tt-av{width:30px;height:30px;border-radius:8px;background:var(--g1);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem}
+.tt-a strong{display:block;font-size:.76rem}
+.tt-a span{font-size:.66rem;color:var(--tm)}
 
-        .hero h1 { font-size: 3.2rem; font-weight: 900; line-height: 1.08; margin-bottom: 1.2rem; letter-spacing: -1px; }
-        .g { background: var(--g1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .g2 { background: var(--g4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+/* FAQ */
+.fl{max-width:660px;margin:0 auto;display:flex;flex-direction:column;gap:.5rem}
+.fq{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:11px;overflow:hidden;transition:.3s}
+.fq:hover{border-color:rgba(124,58,237,.1)}
+.fq-btn{width:100%;padding:.9rem 1.1rem;background:none;border:none;color:var(--t);font-size:.84rem;font-weight:600;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit}
+.fq-t{width:20px;height:20px;border-radius:6px;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:.3s;flex-shrink:0;color:var(--tm)}
+.fq.on .fq-t{background:var(--g1);color:#fff;transform:rotate(45deg)}
+.fq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.fq.on .fq-a{max-height:250px}
+.fq-a p{padding:0 1.1rem .9rem;color:var(--tm);font-size:.8rem;line-height:1.7}
 
-        .hero p { font-size: 1.05rem; color: var(--tm); margin-bottom: 2rem; max-width: 500px; line-height: 1.7; }
-        .hero-btns { display: flex; gap: .8rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+/* FOOTER */
+.ft{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.05);padding:2rem 1.5rem}
+.fi{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.fb{display:flex;align-items:center;gap:.5rem}
+.fbi{width:30px;height:30px;background:var(--g1);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.fb span{font-size:.88rem;font-weight:700;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.flk{display:flex;gap:1.3rem;list-style:none}
+.flk a{color:var(--tm);text-decoration:none;font-size:.74rem;transition:.2s}
+.flk a:hover{color:var(--t)}
+.fsc{display:flex;gap:.4rem}
+.fsc a{width:30px;height:30px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.8rem;transition:.3s}
+.fsc a:hover{background:var(--g1);border-color:transparent;transform:translateY(-2px)}
 
-        .btn {
-            display: inline-flex; align-items: center; gap: .4rem;
-            padding: .85rem 1.6rem; border-radius: 11px;
-            text-decoration: none; font-weight: 600; font-size: .88rem;
-            transition: .3s; cursor: pointer; border: none; font-family: inherit;
-        }
-        .bp { background: var(--g1); color: #fff; box-shadow: 0 3px 16px rgba(124,58,237,.3); }
-        .bp:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(124,58,237,.5); }
-        .bw { background: #25D366; color: #fff; box-shadow: 0 3px 16px rgba(37,211,102,.3); }
-        .bw:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(37,211,102,.5); }
-        .bg2 { background: transparent; color: var(--t); border: 1px solid rgba(255,255,255,.06); }
-        .bg2:hover { background: rgba(255,255,255,.04); transform: translateY(-2px); }
+/* WA */
+.waf{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;display:flex;flex-direction:column;align-items:flex-end;gap:.6rem}
+.watip{background:#fff;color:#1a1a2e;padding:.5rem .9rem;border-radius:10px;font-size:.7rem;font-weight:600;box-shadow:0 6px 20px rgba(0,0,0,.18);position:relative;white-space:nowrap}
+.watip::after{content:'';position:absolute;bottom:-5px;right:18px;width:10px;height:10px;background:#fff;transform:rotate(45deg)}
+.wabtn{width:54px;height:54px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.5rem;color:#fff;box-shadow:0 3px 16px rgba(37,211,102,.4);transition:.3s;animation:wp 2.5s infinite}
+.wabtn:hover{transform:scale(1.08)}
+@keyframes wp{0%{box-shadow:0 3px 16px rgba(37,211,102,.4)}50%{box-shadow:0 3px 20px rgba(37,211,102,.7),0 0 0 10px rgba(37,211,102,.08)}100%{box-shadow:0 3px 16px rgba(37,211,102,.4)}}
 
-        .stats { display: flex; gap: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.06); }
-        .st h3 { font-size: 1.8rem; font-weight: 900; background: var(--g1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .st p { font-size: .7rem; color: var(--tm); text-transform: uppercase; letter-spacing: 1px; margin: 0; }
+.stp{position:fixed;bottom:1.5rem;left:1.5rem;width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;color:var(--t);font-size:.8rem;z-index:999;opacity:0;visibility:hidden;transition:.3s;cursor:pointer}
+.stp.show{opacity:1;visibility:visible}
+.stp:hover{background:var(--g1);border-color:transparent;transform:translateY(-2px)}
 
-        /* Hero Visual - Code Terminal */
-        .hero-vis { display: flex; justify-content: center; align-items: center; animation: up .8s ease .2s both; }
-        .terminal-wrap { position: relative; }
-        .t-glow {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 300px; height: 250px; background: var(--p); border-radius: 50%;
-            filter: blur(80px); opacity: .12; animation: gp 4s infinite;
-        }
-        @keyframes gp { 0%,100%{opacity:.1} 50%{opacity:.2} }
+.rv{opacity:0;transform:translateY(20px);transition:.6s cubic-bezier(.4,0,.2,1)}
+.rv.show{opacity:1;transform:translateY(0)}
 
-        .terminal {
-            position: relative; width: 380px; background: rgba(11,17,32,.9);
-            border: 1px solid rgba(255,255,255,.08); border-radius: 14px;
-            overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 40px rgba(124,58,237,.1);
-            z-index: 2;
-        }
-        .term-bar {
-            display: flex; align-items: center; gap: .5rem;
-            padding: .7rem 1rem; background: rgba(255,255,255,.04);
-            border-bottom: 1px solid rgba(255,255,255,.06);
-        }
-        .term-dot { width: 10px; height: 10px; border-radius: 50%; }
-        .term-dot:nth-child(1) { background: #f43f5e; }
-        .term-dot:nth-child(2) { background: #f59e0b; }
-        .term-dot:nth-child(3) { background: #10b981; }
-        .term-title { font-size: .7rem; color: var(--tm); margin-left: .5rem; }
-
-        .term-body { padding: 1.2rem; font-family: 'Courier New', monospace; font-size: .78rem; line-height: 1.8; }
-        .term-line { margin-bottom: .2rem; }
-        .term-line .prompt { color: var(--ok); }
-        .term-line .cmd { color: var(--pl); }
-        .term-line .str { color: var(--w); }
-        .term-line .cmt { color: var(--tm); }
-        .term-line .kw { color: var(--s); }
-        .term-line .fn { color: #818cf8; }
-
-        .cursor-blink {
-            display: inline-block; width: 7px; height: 14px;
-            background: var(--pl); margin-left: 2px;
-            animation: blinkC 1s infinite;
-            vertical-align: middle;
-        }
-        @keyframes blinkC { 0%,100%{opacity:1} 50%{opacity:0} }
-
-        .t-fcard {
-            position: absolute; background: rgba(11,17,32,.85);
-            border: 1px solid rgba(255,255,255,.08); border-radius: 10px;
-            padding: .5rem .8rem; font-size: .68rem;
-            display: flex; align-items: center; gap: .4rem;
-            animation: fc 6s infinite ease-in-out;
-            white-space: nowrap; z-index: 3;
-            box-shadow: 0 8px 20px rgba(0,0,0,.3);
-        }
-        .t-fcard:nth-child(1) { top: 0; right: -50px; }
-        .t-fcard:nth-child(2) { bottom: 20px; left: -60px; animation-delay: -2s; }
-        .t-fcard:nth-child(3) { bottom: 60px; right: -55px; animation-delay: -4s; }
-        @keyframes fc { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-
-        @keyframes up { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
-
-        /* ===== SECTIONS ===== */
-        section { position: relative; z-index: 1; padding: 5rem 1.5rem; }
-        .wrap { max-width: 1200px; margin: 0 auto; }
-        .sh { text-align: center; margin-bottom: 3rem; }
-        .sl {
-            display: inline-flex; align-items: center; gap: .4rem;
-            background: rgba(124,58,237,.08); border: 1px solid rgba(124,58,237,.15);
-            padding: .35rem 1rem; border-radius: 50px; font-size: .72rem;
-            color: var(--pl); margin-bottom: .8rem; font-weight: 500;
-        }
-        .sh h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: .8rem; letter-spacing: -.5px; }
-        .sh p { color: var(--tm); max-width: 560px; margin: 0 auto; font-size: .95rem; line-height: 1.7; }
-
-        /* ===== TABS ===== */
-        .tabs { display: flex; justify-content: center; gap: .4rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
-        .tab {
-            padding: .55rem 1.2rem; background: rgba(255,255,255,.03);
-            border: 1px solid rgba(255,255,255,.06); border-radius: 10px;
-            color: var(--tm); font-size: .82rem; font-weight: 600;
-            cursor: pointer; transition: .3s; font-family: inherit;
-        }
-        .tab:hover { background: rgba(255,255,255,.05); color: var(--t); }
-        .tab.on { background: var(--g1); color: #fff; border-color: transparent; box-shadow: 0 3px 12px rgba(124,58,237,.3); }
-
-        .panel { display: none; }
-        .panel.on { display: block; animation: up .4s ease; }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
-
-        .card {
-            background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.06);
-            border-radius: 16px; padding: 2rem 1.8rem;
-            transition: .35s; position: relative; overflow: hidden;
-        }
-        .card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0;
-            height: 2px; background: var(--g1); opacity: 0; transition: .35s;
-        }
-        .card:hover { transform: translateY(-5px); border-color: rgba(124,58,237,.18); box-shadow: 0 15px 40px rgba(0,0,0,.3); }
-        .card:hover::before { opacity: 1; }
-
-        .ci {
-            width: 48px; height: 48px; border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem; margin-bottom: 1.2rem;
-        }
-        .ci.p { background: rgba(124,58,237,.1); }
-        .ci.c { background: rgba(6,182,212,.1); }
-        .ci.pk { background: rgba(244,63,94,.1); }
-        .ci.a { background: rgba(245,158,11,.1); }
-        .ci.gr { background: rgba(16,185,129,.1); }
-        .ci.b { background: rgba(59,130,246,.1); }
-
-        .card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: .4rem; }
-        .card p { color: var(--tm); font-size: .82rem; margin-bottom: 1rem; line-height: 1.7; }
-        .cf { list-style: none; margin-bottom: 1.2rem; }
-        .cf li { padding: .18rem 0; font-size: .76rem; color: var(--tm); display: flex; align-items: center; gap: .4rem; }
-        .cf .ok { color: var(--ok); font-size: .68rem; }
-        .cb {
-            display: inline-flex; align-items: center; gap: .3rem;
-            background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.15);
-            color: var(--pl); padding: .48rem 1rem; border-radius: 9px;
-            text-decoration: none; font-size: .76rem; font-weight: 600; transition: .3s;
-        }
-        .cb:hover { background: var(--g1); color: #fff; border-color: transparent; }
-
-        /* ===== WHY ===== */
-        .why-bg { background: var(--d2); }
-        .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
-        .why { text-align: center; padding: 1.8rem 1.2rem; background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.05); border-radius: 14px; transition: .3s; }
-        .why:hover { transform: translateY(-4px); border-color: rgba(124,58,237,.15); }
-        .why .wi { font-size: 1.8rem; display: block; margin-bottom: .7rem; }
-        .why h3 { font-size: .9rem; font-weight: 700; margin-bottom: .3rem; }
-        .why p { font-size: .76rem; color: var(--tm); line-height: 1.6; }
-
-        /* ===== PROCESS ===== */
-        .proc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; position: relative; }
-        .proc-grid::before {
-            content: ''; position: absolute; top: 36px; left: 12%; right: 12%;
-            height: 2px; background: linear-gradient(90deg, transparent, rgba(124,58,237,.2), rgba(6,182,212,.2), transparent);
-        }
-        .proc { text-align: center; position: relative; padding: 1rem; }
-        .proc-n {
-            width: 46px; height: 46px; border-radius: 50%; background: var(--g1);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem; font-weight: 800; margin: 0 auto 1rem;
-            position: relative; z-index: 2;
-        }
-        .proc h3 { font-size: .9rem; font-weight: 700; margin-bottom: .3rem; }
-        .proc p { font-size: .76rem; color: var(--tm); line-height: 1.6; }
-
-        /* ===== PAYMENTS ===== */
-        .pay-bg { background: var(--d2); }
-        .pay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-        .pay { background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.06); border-radius: 14px; padding: 2rem 1.5rem; text-align: center; transition: .3s; }
-        .pay:hover { transform: translateY(-4px); border-color: rgba(124,58,237,.15); }
-        .pay-ic { width: 52px; height: 52px; border-radius: 14px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
-        .pay-ic.e { background: rgba(255,107,0,.1); }
-        .pay-ic.t { background: rgba(0,102,204,.1); }
-        .pay-ic.c { background: rgba(247,147,26,.1); }
-        .pay h3 { font-size: 1rem; font-weight: 700; margin-bottom: .3rem; }
-        .pay p { font-size: .8rem; color: var(--tm); line-height: 1.6; }
-        .pay-b { display: inline-flex; align-items: center; gap: .2rem; background: rgba(16,185,129,.1); color: var(--ok); padding: .25rem .7rem; border-radius: 50px; font-size: .66rem; font-weight: 600; margin-top: .8rem; }
-
-        /* ===== CTA ===== */
-        .cta-box {
-            max-width: 800px; margin: 0 auto;
-            background: linear-gradient(135deg, rgba(124,58,237,.08), rgba(6,182,212,.05));
-            border: 1px solid rgba(124,58,237,.15);
-            border-radius: 22px; padding: 3rem 2.5rem; text-align: center;
-        }
-        .cta-box h2 { font-size: 2rem; font-weight: 900; margin-bottom: .6rem; letter-spacing: -.5px; }
-        .cta-box > p { color: var(--tm); font-size: .95rem; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; }
-        .cta-btns { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
-        .c-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .8rem; max-width: 700px; margin: 2.5rem auto 0; }
-        .c-card { background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.05); border-radius: 11px; padding: .9rem; display: flex; align-items: center; gap: .7rem; transition: .3s; text-decoration: none; color: var(--t); }
-        .c-card:hover { border-color: rgba(124,58,237,.15); transform: translateY(-2px); }
-        .c-card-ic { width: 38px; height: 38px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
-        .c-card-ic.w { background: rgba(37,211,102,.1); }
-        .c-card-ic.ph { background: rgba(124,58,237,.1); }
-        .c-card-ic.t { background: rgba(6,182,212,.1); }
-        .c-card strong { display: block; font-size: .82rem; }
-        .c-card span { font-size: .72rem; color: var(--tm); }
-
-        /* ===== TESTIMONIALS ===== */
-        .test-bg { background: var(--d2); }
-        .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-        .test { background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.05); border-radius: 14px; padding: 1.8rem; transition: .3s; }
-        .test:hover { transform: translateY(-3px); border-color: rgba(124,58,237,.1); }
-        .test-stars { color: var(--w); margin-bottom: .6rem; font-size: .78rem; letter-spacing: 2px; }
-        .test blockquote { color: var(--tm); font-size: .84rem; font-style: italic; margin-bottom: 1rem; line-height: 1.7; }
-        .test-author { display: flex; align-items: center; gap: .6rem; padding-top: .8rem; border-top: 1px solid rgba(255,255,255,.05); }
-        .test-av { width: 32px; height: 32px; border-radius: 8px; background: var(--g1); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .75rem; }
-        .test-author strong { display: block; font-size: .78rem; }
-        .test-author span { font-size: .68rem; color: var(--tm); }
-
-        /* ===== FAQ ===== */
-        .faq-list { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: .5rem; }
-        .faq { background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.05); border-radius: 11px; overflow: hidden; transition: .3s; }
-        .faq:hover { border-color: rgba(124,58,237,.1); }
-        .faq-q {
-            width: 100%; padding: 1rem 1.2rem; background: none; border: none;
-            color: var(--t); font-size: .86rem; font-weight: 600; text-align: left;
-            cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: inherit;
-        }
-        .faq-t {
-            width: 22px; height: 22px; border-radius: 6px; background: rgba(255,255,255,.04);
-            display: flex; align-items: center; justify-content: center;
-            font-size: .85rem; transition: .3s; flex-shrink: 0; color: var(--tm);
-        }
-        .faq.on .faq-t { background: var(--g1); color: #fff; transform: rotate(45deg); }
-        .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-        .faq.on .faq-a { max-height: 250px; }
-        .faq-a p { padding: 0 1.2rem 1rem; color: var(--tm); font-size: .82rem; line-height: 1.7; }
-
-        /* ===== FOOTER ===== */
-        .footer { position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,.05); padding: 2.5rem 1.5rem; }
-        .footer-in { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .f-brand { display: flex; align-items: center; gap: .5rem; }
-        .f-brand-ic { width: 32px; height: 32px; background: var(--g1); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: .9rem; }
-        .f-brand span { font-size: .9rem; font-weight: 700; background: var(--g1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .f-links { display: flex; gap: 1.5rem; list-style: none; }
-        .f-links a { color: var(--tm); text-decoration: none; font-size: .76rem; transition: .2s; }
-        .f-links a:hover { color: var(--t); }
-        .f-soc { display: flex; gap: .4rem; }
-        .f-soc a {
-            width: 32px; height: 32px; border-radius: 9px;
-            background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.05);
-            display: flex; align-items: center; justify-content: center;
-            text-decoration: none; font-size: .83rem; transition: .3s;
-        }
-        .f-soc a:hover { background: var(--g1); border-color: transparent; transform: translateY(-2px); }
-
-        /* ===== WA FLOAT ===== */
-        .wa-float { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999; display: flex; flex-direction: column; align-items: flex-end; gap: .6rem; }
-        .wa-tip { background: #fff; color: #1a1a2e; padding: .5rem .9rem; border-radius: 10px; font-size: .72rem; font-weight: 600; box-shadow: 0 6px 20px rgba(0,0,0,.18); position: relative; white-space: nowrap; }
-        .wa-tip::after { content: ''; position: absolute; bottom: -5px; right: 18px; width: 10px; height: 10px; background: #fff; transform: rotate(45deg); }
-        .wa-btn {
-            width: 56px; height: 56px; border-radius: 50%; background: #25D366;
-            display: flex; align-items: center; justify-content: center;
-            text-decoration: none; font-size: 1.6rem; color: #fff;
-            box-shadow: 0 3px 16px rgba(37,211,102,.4); transition: .3s; animation: wp 2.5s infinite;
-        }
-        .wa-btn:hover { transform: scale(1.08); }
-        @keyframes wp { 0%{box-shadow:0 3px 16px rgba(37,211,102,.4)} 50%{box-shadow:0 3px 20px rgba(37,211,102,.7),0 0 0 10px rgba(37,211,102,.08)} 100%{box-shadow:0 3px 16px rgba(37,211,102,.4)} }
-
-        .top-btn {
-            position: fixed; bottom: 1.5rem; left: 1.5rem;
-            width: 38px; height: 38px; border-radius: 10px;
-            background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06);
-            display: flex; align-items: center; justify-content: center;
-            color: var(--t); font-size: .85rem; z-index: 999;
-            opacity: 0; visibility: hidden; transition: .3s; cursor: pointer;
-        }
-        .top-btn.show { opacity: 1; visibility: visible; }
-        .top-btn:hover { background: var(--g1); border-color: transparent; transform: translateY(-2px); }
-
-        .rv { opacity: 0; transform: translateY(25px); transition: .6s cubic-bezier(.4,0,.2,1); }
-        .rv.show { opacity: 1; transform: translateY(0); }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 960px) {
-            .hero-in { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
-            .hero p { margin: 0 auto 2rem; }
-            .hero-btns { justify-content: center; }
-            .stats { justify-content: center; }
-            .hero-vis { order: -1; }
-            .t-fcard { display: none; }
-            .terminal { width: 320px; }
-            .why-grid { grid-template-columns: repeat(2, 1fr); }
-            .proc-grid { grid-template-columns: repeat(2, 1fr); }
-            .proc-grid::before { display: none; }
-            .pay-grid { grid-template-columns: repeat(2, 1fr); }
-            .test-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-in { flex-direction: column; text-align: center; }
-            .f-links { justify-content: center; flex-wrap: wrap; }
-        }
-        @media (max-width: 700px) {
-            .lk {
-                position: fixed; top: 0; right: -100%; width: 75%; height: 100vh;
-                background: rgba(11,17,32,.97); flex-direction: column;
-                justify-content: center; padding: 2rem; gap: .2rem;
-                transition: right .35s; border-left: 1px solid rgba(255,255,255,.05);
-            }
-            .lk.open { right: 0; }
-            .lk a { padding: .6rem 1rem; width: 100%; text-align: center; font-size: .9rem; }
-            .bg { display: flex; }
-            .hero { padding: 6rem 1.2rem 2rem; }
-            .hero h1 { font-size: 1.9rem; }
-            .sh h2 { font-size: 1.6rem; }
-            .grid { grid-template-columns: 1fr; }
-            .why-grid { grid-template-columns: 1fr; }
-            .proc-grid { grid-template-columns: 1fr; }
-            .pay-grid { grid-template-columns: 1fr; }
-            .test-grid { grid-template-columns: 1fr; }
-            .stats { flex-direction: column; gap: .8rem; align-items: center; }
-            .terminal { width: 280px; }
-            .term-body { font-size: .68rem; padding: 1rem; }
-            .cta-box { padding: 2rem 1.5rem; }
-            .cta-box h2 { font-size: 1.4rem; }
-            .hero-btns, .cta-btns { flex-direction: column; align-items: center; }
-            .btn { width: 100%; justify-content: center; }
-            .tabs { gap: .3rem; }
-            .tab { padding: .45rem .8rem; font-size: .72rem; }
-        }
-    </style>
+@media(max-width:960px){
+.hi{grid-template-columns:1fr;text-align:center;gap:2.5rem}
+.hero p{margin:0 auto 2rem}
+.hbtns{justify-content:center}
+.sts{justify-content:center}
+.hv{order:-1}
+.tfc{display:none}
+.term{width:300px}
+.wgrd{grid-template-columns:repeat(2,1fr)}
+.pgrd{grid-template-columns:repeat(2,1fr)}
+.pgrd::before{display:none}
+.pygrd{grid-template-columns:repeat(2,1fr)}
+.tgrd{grid-template-columns:repeat(2,1fr)}
+.fi{flex-direction:column;text-align:center}
+.flk{justify-content:center;flex-wrap:wrap}
+}
+@media(max-width:700px){
+.lk{position:fixed;top:0;right:-100%;width:75%;height:100vh;background:rgba(11,17,32,.97);flex-direction:column;justify-content:center;padding:2rem;gap:.2rem;transition:right .35s;border-left:1px solid rgba(255,255,255,.05)}
+.lk.open{right:0}
+.lk a{padding:.6rem 1rem;width:100%;text-align:center;font-size:.9rem}
+.br{display:flex}
+.hero{padding:6rem 1.2rem 2rem}
+.hero h1{font-size:1.8rem}
+.sh h2{font-size:1.5rem}
+.grd{grid-template-columns:1fr}
+.wgrd{grid-template-columns:1fr}
+.pgrd{grid-template-columns:1fr}
+.pygrd{grid-template-columns:1fr}
+.tgrd{grid-template-columns:1fr}
+.sts{flex-direction:column;gap:.8rem;align-items:center}
+.term{width:260px}
+.tbody{font-size:.65rem;padding:.9rem}
+.cta{padding:2rem 1.3rem}
+.cta h2{font-size:1.3rem}
+.hbtns,.ctbtns{flex-direction:column;align-items:center}
+.btn{width:100%;justify-content:center}
+.tabs{gap:.3rem}
+.tab{padding:.42rem .7rem;font-size:.7rem}
+}
+</style>
 </head>
 <body>
 
-<div class="ld" id="ld"><span>PedritoTech</span><div class="ld-bar"><i></i></div></div>
+<div class="ld" id="ld"><span>PedritoTech</span><div class="lb"><i></i></div></div>
 
-<div class="orbs"><span></span><span></span><span></span></div>
-<div class="grid-bg"></div>
-<canvas id="pc"></canvas>
+<div class="bg"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
 
 <!-- NAV -->
 <nav class="nv" id="nv">
-    <div class="nv-in">
-        <a href="#" class="lg"><div class="lg-b">⚡</div><div class="lg-t"><span class="n">PedritoTech</span><span class="u">Solutions</span></div></a>
-        <ul class="lk" id="lk">
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#nosotros">Nosotros</a></li>
-            <li><a href="#proceso">Proceso</a></li>
-            <li><a href="#pagos">Pagos</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="https://wa.me/5359924051" target="_blank" class="c">💬 WhatsApp</a></li>
-        </ul>
-        <div class="bg" id="bg"><span></span><span></span><span></span></div>
-    </div>
+<div class="ni">
+<a href="#" class="lg"><div class="lgb">⚡</div><div class="lgt"><span class="n">PedritoTech</span><span class="u">Solutions</span></div></a>
+<ul class="lk" id="lk">
+<li><a href="#servicios">Servicios</a></li>
+<li><a href="#nosotros">Nosotros</a></li>
+<li><a href="#proceso">Proceso</a></li>
+<li><a href="#pagos">Pagos</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="https://wa.me/5359924051" target="_blank" class="ca">💬 WhatsApp</a></li>
+</ul>
+<div class="br" id="br"><span></span><span></span><span></span></div>
+</div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="inicio">
-    <div class="hero-in">
-        <div class="hero-text">
-            <div class="badge"><span class="d"></span> Desarrollo de Software a Medida</div>
-            <h1>
-                Creamos el <span class="g">software</span><br>
-                que tu <span class="g2">negocio necesita</span>
-            </h1>
-            <p>
-                Desarrollo web, aplicaciones a medida, soluciones para negocios,
-                despliegue de servidores y herramientas de unlock.
-                Todo bajo un mismo techo tecnológico.
-            </p>
-            <div class="hero-btns">
-                <a href="https://wa.me/5359924051?text=Hola%2C%20quiero%20cotizar%20un%20proyecto%20de%20software" target="_blank" class="btn bw">💬 Cotizar proyecto</a>
-                <a href="#servicios" class="btn bg2">Explorar servicios ↓</a>
-            </div>
-            <div class="stats">
-                <div class="st"><h3 id="c1">0+</h3><p>Proyectos entregados</p></div>
-                <div class="st"><h3>100%</h3><p>Código a medida</p></div>
-                <div class="st"><h3>24/7</h3><p>Soporte técnico</p></div>
-            </div>
-        </div>
-        <div class="hero-vis">
-            <div class="terminal-wrap">
-                <div class="t-glow"></div>
-                <div class="t-fcard"><span>🚀</span> Deploy exitoso</div>
-                <div class="t-fcard"><span>✅</span> 0 errores</div>
-                <div class="t-fcard"><span>⚡</span> 100% uptime</div>
-                <div class="terminal">
-                    <div class="term-bar">
-                        <div class="term-dot"></div><div class="term-dot"></div><div class="term-dot"></div>
-                        <span class="term-title">pedritotech — deploy.sh</span>
-                    </div>
-                    <div class="term-body">
-                        <div class="term-line"><span class="prompt">❯ </span><span class="cmd">npx create-app</span> <span class="str">mi-negocio</span></div>
-                        <div class="term-line"><span class="cmt">✓ Proyecto creado</span></div>
-                        <div class="term-line">&nbsp;</div>
-                        <div class="term-line"><span class="prompt">❯ </span><span class="cmd">npm install</span> <span class="str">--production</span></div>
-                        <div class="term-line"><span class="cmt">✓ 247 packages listos</span></div>
-                        <div class="term-line">&nbsp;</div>
-                        <div class="term-line"><span class="prompt">❯ </span><span class="cmd">npm run</span> <span class="str">build</span></div>
-                        <div class="term-line"><span class="kw">const</span> <span class="fn">app</span> = <span class="cmd">createServer</span>();</div>
-                        <div class="term-line"><span class="fn">app</span>.<span class="cmd">deploy</span>(<span class="str">'cloud'</span>);</div>
-                        <div class="term-line"><span class="cmt">✓ Build completado</span></div>
-                        <div class="term-line"><span class="cmt">✓ Servidor online</span></div>
-                        <div class="term-line">&nbsp;</div>
-                        <div class="term-line"><span class="prompt">❯ </span><span class="cursor-blink"></span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="hi">
+<div class="ht">
+<div class="badge"><span class="d"></span> Desarrollo de Software a Medida</div>
+<h1>Creamos el <span class="g">software</span><br>que tu <span class="g2">negocio necesita</span></h1>
+<p>Desarrollo web, aplicaciones a medida, soluciones para negocios, despliegue de servidores y herramientas de unlock. Todo bajo un mismo techo tecnológico.</p>
+<div class="hbtns">
+<a href="https://wa.me/5359924051?text=Hola%2C%20quiero%20cotizar%20un%20proyecto%20de%20software" target="_blank" class="btn bw">💬 Cotizar proyecto</a>
+<a href="#servicios" class="btn bg2">Explorar servicios ↓</a>
+</div>
+<div class="sts">
+<div class="st"><h3 id="c1">0+</h3><p>Proyectos entregados</p></div>
+<div class="st"><h3>100%</h3><p>Código a medida</p></div>
+<div class="st"><h3>24/7</h3><p>Soporte técnico</p></div>
+</div>
+</div>
+<div class="hv">
+<div class="tw">
+<div class="tglow"></div>
+<div class="tfc"><span>🚀</span> Deploy exitoso</div>
+<div class="tfc"><span>✅</span> 0 errores</div>
+<div class="tfc"><span>⚡</span> 100% uptime</div>
+<div class="term">
+<div class="tbar"><div class="td"></div><div class="td"></div><div class="td"></div><span class="ttl">pedritotech — deploy</span></div>
+<div class="tbody">
+<div class="tl"><span class="tp">❯ </span><span class="tc">npx create-app</span> <span class="ts">mi-negocio</span></div>
+<div class="tl"><span class="tcm">✓ Proyecto creado</span></div>
+<div class="tl">&nbsp;</div>
+<div class="tl"><span class="tp">❯ </span><span class="tc">npm install</span> <span class="ts">--production</span></div>
+<div class="tl"><span class="tcm">✓ 247 packages listos</span></div>
+<div class="tl">&nbsp;</div>
+<div class="tl"><span class="tp">❯ </span><span class="tc">npm run</span> <span class="ts">build</span></div>
+<div class="tl"><span class="tk">const</span> <span class="tf">app</span> = <span class="tc">createServer</span>();</div>
+<div class="tl"><span class="tf">app</span>.<span class="tc">deploy</span>(<span class="ts">'cloud'</span>);</div>
+<div class="tl"><span class="tcm">✓ Build completado</span></div>
+<div class="tl"><span class="tcm">✓ Servidor online</span></div>
+<div class="tl">&nbsp;</div>
+<div class="tl"><span class="tp">❯ </span><span class="cblink"></span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- SERVICES -->
 <section id="servicios">
-    <div class="wrap">
-        <div class="sh rv">
-            <div class="sl">💻 Servicios</div>
-            <h2>Soluciones de <span class="g">Software</span> integrales</h2>
-            <p>Desde una página web hasta un sistema completo de gestión. Creamos tecnología que hace crecer tu negocio.</p>
-        </div>
-
-        <div class="tabs rv">
-            <button class="tab on" data-t="dev">⚡ Desarrollo</button>
-            <button class="tab" data-t="web">🌐 Web</button>
-            <button class="tab" data-t="biz">🏢 Negocios</button>
-            <button class="tab" data-t="infra">🖧 Infraestructura</button>
-            <button class="tab" data-t="tools">🔓 Tools</button>
-        </div>
-
-        <!-- DEV -->
-        <div class="panel on" id="p-dev">
-            <div class="grid">
-                <div class="card rv">
-                    <div class="ci p">💻</div>
-                    <h3>Software a Medida</h3>
-                    <p>Aplicaciones de escritorio y web diseñadas específicamente para las necesidades de tu negocio.</p>
-                    <ul class="cf">
-                        <li><span class="ok">✓</span> Análisis de requerimientos</li>
-                        <li><span class="ok">✓</span> Desarrollo desde cero</li>
-                        <li><span class="ok">✓</span> Código limpio y escalable</li>
-                        <li><span class="ok">✓</span> Documentación incluida</li>
-                    </ul>
-                    <a href="https://wa.me/5359924051?text=Quiero%20software%20a%20medida" target="_blank" class="cb">Consultar →</a>
-                </div>
-                <div class="card rv">
-                    <div class="ci c">📱</div>
-                    <h3>Aplicaciones Móviles</h3>
-                    <p>Apps nativas y multiplataforma para Android que conectan tu negocio con tus clientes.</p>
-                    <ul class="cf">
-                        <li><span class="ok">✓</span> Apps Android nativas</li>
-                        <li><span class="ok">✓</span> Interfaces modernas</li>
-                        <li><span class="ok">✓</span> Publicación en tiendas</li>
-                        <li><span class="ok">✓</span> Notificaciones push</li>
-                    </ul>
-                    <a href="https://wa.me/5359924051?text=Quiero%20una%20aplicación%20móvil" target="_blank" class="cb">Consultar →</a>
-                </div>
-                <div class="card rv">
-                    <div class="ci gr">🔧</div>
-                    <h3>Automatización</h3>
-                    <p>Scripts y herramientas que automatizan tareas repetitivas y optimizan tu flujo de trabajo.</p>
-                    <ul class="cf">
-                        <li><span class="ok">✓</span> Bots y scripts personalizados</li>
-                        <li><span class="ok">✓</span> Integración de APIs</li>
-                        <li><span class="ok">✓</span> Procesos automatizados</li>
-                        <li><span class="ok">✓</span> Ahorro de tiempo real</li>
-                    </ul>
-                    <a href="https://wa.me/5359924051?text=Quiero%20automatizar%20procesos" target="_blank" class="cb">Consultar →</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- WEB -->
-        <div class="panel" id="p-web">
-            <div class="grid">
-                <div class="card rv">
-                    <div class="ci p">🌐</div>
-                    <h3>Páginas Web</h3>
-                    <p>Sitios web profesionales, modernos y optimizados para buscadores que generan presencia online.</p>
-                    <ul class="cf">
-                        <li><span class="ok">✓</span> Diseño responsive</li>
-                        <li><span class="ok">✓</span> SEO integrado</li>
-                        <li><span class="ok">✓</span> Carga ultrarrápida</li>
-                        <li><span class="ok">✓</span> Panel administrable</li>
-                    </ul>
-                    <a href="https://wa.me/5359924051?text=Quiero%20una%20página%20web" target="_blank" class="cb">Consultar →</a>
-                </div>
-                <div class="card rv">
-                    <div class="ci c">🛒</div>
-                    <h3>Tiendas Online</h3>
-                    <p>E-commerce completos con catálogo, carrito, pasarela de pago y gestión de inventario.</p>
-                    <ul class="cf">
-                        <li><span class="ok">✓</span> Catálogo de productos</li>
-                        <li><span class="ok">✓</span> Pagos integrados</li>
-                        <li><span class="ok">✓</span> Panel de administración</li>
-                        <li><span class="ok">✓</span> Gestión de pedidos</li>
-                    </ul>
-                    <a href="https://wa.me/5359924051?text=Quiero%20una%20tienda%20online" target="_blank" class="cb">Consultar →</a>
-                </div>
-                <div class="card rv">
-                    <div class="ci a">🎨</div>
-                    <h3>Landing Pages</h3>
-                    <p>Páginas de aterrizaje de alto impacto diseñadas para convertir visitantes en clientes.</p>
-                    <ul class="cf">
-                        <li><span class="ok">✓</span> Diseño persuasivo</li>
-                        <li><span class="ok">✓</span> Formularios de contacto</li>
-                        <li><span class="ok">✓</span> Integración analytics</li>
-                        <li><span class="ok">✓</span> Entrega rápida</li>
-                    </ul>
-                    <a href="https://wa.me/5359924051?text=Quiero%20una%20landing%20page" target="_blank" class="cb">Consultar →</a>
-                </div>
-                <div class="card rv">
-                    <div class="ci gr">✏️</div>
-                    <h3>Rediseño Web</h3>
-                    <p>¿Tu web se ve antigua? La rediseñamos con tecnología actual y mejor experiencia de usuario.</p>
-                    <ul class="cf">
-                        <li><span class="ok">✓</span> Diseño moderno</li>
-                        <li><span class="ok">✓</span> Mejora de rendimiento</li>
-                        <li><span class="ok">✓</span> Migración de contenido</li>
-                        <li><span class="ok">✓</span> Sin pérdida de datos</li>
-                    </ul>
-                    <a href="https://wa.me/5359924051?text=Quiero%20rediseñar%20mi%20web" target="_blank" class="cb">Consultar →</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- BIZ -->
-        <div class="panel" id="p-biz">
-            <div class="grid">
-                <div class="card rv">
-                    <div class="ci p">🏢</div>
-                    <h3>Sistemas de Gestión</h3>
-                    <p>CRM, inventario, facturación y control total de tu negocio desde una sola plataforma.</p>
-                    <ul class="cf">
-                        <li><span class="ok">✓</span> CRM personalizado</li>
-                        <li><span class="ok">✓</span> Control de inventario</li>
-                        <li><span class="ok">✓</span> Facturación digital</li>
-                        <li><span class="ok">✓</span> Reportes en tiempo real</li>
-                    </ul>
-                    <a href="https://wa.me/5359924051?text=Necesito%20sistema%20de%20gestión" target="_blank" class="cb">Consultar →</a>
-                </div>
-                <div class="card rv">
-                    <div class="ci c">🎯</div>
-                    <h3>Soluciones para PYMES</h3>
-                    <p>Software accesible diseñado para pequeños negocios que necesitan digitalizarse.</p>
-                    <ul class="cf">
-                        <li><span class="ok">✓</span> Presupuesto adaptado</li>
-                        <li><span class="ok">✓</span> Escalable según creces</li>
-                        <li><span class="ok">✓</span> Fácil de usar</li>
-                        <li><span class="ok">✓</span> Capacitación incluida</li>
-                    </ul>
-                    <a href="https://wa.me/5359924051?text=Necesito%20soluciones%20para%20mi%20negocio" target="_blank" class="cb">Consultar →</a>
-                </div>
-                <div class="card rv">
-                    <div class="ci pk">📊</div>
-                    <h3>Dashboards & Analítica</h3>
-                    <p>Paneles de control visuales para monitorear métricas clave de tu negocio en tiempo real.</p>
-                    <ul class="cf">
-                        <li><span class="ok">✓</span> Gráficos interactivos</li>
-                        <li><span class="ok">✓</span> KPIs personalizados</li>
-                        <li><span class="ok">✓</span> Exportación de datos</li>
-                        <li><span class="ok">✓</span> Acceso desde cualquier lugar</li>
-                    </ul>
-                    <a href="https://wa.me/5359924051?text=Necesito%20un%20dashboard" target="_blank" class="cb">Consultar →</a>
-                </div>
-                <div class="card rv">
-                    <div class="ci a">🎨</div>
-                    <h3>Branding Digital</h3>
-                    <p>Logos, identidad visual y diseño gráfico para que tu marca destaque en el mundo digital.</p>
-                    <ul class="cf">
-                        <li><span class="ok">✓</span> Diseño de logos</li>
-                        <li><span class="ok">✓</span> Identidad visual completa</li>
-                        <li><span class="ok">✓</span> Diseño para redes sociales</li>
-                        <li><span class="ok">✓</span> Material publicitario</li>
-                    </ul>
-                    <a href="https://wa.me/5359924051?text=Necesito%20branding" target="_blank" class="cb">Consultar →</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- INFRA -->
-        <div class="panel" id="p-infra">
-            <div class="grid">
-                <div class="card rv">
-                    <div class="ci c">🖧</div>
-                    <h3>Despliegue de Servidores</h3>
-                    <p>Configuración y despliegue de servidores web, de bases de datos y aplicaciones en la nube.</p>
-                    <ul class="cf">
-                        <li><span class="ok">✓</span> Apache, Nginx, Node.js</li>
-                        <li><span class="ok">✓</span> MySQL / PostgreSQL</li>
-                        <li><span class="ok">✓</span> SSL y seguridad</li>
-                        <li><span class="ok">✓</span> Monitoreo 24/7</li>
-                    </ul>
-                    <a href="https://wa.me/5359924051?text=Necesito%20desplegar%20un%20servidor" target="_blank" class="cb">Consultar →</a>
-                </div>
-                <div class="card rv">
-                    <div class="ci p">🖥️</div>
-                    <h3>Instalación de Sistemas</h3>
-                    <p>Instalación y configuración de sistemas operativos con optimización completa del equipo.</p>
-                    <ul class="cf">
-                        <li><span class="ok">✓</span> Windows 10 / 11</li>
-                        <li><span class="ok">✓</span> Linux (Ubuntu, Mint)</li>
-                        <li><span class="ok">✓</span> Drivers y software esencial</li>
-                        <li><span class="ok">✓</span> Optimización de rendimiento</li>
-                    </ul>
-                    <a href="https://wa.me/5359924051?text=Necesito%20instalar%20un%20sistema" target="_blank" class="cb">Consultar →</a>
-                </div>
-                <div class="card rv">
-                    <div class="ci gr">🔒</div>
-                    <h3>Seguridad Informática</h3>
-                    <p>Protección de datos, configuración de firewalls, backups y auditorías de seguridad.</p>
-                    <ul class="cf">
-                        <li><span class="ok">✓</span> Configuración de firewalls</li>
-                        <li><span class="ok">✓</span> Backup automatizado</li>
-                        <li><span class="ok">✓</span> Limpieza de malware</li>
-                        <li><span class="ok">✓</span> Auditoría de vulnerabilidades</li>
-                    </ul>
-                    <a href="https://wa.me/5359924051?text=Necesito%20seguridad%20informática" target="_blank" class="cb">Consultar →</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- TOOLS -->
-        <div class="panel" id="p-tools">
-            <div class="grid">
-                <div class="card rv">
-                    <div class="ci p">🛡️</div>
-                    <h3>Eliminación FRP</h3>
-                    <p>Remove Factory Reset Protection de Google en dispositivos Android de todas las marcas.</p>
-                    <ul class="cf">
-                        <li><span class="ok">✓</span> Samsung, Xiaomi, Huawei</li>
-                        <li><span class="ok">✓</span> Todas las versiones Android</li>
-                        <li><span class="ok">✓</span> Proceso 100% remoto</li>
-                    </ul>
-                    <a href="https://wa.me/5359924051?text=Necesito%20eliminar%20FRP" target="_blank" class="cb">Consultar →</a>
-                </div>
-                <div class="card rv">
-                    <div class="ci c">📡</div>
-                    <h3>Liberación SIM</h3>
-                    <p>Desbloquea tu dispositivo para usarlo con cualquier operador del mundo.</p>
-                    <ul class="cf">
-                        <li><span class="ok">✓</span> Todas las operadoras</li>
-                        <li><span class="ok">✓</span> Código oficial</li>
-                        <li><span class="ok">✓</span> iPhone y Android</li>
-                    </ul>
-                    <a href="https://wa.me/5359924051?text=Necesito%20liberación%20SIM" target="_blank" class="cb">Consultar →</a>
-                </div>
-                <div class="card rv">
-                    <div class="ci pk">🔧</div>
-                    <h3>Reparación IMEI</h3>
-                    <p>Restauración de IMEI null/0 con herramientas profesionales.</p>
-                    <ul class="cf">
-                        <li><span class="ok">✓</span> IMEI reparado</li>
-                        <li><span class="ok">✓</span> Base band restoration</li>
-                        <li><span class="ok">✓</span> Todas las marcas</li>
-                    </ul>
-                    <a href="https://wa.me/5359924051?text=Necesito%20reparar%20IMEI" target="_blank" class="cb">Consultar →</a>
-                </div>
-                <div class="card rv">
-                    <div class="ci a">🍎</div>
-                    <h3>Servicios iOS</h3>
-                    <p>iCloud removal, bypass de activación y liberación para iPhone/iPad.</p>
-                    <ul class="cf">
-                        <li><span class="ok">✓</span> iCloud removal</li>
-                        <li><span class="ok">✓</span> Bypass activación</li>
-                        <li><span class="ok">✓</span> Eliminación MDM</li>
-                    </ul>
-                    <a href="https://wa.me/5359924051?text=Necesito%20servicio%20iOS" target="_blank" class="cb">Consultar →</a>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="w">
+<div class="sh rv">
+<div class="slab">💻 Servicios</div>
+<h2>Soluciones de <span class="g">Software</span> integrales</h2>
+<p>Desde una página web hasta un sistema completo de gestión. Creamos tecnología que hace crecer tu negocio.</p>
+</div>
+<div class="tabs rv">
+<button class="tab on" data-t="dev">⚡ Desarrollo</button>
+<button class="tab" data-t="web">🌐 Web</button>
+<button class="tab" data-t="biz">🏢 Negocios</button>
+<button class="tab" data-t="inf">🖧 Infraestructura</button>
+<button class="tab" data-t="tl">🔓 Tools</button>
+</div>
+<div class="panel on" id="p-dev">
+<div class="grd">
+<div class="cd rv"><div class="ci p">💻</div><h3>Software a Medida</h3><p>Aplicaciones diseñadas específicamente para las necesidades de tu negocio.</p><ul class="cf"><li><span class="ok">✓</span> Análisis de requerimientos</li><li><span class="ok">✓</span> Desarrollo desde cero</li><li><span class="ok">✓</span> Código limpio y escalable</li></ul><a href="https://wa.me/5359924051?text=Quiero%20software%20a%20medida" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci c">📱</div><h3>Aplicaciones Móviles</h3><p>Apps nativas y multiplataforma para Android.</p><ul class="cf"><li><span class="ok">✓</span> Apps Android nativas</li><li><span class="ok">✓</span> Interfaces modernas</li><li><span class="ok">✓</span> Notificaciones push</li></ul><a href="https://wa.me/5359924051?text=Quiero%20una%20app%20móvil" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci gr">🔧</div><h3>Automatización</h3><p>Scripts y herramientas que automatizan tareas repetitivas.</p><ul class="cf"><li><span class="ok">✓</span> Bots personalizados</li><li><span class="ok">✓</span> Integración de APIs</li><li><span class="ok">✓</span> Procesos automatizados</li></ul><a href="https://wa.me/5359924051?text=Quiero%20automatizar%20procesos" target="_blank" class="cbtn">Consultar →</a></div>
+</div>
+</div>
+<div class="panel" id="p-web">
+<div class="grd">
+<div class="cd rv"><div class="ci p">🌐</div><h3>Páginas Web</h3><p>Sitios web profesionales, modernos y optimizados para buscadores.</p><ul class="cf"><li><span class="ok">✓</span> Diseño responsive</li><li><span class="ok">✓</span> SEO integrado</li><li><span class="ok">✓</span> Panel administrable</li></ul><a href="https://wa.me/5359924051?text=Quiero%20una%20página%20web" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci c">🛒</div><h3>Tiendas Online</h3><p>E-commerce con catálogo, carrito y pasarela de pago.</p><ul class="cf"><li><span class="ok">✓</span> Catálogo de productos</li><li><span class="ok">✓</span> Pagos integrados</li><li><span class="ok">✓</span> Panel admin</li></ul><a href="https://wa.me/5359924051?text=Quiero%20una%20tienda%20online" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci a">🎨</div><h3>Landing Pages</h3><p>Páginas de alto impacto para convertir visitantes en clientes.</p><ul class="cf"><li><span class="ok">✓</span> Diseño persuasivo</li><li><span class="ok">✓</span> Formularios de contacto</li><li><span class="ok">✓</span> Entrega rápida</li></ul><a href="https://wa.me/5359924051?text=Quiero%20una%20landing%20page" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci gr">✏️</div><h3>Rediseño Web</h3><p>¿Tu web se ve antigua? La renovamos con tecnología actual.</p><ul class="cf"><li><span class="ok">✓</span> Diseño moderno</li><li><span class="ok">✓</span> Mejora de rendimiento</li><li><span class="ok">✓</span> Migración segura</li></ul><a href="https://wa.me/5359924051?text=Quiero%20rediseñar%20mi%20web" target="_blank" class="cbtn">Consultar →</a></div>
+</div>
+</div>
+<div class="panel" id="p-biz">
+<div class="grd">
+<div class="cd rv"><div class="ci p">🏢</div><h3>Sistemas de Gestión</h3><p>CRM, inventario, facturación y control total de tu negocio.</p><ul class="cf"><li><span class="ok">✓</span> CRM personalizado</li><li><span class="ok">✓</span> Control de inventario</li><li><span class="ok">✓</span> Reportes en tiempo real</li></ul><a href="https://wa.me/5359924051?text=Necesito%20sistema%20de%20gestión" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci c">🎯</div><h3>Soluciones para PYMES</h3><p>Software accesible para pequeños negocios que necesitan digitalizarse.</p><ul class="cf"><li><span class="ok">✓</span> Presupuesto adaptado</li><li><span class="ok">✓</span> Escalable según creces</li><li><span class="ok">✓</span> Capacitación incluida</li></ul><a href="https://wa.me/5359924051?text=Necesito%20soluciones%20para%20mi%20negocio" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci pk">📊</div><h3>Dashboards</h3><p>Paneles de control visuales para monitorear métricas clave.</p><ul class="cf"><li><span class="ok">✓</span> Gráficos interactivos</li><li><span class="ok">✓</span> KPIs personalizados</li><li><span class="ok">✓</span> Acceso remoto</li></ul><a href="https://wa.me/5359924051?text=Necesito%20un%20dashboard" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci a">🎨</div><h3>Branding Digital</h3><p>Logos, identidad visual y diseño gráfico para tu marca.</p><ul class="cf"><li><span class="ok">✓</span> Diseño de logos</li><li><span class="ok">✓</span> Identidad visual completa</li><li><span class="ok">✓</span> Material publicitario</li></ul><a href="https://wa.me/5359924051?text=Necesito%20branding" target="_blank" class="cbtn">Consultar →</a></div>
+</div>
+</div>
+<div class="panel" id="p-inf">
+<div class="grd">
+<div class="cd rv"><div class="ci c">🖧</div><h3>Despliegue de Servidores</h3><p>Configuración de servidores web, bases de datos y aplicaciones en la nube.</p><ul class="cf"><li><span class="ok">✓</span> Apache, Nginx, Node.js</li><li><span class="ok">✓</span> MySQL / PostgreSQL</li><li><span class="ok">✓</span> SSL y seguridad</li></ul><a href="https://wa.me/5359924051?text=Necesito%20desplegar%20un%20servidor" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci p">🖥️</div><h3>Instalación de Sistemas</h3><p>Instalación y configuración de sistemas operativos con optimización.</p><ul class="cf"><li><span class="ok">✓</span> Windows 10 / 11</li><li><span class="ok">✓</span> Linux (Ubuntu, Mint)</li><li><span class="ok">✓</span> Drivers y software</li></ul><a href="https://wa.me/5359924051?text=Necesito%20instalar%20un%20sistema" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci gr">🔒</div><h3>Seguridad Informática</h3><p>Protección de datos, firewalls, backups y auditorías de seguridad.</p><ul class="cf"><li><span class="ok">✓</span> Configuración firewalls</li><li><span class="ok">✓</span> Backup automatizado</li><li><span class="ok">✓</span> Limpieza de malware</li></ul><a href="https://wa.me/5359924051?text=Necesito%20seguridad%20informática" target="_blank" class="cbtn">Consultar →</a></div>
+</div>
+</div>
+<div class="panel" id="p-tl">
+<div class="grd">
+<div class="cd rv"><div class="ci p">🛡️</div><h3>Eliminación FRP</h3><p>Remove Factory Reset Protection de Google en Android.</p><ul class="cf"><li><span class="ok">✓</span> Samsung, Xiaomi, Huawei</li><li><span class="ok">✓</span> Todas las versiones</li><li><span class="ok">✓</span> Proceso remoto</li></ul><a href="https://wa.me/5359924051?text=Necesito%20eliminar%20FRP" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci c">📡</div><h3>Liberación SIM</h3><p>Desbloquea tu dispositivo para cualquier operador.</p><ul class="cf"><li><span class="ok">✓</span> Todas las operadoras</li><li><span class="ok">✓</span> Código oficial</li><li><span class="ok">✓</span> iPhone y Android</li></ul><a href="https://wa.me/5359924051?text=Necesito%20liberación%20SIM" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci pk">🔧</div><h3>Reparación IMEI</h3><p>Restauración de IMEI null/0 con herramientas profesionales.</p><ul class="cf"><li><span class="ok">✓</span> IMEI reparado</li><li><span class="ok">✓</span> Base band restoration</li><li><span class="ok">✓</span> Todas las marcas</li></ul><a href="https://wa.me/5359924051?text=Necesito%20reparar%20IMEI" target="_blank" class="cbtn">Consultar →</a></div>
+<div class="cd rv"><div class="ci a">🍎</div><h3>Servicios iOS</h3><p>iCloud removal, bypass de activación y liberación para iPhone.</p><ul class="cf"><li><span class="ok">✓</span> iCloud removal</li><li><span class="ok">✓</span> Bypass activación</li><li><span class="ok">✓</span> Eliminación MDM</li></ul><a href="https://wa.me/5359924051?text=Necesito%20servicio%20iOS" target="_blank" class="cbtn">Consultar →</a></div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- WHY -->
-<section id="nosotros" class="why-bg">
-    <div class="wrap">
-        <div class="sh rv">
-            <div class="sl">💎 ¿Por qué elegirnos?</div>
-            <h2>Lo que nos <span class="g">diferencia</span></h2>
-            <p>Compromiso con la excelencia en cada línea de código</p>
-        </div>
-        <div class="why-grid">
-            <div class="why rv"><span class="wi">🚀</span><h3>Entrega Rápida</h3><p>Proyectos entregados a tiempo sin sacrificar calidad.</p></div>
-            <div class="why rv"><span class="wi">🛡️</span><h3>Garantía Total</h3><p>Respaldamos cada trabajo con garantía de satisfacción.</p></div>
-            <div class="why rv"><span class="wi">💬</span><h3>Soporte Continuo</h3><p>Te acompañamos antes, durante y después del proyecto.</p></div>
-            <div class="why rv"><span class="wi">💰</span><h3>Precios Justos</h3><p>La mejor relación calidad-precio con pagos flexibles.</p></div>
-        </div>
-    </div>
+<section id="nosotros" class="wbg">
+<div class="w">
+<div class="sh rv">
+<div class="slab">💎 ¿Por qué elegirnos?</div>
+<h2>Lo que nos <span class="g">diferencia</span></h2>
+<p>Compromiso con la excelencia en cada línea de código</p>
+</div>
+<div class="wgrd">
+<div class="wc rv"><span class="wi">🚀</span><h3>Entrega Rápida</h3><p>Proyectos entregados a tiempo sin sacrificar calidad.</p></div>
+<div class="wc rv"><span class="wi">🛡️</span><h3>Garantía Total</h3><p>Respaldamos cada trabajo con garantía de satisfacción.</p></div>
+<div class="wc rv"><span class="wi">💬</span><h3>Soporte Continuo</h3><p>Te acompañamos antes, durante y después del proyecto.</p></div>
+<div class="wc rv"><span class="wi">💰</span><h3>Precios Justos</h3><p>La mejor relación calidad-precio con pagos flexibles.</p></div>
+</div>
+</div>
 </section>
 
 <!-- PROCESS -->
 <section id="proceso">
-    <div class="wrap">
-        <div class="sh rv">
-            <div class="sl">📋 Proceso</div>
-            <h2>Cómo <span class="g">trabajamos</span></h2>
-            <p>De la idea al producto final en 4 pasos</p>
-        </div>
-        <div class="proc-grid">
-            <div class="proc rv"><div class="proc-n">1</div><h3>Consulta</h3><p>Cuéntanos tu idea o necesidad por WhatsApp. Te asesoramos sin compromiso.</p></div>
-            <div class="proc rv"><div class="proc-n">2</div><h3>Propuesta</h3><p>Diseñamos una solución a medida con alcance, tiempos y costos claros.</p></div>
-            <div class="proc rv"><div class="proc-n">3</div><h3>Desarrollo</h3><p>Creamos tu software con actualizaciones constantes del progreso.</p></div>
-            <div class="proc rv"><div class="proc-n">4</div><h3>Entrega</h3><p>Producto finalizado con capacitación, documentación y soporte incluido.</p></div>
-        </div>
-    </div>
+<div class="w">
+<div class="sh rv">
+<div class="slab">📋 Proceso</div>
+<h2>Cómo <span class="g">trabajamos</span></h2>
+<p>De la idea al producto final en 4 pasos</p>
+</div>
+<div class="pgrd">
+<div class="pc rv"><div class="pn">1</div><h3>Consulta</h3><p>Cuéntanos tu idea por WhatsApp. Te asesoramos sin compromiso.</p></div>
+<div class="pc rv"><div class="pn">2</div><h3>Propuesta</h3><p>Solución a medida con alcance, tiempos y costos claros.</p></div>
+<div class="pc rv"><div class="pn">3</div><h3>Desarrollo</h3><p>Creamos tu software con actualizaciones constantes.</p></div>
+<div class="pc rv"><div class="pn">4</div><h3>Entrega</h3><p>Producto finalizado con capacitación y soporte incluido.</p></div>
+</div>
+</div>
 </section>
 
 <!-- PAYMENTS -->
-<section id="pagos" class="pay-bg">
-    <div class="wrap">
-        <div class="sh rv">
-            <div class="sl">💳 Pagos</div>
-            <h2>Métodos de <span class="g">pago</span></h2>
-            <p>Opciones flexibles para tu comodidad</p>
-        </div>
-        <div class="pay-grid">
-            <div class="pay rv"><div class="pay-ic e">🟠</div><h3>Enzona</h3><p>Transferencia instantánea y segura.</p><span class="pay-b">✓ Instantáneo</span></div>
-            <div class="pay rv"><div class="pay-ic t">🔵</div><h3>TransferMóvil</h3><p>Paga desde cualquier teléfono.</p><span class="pay-b">✓ 24/7</span></div>
-            <div class="pay rv"><div class="pay-ic c">🪙</div><h3>Criptomonedas</h3><p>Bitcoin, USDT, Ethereum y más.</p><span class="pay-b">✓ BTC, USDT, ETH</span></div>
-        </div>
-    </div>
+<section id="pagos" class="paybg">
+<div class="w">
+<div class="sh rv">
+<div class="slab">💳 Pagos</div>
+<h2>Métodos de <span class="g">pago</span></h2>
+<p>Opciones flexibles para tu comodidad</p>
+</div>
+<div class="pygrd">
+<div class="py rv"><div class="pyi e">🟠</div><h3>Enzona</h3><p>Transferencia instantánea y segura.</p><span class="pyb">✓ Instantáneo</span></div>
+<div class="py rv"><div class="pyi t">🔵</div><h3>TransferMóvil</h3><p>Paga desde cualquier teléfono.</p><span class="pyb">✓ 24/7</span></div>
+<div class="py rv"><div class="pyi c">🪙</div><h3>Criptomonedas</h3><p>Bitcoin, USDT, Ethereum y más.</p><span class="pyb">✓ BTC, USDT, ETH</span></div>
+</div>
+</div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="test-bg">
-    <div class="wrap">
-        <div class="sh rv">
-            <div class="sl">⭐ Opiniones</div>
-            <h2>Nuestros <span class="g">clientes</span></h2>
-        </div>
-        <div class="test-grid">
-            <div class="test rv"><div class="test-stars">★★★★★</div><blockquote>"Me crearon un sistema de inventario para mi tienda. Ahora controlo todo desde el celular. Increíble trabajo."</blockquote><div class="test-author"><div class="test-av">MR</div><div><strong>Miguel R.</strong><span>Sistema de gestión</span></div></div></div>
-            <div class="test rv"><div class="test-stars">★★★★★</div><blockquote>"La página web que me diseñaron es hermosa y funcional. Mis clientes me encuentran en Google todos los días."</blockquote><div class="test-author"><div class="test-av">YS</div><div><strong>Yanet S.</strong><span>Página web + SEO</span></div></div></div>
-            <div class="test rv"><div class="test-stars">★★★★★</div><blockquote>"Desplegaron mi servidor con todo configurado perfecto. Soporte técnico de primera calidad."</blockquote><div class="test-author"><div class="test-av">DL</div><div><strong>Daniel L.</strong><span>Servidor cloud</span></div></div></div>
-        </div>
-    </div>
+<section class="tbg">
+<div class="w">
+<div class="sh rv">
+<div class="slab">⭐ Opiniones</div>
+<h2>Nuestros <span class="g">clientes</span></h2>
+</div>
+<div class="tgrd">
+<div class="tt rv"><div class="tt-stars">★★★★★</div><blockquote>"Me crearon un sistema de inventario para mi tienda. Ahora controlo todo desde el celular."</blockquote><div class="tt-a"><div class="tt-av">MR</div><div><strong>Miguel R.</strong><span>Sistema de gestión</span></div></div></div>
+<div class="tt rv"><div class="tt-stars">★★★★★</div><blockquote>"La página web que me diseñaron es hermosa y funcional. Mis clientes me encuentran en Google."</blockquote><div class="tt-a"><div class="tt-av">YS</div><div><strong>Yanet S.</strong><span>Página web + SEO</span></div></div></div>
+<div class="tt rv"><div class="tt-stars">★★★★★</div><blockquote>"Desplegaron mi servidor con todo configurado perfecto. Soporte de primera."</blockquote><div class="tt-a"><div class="tt-av">DL</div><div><strong>Daniel L.</strong><span>Servidor cloud</span></div></div></div>
+</div>
+</div>
 </section>
 
 <!-- CTA -->
 <section>
-    <div class="wrap">
-        <div class="cta-box rv">
-            <h2>¿Tienes un <span class="g">proyecto</span> en mente?</h2>
-            <p>Conversemos sobre cómo podemos convertir tu idea en software funcional.</p>
-            <div class="cta-btns">
-                <a href="https://wa.me/5359924051?text=Hola%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" class="btn bw">💬 WhatsApp</a>
-                <a href="#servicios" class="btn bg2">Ver servicios</a>
-            </div>
-            <div class="c-cards">
-                <a href="https://wa.me/5359924051" target="_blank" class="c-card"><div class="c-card-ic w">💬</div><div><strong>WhatsApp</strong><span>+53 59924051</span></div></a>
-                <a href="tel:+5359924051" class="c-card"><div class="c-card-ic ph">📞</div><div><strong>Teléfono</strong><span>+53 59924051</span></div></a>
-                <div class="c-card"><div class="c-card-ic t">⏰</div><div><strong>Horario</strong><span>Lun-Sáb: 9AM-10PM</span></div></div>
-            </div>
-        </div>
-    </div>
+<div class="w">
+<div class="cta rv">
+<h2>¿Tienes un <span class="g">proyecto</span> en mente?</h2>
+<p>Conversemos sobre cómo podemos convertir tu idea en software funcional.</p>
+<div class="ctbtns">
+<a href="https://wa.me/5359924051?text=Hola%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" class="btn bw">💬 WhatsApp</a>
+<a href="#servicios" class="btn bg2">Ver servicios</a>
+</div>
+<div class="ccrds">
+<a href="https://wa.me/5359924051" target="_blank" class="ccrd"><div class="cci w">💬</div><div><strong>WhatsApp</strong><span>+53 59924051</span></div></a>
+<a href="tel:+5359924051" class="ccrd"><div class="cci ph">📞</div><div><strong>Teléfono</strong><span>+53 59924051</span></div></a>
+<div class="ccrd"><div class="cci t">⏰</div><div><strong>Horario</strong><span>Lun-Sáb: 9AM-10PM</span></div></div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="why-bg">
-    <div class="wrap">
-        <div class="sh rv">
-            <div class="sl">❓ FAQ</div>
-            <h2>Preguntas <span class="g">frecuentes</span></h2>
-        </div>
-        <div class="faq-list">
-            <div class="faq rv"><button class="faq-q">¿Qué tipo de software desarrollan?<span class="faq-t">+</span></button><div class="faq-a"><p>Desarrollamos todo tipo de software: aplicaciones web, de escritorio, móviles, sistemas de gestión, CRM, tiendas online, automatizaciones y más.</p></div></div>
-            <div class="faq rv"><button class="faq-q">¿Cuánto cuesta un proyecto?<span class="faq-t">+</span></button><div class="faq-a"><p>Depende de la complejidad. Ofrecemos opciones para todos los presupuestos. Contáctanos por WhatsApp y te damos una cotización gratuita.</p></div></div>
-            <div class="faq rv"><button class="faq-q">¿Cuánto tarda una página web?<span class="faq-t">+</span></button><div class="faq-a"><p>Una landing page en 3-5 días, un sitio completo en 1-2 semanas, sistemas complejos en 3-4 semanas. Siempre damos un estimado antes de empezar.</p></div></div>
-            <div class="faq rv"><button class="faq-q">¿Ofrecen soporte post-entrega?<span class="faq-t">+</span></button><div class="faq-a"><p>¡Sí! Todos los proyectos incluyen soporte después de la entrega. Te ayudamos con cualquier ajuste o duda que tengas.</p></div></div>
-            <div class="faq rv"><button class="faq-q">¿Puedo pagar en CUP?<span class="faq-t">+</span></button><div class="faq-a"><p>Sí, aceptamos Enzona y TransferMóvil en CUP. También criptomonedas (USDT, BTC, ETH).</p></div></div>
-            <div class="faq rv"><button class="faq-q">¿Trabajan con negocios pequeños?<span class="faq-t">+</span></button><div class="faq-a"><p>¡Claro! Tenemos soluciones adaptadas para PYMES y emprendedores que necesitan digitalizarse sin grandes inversiones.</p></div></div>
-        </div>
-    </div>
+<section id="faq" class="wbg">
+<div class="w">
+<div class="sh rv">
+<div class="slab">❓ FAQ</div>
+<h2>Preguntas <span class="g">frecuentes</span></h2>
+</div>
+<div class="fl">
+<div class="fq rv"><button class="fq-btn">¿Qué tipo de software desarrollan?<span class="fq-t">+</span></button><div class="fq-a"><p>Desarrollamos todo tipo de software: aplicaciones web, de escritorio, móviles, sistemas de gestión, CRM, tiendas online, automatizaciones y más.</p></div></div>
+<div class="fq rv"><button class="fq-btn">¿Cuánto cuesta un proyecto?<span class="fq-t">+</span></button><div class="fq-a"><p>Depende de la complejidad. Ofrecemos opciones para todos los presupuestos. Contáctanos por WhatsApp y te damos una cotización gratuita.</p></div></div>
+<div class="fq rv"><button class="fq-btn">¿Cuánto tarda una página web?<span class="fq-t">+</span></button><div class="fq-a"><p>Una landing page en 3-5 días, un sitio completo en 1-2 semanas, sistemas complejos en 3-4 semanas.</p></div></div>
+<div class="fq rv"><button class="fq-btn">¿Ofrecen soporte post-entrega?<span class="fq-t">+</span></button><div class="fq-a"><p>¡Sí! Todos los proyectos incluyen soporte después de la entrega con cualquier ajuste o duda.</p></div></div>
+<div class="fq rv"><button class="fq-btn">¿Puedo pagar en CUP?<span class="fq-t">+</span></button><div class="fq-a"><p>Sí, aceptamos Enzona y TransferMóvil en CUP. También criptomonedas (USDT, BTC, ETH).</p></div></div>
+<div class="fq rv"><button class="fq-btn">¿Trabajan con negocios pequeños?<span class="fq-t">+</span></button><div class="fq-a"><p>¡Claro! Tenemos soluciones adaptadas para PYMES y emprendedores que necesitan digitalizarse.</p></div></div>
+</div>
+</div>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
-    <div class="footer-in">
-        <div class="f-brand"><div class="f-brand-ic">⚡</div><span>PedritoTech Solutions</span></div>
-        <ul class="f-links">
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#nosotros">Nosotros</a></li>
-            <li><a href="#proceso">Proceso</a></li>
-            <li><a href="#pagos">Pagos</a></li>
-            <li><a href="#faq">FAQ</a></li>
-        </ul>
-        <div class="f-soc">
-            <a href="https://wa.me/5359924051" target="_blank">💬</a>
-            <a href="#">✈️</a>
-            <a href="#">📘</a>
-        </div>
-    </div>
+<footer class="ft">
+<div class="fi">
+<div class="fb"><div class="fbi">⚡</div><span>PedritoTech Solutions</span></div>
+<ul class="flk">
+<li><a href="#servicios">Servicios</a></li>
+<li><a href="#nosotros">Nosotros</a></li>
+<li><a href="#proceso">Proceso</a></li>
+<li><a href="#pagos">Pagos</a></li>
+<li><a href="#faq">FAQ</a></li>
+</ul>
+<div class="fsc">
+<a href="https://wa.me/5359924051" target="_blank">💬</a>
+<a href="#">✈️</a>
+<a href="#">📘</a>
+</div>
+</div>
 </footer>
 
-<!-- WA FLOAT -->
-<div class="wa-float">
-    <div class="wa-tip">💬 ¿Tienes un proyecto? ¡Hablemos!</div>
-    <a href="https://wa.me/5359924051?text=Hola%2C%20quiero%20información%20sobre%20sus%20servicios%20de%20software" target="_blank" class="wa-btn">💬</a>
+<!-- WA -->
+<div class="waf">
+<div class="watip">💬 ¿Tienes un proyecto? ¡Hablemos!</div>
+<a href="https://wa.me/5359924051?text=Hola%2C%20quiero%20información%20sobre%20sus%20servicios" target="_blank" class="wabtn">💬</a>
 </div>
-
-<button class="top-btn" id="topBtn">↑</button>
+<button class="stp" id="stp">↑</button>
 
 <script>
-    // === LOADER ===
-    addEventListener('load', () => setTimeout(() => document.getElementById('ld').classList.add('hide'), 1600));
+(function(){
+'use strict';
 
-    // === PARTICLES ===
-    const cv = document.getElementById('pc');
-    const cx = cv.getContext('2d');
-    let ps = [];
-    function rs() { cv.width = innerWidth; cv.height = innerHeight; }
-    rs(); addEventListener('resize', rs);
-    for (let i = 0; i < 35; i++) ps.push({ x: Math.random()*cv.width, y: Math.random()*cv.height, s: Math.random()*1.2+.3, dx: (Math.random()-.5)*.25, dy: (Math.random()-.5)*.25, o: Math.random()*.25+.03 });
-    (function d() {
-        cx.clearRect(0,0,cv.width,cv.height);
-        for (let i=0;i<ps.length;i++) {
-            let p=ps[i]; p.x+=p.dx; p.y+=p.dy;
-            if(p.x<0||p.x>cv.width||p.y<0||p.y>cv.height){p.x=Math.random()*cv.width;p.y=Math.random()*cv.height;}
-            cx.beginPath(); cx.arc(p.x,p.y,p.s,0,6.28);
-            cx.fillStyle='rgba(124,92,237,'+p.o+')'; cx.fill();
-            for(let j=i+1;j<ps.length;j++){
-                let q=ps[j], dist=Math.hypot(p.x-q.x,p.y-q.y);
-                if(dist<100){cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.strokeStyle='rgba(124,92,237,'+(.025*(1-dist/100))+')';cx.lineWidth=.4;cx.stroke();}
-            }
-        }
-        requestAnimationFrame(d);
-    })();
+// Loader
+var ld=document.getElementById('ld');
+setTimeout(function(){ld.classList.add('hide');},1500);
 
-    // === NAV ===
-    addEventListener('scroll', () => document.getElementById('nv').classList.toggle('on', scrollY > 40));
+// Nav scroll
+var nv=document.getElementById('nv');
+window.addEventListener('scroll',function(){nv.classList.toggle('on',window.scrollY>40);},{passive:true});
 
-    // === BURGER ===
-    const b=document.getElementById('bg'),l=document.getElementById('lk');
-    b.onclick=()=>{b.classList.toggle('on');l.classList.toggle('open');};
-    l.querySelectorAll('a').forEach(a=>a.onclick=()=>{b.classList.remove('on');l.classList.remove('open');});
+// Burger
+var br=document.getElementById('br'),lk=document.getElementById('lk');
+br.addEventListener('click',function(){br.classList.toggle('on');lk.classList.toggle('open');});
+lk.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){br.classList.remove('on');lk.classList.remove('open');});});
 
-    // === COUNTER ===
-    let cd=false;
-    new IntersectionObserver(e=>{
-        if(e[0].isIntersecting&&!cd){cd=true;let n=0,el=document.getElementById('c1');
-        const t=setInterval(()=>{n+=7;if(n>=300){n=300;clearInterval(t);}el.textContent=n+'+';},20);}
-    },{threshold:.5}).observe(document.getElementById('c1'));
+// Counter
+var cd=false,c1=document.getElementById('c1');
+function countUp(){
+if(cd)return;cd=true;
+var n=0,t=setInterval(function(){n+=7;if(n>=300){n=300;clearInterval(t);}c1.textContent=n+'+';},20);
+}
+if('IntersectionObserver' in window){
+var co=new IntersectionObserver(function(e){if(e[0].isIntersecting)countUp();},{threshold:.5});
+co.observe(c1);
+}
 
-    // === TABS ===
-    document.querySelectorAll('.tab').forEach(b=>{
-        b.onclick=()=>{
-            document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
-            document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
-            b.classList.add('on');
-            document.getElementById('p-'+b.dataset.t).classList.add('on');
-        };
-    });
+// Tabs
+document.querySelectorAll('.tab').forEach(function(b){
+b.addEventListener('click',function(){
+document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
+document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on');});
+b.classList.add('on');
+var panel=document.getElementById('p-'+b.dataset.t);
+if(panel)panel.classList.add('on');
+});
+});
 
-    // === REVEAL ===
-    new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('show');});},{threshold:.08})
-    .observe(document.querySelectorAll('.rv'));
+// Reveal
+if('IntersectionObserver' in window){
+var ro=new IntersectionObserver(function(entries){
+entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('show');});
+},{threshold:.08});
+document.querySelectorAll('.rv').forEach(function(el){ro.observe(el);});
+}
 
-    // === FAQ ===
-    document.querySelectorAll('.faq-q').forEach(b=>{
-        b.onclick=()=>{
-            const p=b.parentElement;
-            document.querySelectorAll('.faq').forEach(f=>f.classList.remove('on'));
-            p.classList.toggle('on');
-        };
-    });
+// FAQ
+document.querySelectorAll('.fq-btn').forEach(function(b){
+b.addEventListener('click',function(){
+var p=b.parentElement;
+document.querySelectorAll('.fq').forEach(function(f){if(f!==p)f.classList.remove('on');});
+p.classList.toggle('on');
+});
+});
 
-    // === TOP ===
-    const tb=document.getElementById('topBtn');
-    addEventListener('scroll',()=>tb.classList.toggle('show',scrollY>400));
-    tb.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+// Scroll top
+var stp=document.getElementById('stp');
+window.addEventListener('scroll',function(){stp.classList.toggle('show',window.scrollY>400);},{passive:true});
+stp.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
 
-    // === SMOOTH ===
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-        a.onclick=function(e){
-            e.preventDefault();
-            const t=document.querySelector(this.getAttribute('href'));
-            if(t)scrollTo({top:t.getBoundingClientRect().top+scrollY-70,behavior:'smooth'});
-        };
-    });
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+a.addEventListener('click',function(e){
+e.preventDefault();
+var t=document.querySelector(this.getAttribute('href'));
+if(t)window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'});
+});
+});
+
+})();
 </script>
 </body>
 </html>
