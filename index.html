@@ -16,351 +16,648 @@
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--d);color:var(--t);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PedritoTech Solutions — Unlock Tools & Software a Medida</title>
+<style>
+/* ============ RESET & BASE ============ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--p:#7c3aed;--pl:#a78bfa;--s:#06b6d4;--a:#f43f5e;
+--d:#030712;--d2:#0b1120;--d3:#111827;
+--t:#f1f5f9;--tm:#94a3b8;--ok:#10b981;--w:#f59e0b;
+--g1:linear-gradient(135deg,#7c3aed,#06b6d4);
+--g2:linear-gradient(135deg,#f43f5e,#7c3aed);
+--g3:linear-gradient(135deg,#06b6d4,#10b981);
+--g4:linear-gradient(135deg,#f59e0b,#f43f5e);
+}
+html{scroll-behavior:smooth}
+body{
+font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+background:var(--d);color:var(--t);line-height:1.6;
+-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:var(--d)}
 ::-webkit-scrollbar-thumb{background:var(--p);border-radius:10px}
+img{max-width:100%;display:block}
 
-.orbs{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
-.orbs span{position:absolute;border-radius:50%;filter:blur(120px);opacity:.07}
-.orbs .o1{width:500px;height:500px;background:var(--p);top:-150px;left:-150px;animation:m1 28s ease-in-out infinite}
-.orbs .o2{width:400px;height:400px;background:var(--s);top:40%;right:-100px;animation:m2 28s ease-in-out infinite}
-.orbs .o3{width:450px;height:450px;background:var(--a);bottom:-100px;left:20%;animation:m3 28s ease-in-out infinite}
-@keyframes m1{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,-60px)}}
-@keyframes m2{0%,100%{transform:translate(0,0)}50%{transform:translate(-60px,80px)}}
-@keyframes m3{0%,100%{transform:translate(0,0)}50%{transform:translate(70px,50px)}}
-.grid-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.01) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.01) 1px,transparent 1px);background-size:50px 50px}
+/* ============ BACKGROUND EFFECTS ============ */
+.bg-orbs{
+position:fixed;top:0;left:0;width:100%;height:100%;
+z-index:0;pointer-events:none;overflow:hidden;
+}
+.bg-orbs span{
+position:absolute;border-radius:50%;
+filter:blur(120px);opacity:.06;
+}
+.bg-orbs .o1{width:500px;height:500px;background:var(--p);top:-150px;left:-150px;animation:orb1 30s ease-in-out infinite}
+.bg-orbs .o2{width:400px;height:400px;background:var(--s);top:40%;right:-100px;animation:orb2 30s ease-in-out infinite}
+.bg-orbs .o3{width:450px;height:450px;background:var(--a);bottom:-100px;left:20%;animation:orb3 30s ease-in-out infinite}
+@keyframes orb1{0%,100%{transform:translate(0,0)}33%{transform:translate(80px,-60px)}66%{transform:translate(-40px,80px)}}
+@keyframes orb2{0%,100%{transform:translate(0,0)}33%{transform:translate(-60px,80px)}66%{transform:translate(70px,-40px)}}
+@keyframes orb3{0%,100%{transform:translate(0,0)}33%{transform:translate(70px,50px)}66%{transform:translate(-80px,-30px)}}
 
-.loader{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--d);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;transition:opacity .5s,visibility .5s}
+.bg-grid{
+position:fixed;top:0;left:0;width:100%;height:100%;
+z-index:0;pointer-events:none;
+background-image:
+linear-gradient(rgba(255,255,255,.008) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.008) 1px,transparent 1px);
+background-size:60px 60px;
+}
+
+/* ============ LOADER ============ */
+.loader{
+position:fixed;top:0;left:0;width:100%;height:100%;
+background:var(--d);z-index:10000;
+display:flex;flex-direction:column;align-items:center;justify-content:center;
+gap:1rem;transition:opacity .6s ease,visibility .6s ease;
+}
 .loader.hide{opacity:0;visibility:hidden;pointer-events:none}
-.loader span{font-size:2rem;font-weight:800;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.loader-bar{width:160px;height:3px;background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden}
-.loader-bar i{display:block;height:100%;width:0;background:var(--g1);border-radius:10px;animation:lf 1.5s ease forwards}
-@keyframes lf{to{width:100%}}
+.loader-title{
+font-size:2.2rem;font-weight:800;
+background:var(--g1);-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;background-clip:text;
+}
+.loader-bar{width:180px;height:3px;background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden}
+.loader-bar i{display:block;height:100%;width:0;background:var(--g1);border-radius:10px;animation:loadBar 1.8s ease forwards}
+@keyframes loadBar{to{width:100%}}
+.loader-sub{font-size:.65rem;color:var(--tm);letter-spacing:3px;text-transform:uppercase}
 
-.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1rem 1.5rem;transition:.3s}
-.nav.on{background:rgba(3,7,18,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05);padding:.7rem 1.5rem}
-.nav-in{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+/* ============ NAVIGATION ============ */
+.nav{
+position:fixed;top:0;left:0;width:100%;z-index:1000;
+padding:1rem 1.5rem;transition:all .3s ease;
+}
+.nav.scrolled{
+background:rgba(3,7,18,.9);backdrop-filter:blur(16px);
+border-bottom:1px solid rgba(255,255,255,.05);padding:.7rem 1.5rem;
+}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
 .logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--t)}
-.logo-box{width:36px;height:36px;background:var(--g1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
-.logo-t{display:flex;flex-direction:column}
-.logo-t .n{font-size:1.1rem;font-weight:800;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.logo-t .u{font-size:.55rem;color:var(--tm);letter-spacing:2px;text-transform:uppercase}
-.links{display:flex;list-style:none;gap:.2rem;align-items:center}
-.links a{text-decoration:none;color:var(--tm);font-weight:500;padding:.45rem .8rem;border-radius:8px;font-size:.82rem;transition:.2s;white-space:nowrap}
-.links a:hover{color:var(--t);background:rgba(255,255,255,.04)}
-.links .cta{background:var(--g1);color:#fff;font-weight:600}
-.burger{display:none;flex-direction:column;cursor:pointer;gap:5px;z-index:1001;padding:4px}
-.burger span{width:22px;height:2.5px;background:var(--t);border-radius:3px;transition:.3s}
-.burger.on span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-.burger.on span:nth-child(2){opacity:0}
-.burger.on span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.logo-box{
+width:38px;height:38px;background:var(--g1);border-radius:10px;
+display:flex;align-items:center;justify-content:center;font-size:1.1rem;
+box-shadow:0 0 20px rgba(124,58,237,.2);
+}
+.logo-text{display:flex;flex-direction:column}
+.logo-text .name{
+font-size:1.15rem;font-weight:800;
+background:var(--g1);-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;background-clip:text;
+}
+.logo-text .sub{font-size:.55rem;color:var(--tm);letter-spacing:2px;text-transform:uppercase}
 
-/* HERO - UNLOCK FOCUSED */
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;z-index:1;padding:7rem 1.5rem 3rem}
-.hero-in{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-.hero-text{animation:fadeUp .7s ease both}
-.badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(244,63,94,.1);border:1px solid rgba(244,63,94,.2);padding:.4rem 1rem;border-radius:50px;font-size:.72rem;color:#fb7185;margin-bottom:1.2rem;font-weight:500}
-.badge .dot{width:7px;height:7px;background:var(--ok);border-radius:50%;animation:blink 2s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.5}}
-.hero h1{font-size:3rem;font-weight:900;line-height:1.08;margin-bottom:.8rem;letter-spacing:-.5px}
-.g{background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.g2{background:var(--g2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero p{font-size:1rem;color:var(--tm);margin-bottom:1.5rem;max-width:500px;line-height:1.7}
+.nav-links{display:flex;list-style:none;gap:.2rem;align-items:center}
+.nav-links a{
+text-decoration:none;color:var(--tm);font-weight:500;
+padding:.45rem .8rem;border-radius:8px;font-size:.82rem;transition:.2s;white-space:nowrap;
+}
+.nav-links a:hover{color:var(--t);background:rgba(255,255,255,.04)}
+.nav-links .nav-cta{
+background:var(--g1);color:#fff;font-weight:600;
+box-shadow:0 2px 10px rgba(124,58,237,.3);
+}
+.nav-links .nav-cta:hover{box-shadow:0 4px 16px rgba(124,58,237,.5)}
 
-/* Quick unlock chips */
-.unlock-chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.8rem}
-.uc{display:inline-flex;align-items:center;gap:.3rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:.35rem .8rem;border-radius:50px;font-size:.75rem;color:var(--t);transition:.2s}
-.uc:hover{background:rgba(124,58,237,.15);border-color:rgba(124,58,237,.3)}
+.hamburger{display:none;flex-direction:column;cursor:pointer;gap:5px;z-index:1001;padding:4px}
+.hamburger span{width:22px;height:2.5px;background:var(--t);border-radius:3px;transition:.3s}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 
-.hero-btns{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2rem}
-.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.85rem 1.6rem;border-radius:11px;text-decoration:none;font-weight:600;font-size:.88rem;transition:.3s;cursor:pointer;border:none;font-family:inherit}
+/* ============ HERO SECTION ============ */
+.hero{
+min-height:100vh;display:flex;align-items:center;
+position:relative;z-index:1;padding:7rem 1.5rem 3rem;
+}
+.hero-inner{
+max-width:1200px;margin:0 auto;width:100%;
+display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;
+}
+.hero-content{animation:fadeInUp .8s ease both}
+
+.hero-badge{
+display:inline-flex;align-items:center;gap:.5rem;
+background:rgba(244,63,94,.08);border:1px solid rgba(244,63,94,.2);
+padding:.4rem 1rem;border-radius:50px;font-size:.72rem;
+color:#fb7185;margin-bottom:1.2rem;font-weight:500;
+}
+.hero-badge .dot{width:7px;height:7px;background:var(--ok);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+.hero-title{font-size:3.2rem;font-weight:900;line-height:1.05;margin-bottom:.8rem;letter-spacing:-.5px}
+.hero-title .grad1{background:var(--g2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-title .grad2{background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+.hero-desc{font-size:1.02rem;color:var(--tm);margin-bottom:1.5rem;max-width:500px;line-height:1.7}
+
+.hero-chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.8rem}
+.chip{
+display:inline-flex;align-items:center;gap:.3rem;
+background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+padding:.35rem .8rem;border-radius:50px;font-size:.75rem;color:var(--t);transition:.2s;
+}
+.chip:hover{background:rgba(244,63,94,.1);border-color:rgba(244,63,94,.3)}
+
+.hero-buttons{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2rem}
+.btn{
+display:inline-flex;align-items:center;gap:.4rem;
+padding:.85rem 1.6rem;border-radius:11px;
+text-decoration:none;font-weight:600;font-size:.88rem;
+transition:.3s;cursor:pointer;border:none;font-family:inherit;
+}
+.btn-unlock{background:var(--g2);color:#fff;box-shadow:0 3px 16px rgba(244,63,94,.3)}
+.btn-unlock:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(244,63,94,.5)}
+.btn-whatsapp{background:#25D366;color:#fff;box-shadow:0 3px 16px rgba(37,211,102,.3)}
+.btn-whatsapp:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(37,211,102,.5)}
 .btn-primary{background:var(--g1);color:#fff;box-shadow:0 3px 16px rgba(124,58,237,.3)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(124,58,237,.5)}
-.btn-wa{background:#25D366;color:#fff;box-shadow:0 3px 16px rgba(37,211,102,.3)}
-.btn-wa:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(37,211,102,.5)}
 .btn-ghost{background:transparent;color:var(--t);border:1px solid rgba(255,255,255,.06)}
 .btn-ghost:hover{background:rgba(255,255,255,.04);transform:translateY(-2px)}
-.btn-unlock{background:linear-gradient(135deg,#f43f5e,#7c3aed);color:#fff;box-shadow:0 3px 16px rgba(244,63,94,.3);font-weight:700}
-.btn-unlock:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(244,63,94,.5)}
-.stats{display:flex;gap:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.06)}
-.stat h3{font-size:1.8rem;font-weight:900;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.stat p{font-size:.7rem;color:var(--tm);text-transform:uppercase;letter-spacing:1px;margin:0}
 
-/* Phone visual */
-.hero-vis{display:flex;justify-content:center;align-items:center;animation:fadeUp .7s ease .2s both}
-.ph-wrap{position:relative}
-.ph-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:250px;height:250px;background:var(--a);border-radius:50%;filter:blur(80px);opacity:.15}
-.phone{position:relative;width:220px;height:440px;background:linear-gradient(160deg,#151528,#0a0a18);border-radius:36px;border:1.5px solid rgba(255,255,255,.07);padding:8px;box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 40px rgba(244,63,94,.1);z-index:2}
-.phone-screen{width:100%;height:100%;background:linear-gradient(180deg,#0f172a,#030712);border-radius:28px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
-.notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:90px;height:20px;background:#030712;border-radius:0 0 12px 12px}
-.scr{text-align:center;padding:1.5rem}
-.scr-icon{font-size:3rem;display:block;margin-bottom:.6rem;animation:unlockB 3s infinite}
-@keyframes unlockB{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
-.scr-title{font-size:1rem;font-weight:700;background:var(--g2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.2rem}
-.scr-sub{font-size:.65rem;color:var(--tm);margin-bottom:1rem}
-.prog{width:70%;margin:0 auto;height:4px;background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden}
-.prog span{display:block;height:100%;background:var(--g2);border-radius:10px;animation:barA 4s infinite ease-in-out}
-@keyframes barA{0%{width:0}55%{width:100%}80%{width:100%}100%{width:0}}
+.hero-stats{display:flex;gap:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.06)}
+.stat-item h3{font-size:1.8rem;font-weight:900;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-item p{font-size:.7rem;color:var(--tm);text-transform:uppercase;letter-spacing:1px;margin:0}
 
-.fcard{position:absolute;background:rgba(11,17,32,.85);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:.5rem .8rem;font-size:.66rem;display:flex;align-items:center;gap:.4rem;animation:floatC 6s infinite ease-in-out;white-space:nowrap;z-index:3;box-shadow:0 8px 20px rgba(0,0,0,.3)}
-.fcard:nth-child(1){top:5%;right:-50px}
-.fcard:nth-child(2){bottom:28%;left:-65px;animation-delay:-2s}
-.fcard:nth-child(3){bottom:5%;right:-55px;animation-delay:-4s}
-@keyframes floatC{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+/* ============ PHONE VISUAL ============ */
+.hero-visual{display:flex;justify-content:center;align-items:center;animation:fadeInUp .8s ease .2s both}
+.phone-wrapper{position:relative}
+.phone-glow{
+position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+width:260px;height:260px;background:var(--a);border-radius:50%;
+filter:blur(80px);opacity:.12;animation:glowPulse 4s infinite;
+}
+@keyframes glowPulse{0%,100%{opacity:.1}50%{opacity:.18}}
 
-/* UNLOCK BANNER - Right below hero */
-.unlock-banner{position:relative;z-index:1;background:linear-gradient(135deg,rgba(244,63,94,.08),rgba(124,58,237,.06));border:1px solid rgba(244,63,94,.15);border-radius:18px;max-width:1200px;margin:-2rem auto 0;padding:2.5rem 2rem}
-.ub-inner{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
-.ub-text h3{font-size:1.4rem;font-weight:800;margin-bottom:.5rem}
-.ub-text h3 span{color:#fb7185}
-.ub-text p{font-size:.88rem;color:var(--tm);line-height:1.7;margin-bottom:1.2rem}
-.ub-items{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
-.ub-item{display:flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);padding:.5rem 1rem;border-radius:10px;font-size:.82rem;cursor:pointer;transition:.2s;text-decoration:none;color:var(--t)}
-.ub-item:hover{background:rgba(244,63,94,.1);border-color:rgba(244,63,94,.3)}
-.ub-visual{display:flex;justify-content:center}
-.ub-phone{width:160px;height:320px;background:linear-gradient(160deg,#151528,#0a0a18);border-radius:28px;border:1px solid rgba(255,255,255,.06);padding:6px;box-shadow:0 15px 40px rgba(0,0,0,.4)}
-.ub-screen{width:100%;height:100%;background:linear-gradient(180deg,#0f172a,#030712);border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.ub-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:70px;height:16px;background:#030712;border-radius:0 0 10px 10px}
-.ub-list{text-align:center;padding:1rem}
-.ub-list .li{display:flex;align-items:center;gap:.5rem;padding:.5rem 0;font-size:.72rem;color:var(--tm)}
-.ub-list .li .ic{font-size:.9rem}
-.ub-list .li.done{color:var(--ok)}
+.phone-device{
+position:relative;width:220px;height:440px;
+background:linear-gradient(160deg,#151528,#0a0a18);
+border-radius:36px;border:1.5px solid rgba(255,255,255,.07);
+padding:8px;z-index:2;
+box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 40px rgba(244,63,94,.08);
+}
+.phone-display{
+width:100%;height:100%;background:linear-gradient(180deg,#0f172a,#030712);
+border-radius:28px;overflow:hidden;display:flex;flex-direction:column;
+align-items:center;justify-content:center;position:relative;
+}
+.phone-notch{
+position:absolute;top:0;left:50%;transform:translateX(-50%);
+width:90px;height:20px;background:#030712;border-radius:0 0 12px 12px;
+}
+.screen-content{text-align:center;padding:1.5rem}
+.screen-icon{font-size:3rem;display:block;margin-bottom:.6rem;animation:unlockBounce 3s infinite}
+@keyframes unlockBounce{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.screen-title{font-size:1rem;font-weight:700;background:var(--g2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.2rem}
+.screen-sub{font-size:.65rem;color:var(--tm);margin-bottom:1rem}
+.progress-bar{width:70%;margin:0 auto;height:4px;background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden}
+.progress-bar span{display:block;height:100%;background:var(--g2);border-radius:10px;animation:progressAnim 4s infinite ease-in-out}
+@keyframes progressAnim{0%{width:0}55%{width:100%}80%{width:100%}100%{width:0}}
 
-/* SECTIONS */
-section{position:relative;z-index:1;padding:4.5rem 1.5rem}
-.wrap{max-width:1200px;margin:0 auto}
-.sh{text-align:center;margin-bottom:2.5rem}
-.sl{display:inline-flex;align-items:center;gap:.4rem;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.15);padding:.35rem 1rem;border-radius:50px;font-size:.72rem;color:var(--pl);margin-bottom:.8rem;font-weight:500}
-.sh h2{font-size:2rem;font-weight:900;margin-bottom:.6rem;letter-spacing:-.5px}
-.sh p{color:var(--tm);max-width:540px;margin:0 auto;font-size:.92rem;line-height:1.7}
+.float-card{
+position:absolute;background:rgba(11,17,32,.85);
+border:1px solid rgba(255,255,255,.08);border-radius:10px;
+padding:.5rem .8rem;font-size:.66rem;
+display:flex;align-items:center;gap:.4rem;
+animation:floatCard 6s infinite ease-in-out;
+white-space:nowrap;z-index:3;
+box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+.float-card:nth-child(1){top:5%;right:-50px}
+.float-card:nth-child(2){bottom:28%;left:-65px;animation-delay:-2s}
+.float-card:nth-child(3){bottom:5%;right:-55px;animation-delay:-4s}
+@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
-/* TABS */
-.tabs-wrap{display:flex;justify-content:center;gap:.4rem;flex-wrap:wrap;margin-bottom:2rem}
-.tab-btn{padding:.5rem 1rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;color:var(--tm);font-size:.8rem;font-weight:600;cursor:pointer;transition:.3s;font-family:inherit}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+
+/* ============ UNLOCK BANNER ============ */
+.unlock-banner-section{
+position:relative;z-index:1;
+padding:0 1.5rem 2rem;
+}
+.unlock-banner{
+max-width:1200px;margin:0 auto;
+background:linear-gradient(135deg,rgba(244,63,94,.06),rgba(124,58,237,.05));
+border:1px solid rgba(244,63,94,.15);
+border-radius:20px;padding:2.5rem 2rem;
+}
+.ub-inner{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+.ub-content h3{font-size:1.5rem;font-weight:800;margin-bottom:.5rem}
+.ub-content h3 .red{color:#fb7185}
+.ub-content p{font-size:.88rem;color:var(--tm);line-height:1.7;margin-bottom:1.2rem}
+.ub-services{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.ub-svc{
+display:flex;align-items:center;gap:.4rem;
+background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);
+padding:.5rem 1rem;border-radius:10px;font-size:.82rem;
+cursor:pointer;transition:.2s;text-decoration:none;color:var(--t);
+}
+.ub-svc:hover{background:rgba(244,63,94,.1);border-color:rgba(244,63,94,.3)}
+.ub-phone-visual{display:flex;justify-content:center}
+.ub-phone{
+width:160px;height:320px;
+background:linear-gradient(160deg,#151528,#0a0a18);
+border-radius:28px;border:1px solid rgba(255,255,255,.06);
+padding:6px;box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+.ub-phone-screen{
+width:100%;height:100%;background:linear-gradient(180deg,#0f172a,#030712);
+border-radius:22px;display:flex;flex-direction:column;
+align-items:center;justify-content:center;position:relative;overflow:hidden;
+}
+.ub-phone-notch{
+position:absolute;top:0;left:50%;transform:translateX(-50%);
+width:70px;height:16px;background:#030712;border-radius:0 0 10px 10px;
+}
+.ub-checklist{text-align:center;padding:1rem}
+.ub-check-item{display:flex;align-items:center;gap:.5rem;padding:.45rem 0;font-size:.72rem;color:var(--tm)}
+.ub-check-item .icon{font-size:.9rem}
+.ub-check-item.complete{color:var(--ok)}
+
+/* ============ SECTIONS COMMON ============ */
+.section{position:relative;z-index:1;padding:5rem 1.5rem}
+.section-wrap{max-width:1200px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:3rem}
+.section-label{
+display:inline-flex;align-items:center;gap:.4rem;
+background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.15);
+padding:.35rem 1rem;border-radius:50px;font-size:.72rem;
+color:var(--pl);margin-bottom:.8rem;font-weight:500;
+}
+.section-header h2{font-size:2.2rem;font-weight:900;margin-bottom:.6rem;letter-spacing:-.5px}
+.section-header p{color:var(--tm);max-width:540px;margin:0 auto;font-size:.92rem;line-height:1.7}
+
+/* ============ TABS ============ */
+.tabs-container{display:flex;justify-content:center;gap:.4rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.tab-btn{
+padding:.5rem 1rem;background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.06);border-radius:10px;
+color:var(--tm);font-size:.8rem;font-weight:600;
+cursor:pointer;transition:.3s;font-family:inherit;
+}
 .tab-btn:hover{background:rgba(255,255,255,.05);color:var(--t)}
 .tab-btn.active{background:var(--g1);color:#fff;border-color:transparent;box-shadow:0 3px 12px rgba(124,58,237,.3)}
-.tab-content{display:none}.tab-content.active{display:block;animation:fadeUp .4s ease}
-.grd{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.2rem}
 
-/* CARDS */
-.cd{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.8rem;transition:.3s;position:relative;overflow:hidden}
-.cd::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--g1);opacity:0;transition:.3s}
-.cd:hover{transform:translateY(-4px);border-color:rgba(124,58,237,.15);box-shadow:0 12px 30px rgba(0,0,0,.3)}
-.cd:hover::before{opacity:1}
-.ci{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1rem}
-.ci.p{background:rgba(124,58,237,.1)}.ci.c{background:rgba(6,182,212,.1)}.ci.pk{background:rgba(244,63,94,.1)}.ci.a{background:rgba(245,158,11,.1)}.ci.gr{background:rgba(16,185,129,.1)}.ci.b{background:rgba(59,130,246,.1)}
-.cd h3{font-size:1.02rem;font-weight:700;margin-bottom:.3rem}
-.cd>p{color:var(--tm);font-size:.8rem;margin-bottom:.8rem;line-height:1.7}
-.cf{list-style:none;margin-bottom:1rem}
-.cf li{padding:.15rem 0;font-size:.74rem;color:var(--tm);display:flex;align-items:center;gap:.4rem}
-.cf .ok{color:var(--ok);font-size:.65rem}
-.cbtn{display:inline-flex;align-items:center;gap:.3rem;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.15);color:var(--pl);padding:.45rem .9rem;border-radius:9px;text-decoration:none;font-size:.74rem;font-weight:600;transition:.3s}
-.cbtn:hover{background:var(--g1);color:#fff;border-color:transparent}
-.cbtn.pk{background:rgba(244,63,94,.1);border-color:rgba(244,63,94,.15);color:#fb7185}
-.cbtn.pk:hover{background:var(--g2);color:#fff;border-color:transparent}
+.tab-panel{display:none}
+.tab-panel.active{display:block;animation:fadeInUp .4s ease}
 
-/* WHY */
-.wbg{background:var(--d2)}
-.wgrd{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
-.wc{text-align:center;padding:1.6rem 1rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:14px;transition:.3s}
-.wc:hover{transform:translateY(-4px);border-color:rgba(124,58,237,.12)}
-.wc .wi{font-size:1.6rem;display:block;margin-bottom:.6rem}
-.wc h3{font-size:.88rem;font-weight:700;margin-bottom:.2rem}
-.wc p{font-size:.74rem;color:var(--tm);line-height:1.6}
+/* ============ CARDS GRID ============ */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
 
-/* PROCESS */
-.pgrd{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;position:relative}
-.pgrd::before{content:'';position:absolute;top:32px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,transparent,rgba(124,58,237,.2),rgba(6,182,212,.2),transparent)}
-.pc2{text-align:center;position:relative;padding:1rem}
-.pn{width:44px;height:44px;border-radius:50%;background:var(--g1);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;margin:0 auto .8rem;position:relative;z-index:2}
-.pc2 h3{font-size:.88rem;font-weight:700;margin-bottom:.2rem}
-.pc2 p{font-size:.74rem;color:var(--tm);line-height:1.6}
+.service-card{
+background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);
+border-radius:16px;padding:1.8rem;transition:.35s;position:relative;overflow:hidden;
+}
+.service-card::before{
+content:'';position:absolute;top:0;left:0;right:0;
+height:2px;background:var(--g1);opacity:0;transition:.35s;
+}
+.service-card:hover{transform:translateY(-4px);border-color:rgba(124,58,237,.15);box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.service-card:hover::before{opacity:1}
 
-/* PAYMENTS */
-.paybg{background:var(--d2)}
-.pygrd{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-.py{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:1.8rem 1.5rem;text-align:center;transition:.3s}
-.py:hover{transform:translateY(-3px);border-color:rgba(124,58,237,.12)}
-.pyi{width:50px;height:50px;border-radius:14px;margin:0 auto .8rem;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
-.pyi.e{background:rgba(255,107,0,.1)}.pyi.t{background:rgba(0,102,204,.1)}.pyi.c{background:rgba(247,147,26,.1)}
-.py h3{font-size:.95rem;font-weight:700;margin-bottom:.2rem}
-.py>p{font-size:.78rem;color:var(--tm);line-height:1.6}
-.pyb{display:inline-flex;align-items:center;gap:.2rem;background:rgba(16,185,129,.1);color:var(--ok);padding:.22rem .6rem;border-radius:50px;font-size:.64rem;font-weight:600;margin-top:.7rem}
+.card-icon{
+width:48px;height:48px;border-radius:12px;
+display:flex;align-items:center;justify-content:center;
+font-size:1.2rem;margin-bottom:1rem;
+}
+.card-icon.purple{background:rgba(124,58,237,.1)}
+.card-icon.cyan{background:rgba(6,182,212,.1)}
+.card-icon.pink{background:rgba(244,63,94,.1)}
+.card-icon.amber{background:rgba(245,158,11,.1)}
+.card-icon.green{background:rgba(16,185,129,.1)}
+.card-icon.blue{background:rgba(59,130,246,.1)}
 
-/* CTA */
-.cta-section{padding:4.5rem 1.5rem}
-.cta-box{max-width:780px;margin:0 auto;background:linear-gradient(135deg,rgba(124,58,237,.08),rgba(6,182,212,.05));border:1px solid rgba(124,58,237,.15);border-radius:22px;padding:2.8rem 2.2rem;text-align:center}
-.cta-box h2{font-size:1.9rem;font-weight:900;margin-bottom:.5rem;letter-spacing:-.5px}
-.cta-box>p{color:var(--tm);font-size:.92rem;margin-bottom:1.8rem;max-width:480px;margin-left:auto;margin-right:auto}
-.ctbtns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
-.ccrds{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.8rem;max-width:680px;margin:2.2rem auto 0}
-.ccrd{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:11px;padding:.8rem;display:flex;align-items:center;gap:.7rem;transition:.3s;text-decoration:none;color:var(--t)}
-.ccrd:hover{border-color:rgba(124,58,237,.12);transform:translateY(-2px)}
-.cci{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
-.cci.w{background:rgba(37,211,102,.1)}.cci.ph{background:rgba(124,58,237,.1)}.cci.t{background:rgba(6,182,212,.1)}
-.ccrd strong{display:block;font-size:.8rem}
-.ccrd span{font-size:.7rem;color:var(--tm)}
+.service-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.3rem}
+.service-card>p{color:var(--tm);font-size:.82rem;margin-bottom:.8rem;line-height:1.7}
 
-/* TESTIMONIALS */
-.tbg{background:var(--d2)}
-.tgrd{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-.tt{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:1.6rem;transition:.3s}
-.tt:hover{transform:translateY(-3px);border-color:rgba(124,58,237,.1)}
-.tt-stars{color:var(--w);margin-bottom:.5rem;font-size:.75rem;letter-spacing:2px}
-.tt blockquote{color:var(--tm);font-size:.82rem;font-style:italic;margin-bottom:.8rem;line-height:1.7}
-.tt-a{display:flex;align-items:center;gap:.5rem;padding-top:.7rem;border-top:1px solid rgba(255,255,255,.05)}
-.tt-av{width:30px;height:30px;border-radius:8px;background:var(--g1);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem}
-.tt-a strong{display:block;font-size:.76rem}
-.tt-a span{font-size:.66rem;color:var(--tm)}
+.card-features{list-style:none;margin-bottom:1rem}
+.card-features li{padding:.15rem 0;font-size:.74rem;color:var(--tm);display:flex;align-items:center;gap:.4rem}
+.card-features .check{color:var(--ok);font-size:.65rem}
 
-/* FAQ */
-.fl{max-width:660px;margin:0 auto;display:flex;flex-direction:column;gap:.5rem}
-.fq{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:11px;overflow:hidden;transition:.3s}
-.fq:hover{border-color:rgba(124,58,237,.1)}
-.fq-btn{width:100%;padding:.9rem 1.1rem;background:none;border:none;color:var(--t);font-size:.84rem;font-weight:600;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit}
-.fq-t{width:20px;height:20px;border-radius:6px;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:.3s;flex-shrink:0;color:var(--tm)}
-.fq.on .fq-t{background:var(--g1);color:#fff;transform:rotate(45deg)}
-.fq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
-.fq.on .fq-a{max-height:250px}
-.fq-a p{padding:0 1.1rem .9rem;color:var(--tm);font-size:.8rem;line-height:1.7}
+.card-btn{
+display:inline-flex;align-items:center;gap:.3rem;
+background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.15);
+color:var(--pl);padding:.45rem .9rem;border-radius:9px;
+text-decoration:none;font-size:.74rem;font-weight:600;transition:.3s;
+}
+.card-btn:hover{background:var(--g1);color:#fff;border-color:transparent}
+.card-btn.pink{background:rgba(244,63,94,.1);border-color:rgba(244,63,94,.15);color:#fb7185}
+.card-btn.pink:hover{background:var(--g2);color:#fff;border-color:transparent}
 
-/* FOOTER */
-.ft{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.05);padding:2rem 1.5rem}
-.fi{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.fb{display:flex;align-items:center;gap:.5rem}
-.fbi{width:30px;height:30px;background:var(--g1);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.85rem}
-.fb span{font-size:.88rem;font-weight:700;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.flk{display:flex;gap:1.3rem;list-style:none}
-.flk a{color:var(--tm);text-decoration:none;font-size:.74rem;transition:.2s}
-.flk a:hover{color:var(--t)}
-.fsc{display:flex;gap:.4rem}
-.fsc a{width:30px;height:30px;border-radius:9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.8rem;transition:.3s}
-.fsc a:hover{background:var(--g1);border-color:transparent;transform:translateY(-2px)}
+/* ============ WHY US ============ */
+.why-section{background:var(--d2)}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.why-card{
+text-align:center;padding:1.8rem 1rem;
+background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);
+border-radius:14px;transition:.3s;
+}
+.why-card:hover{transform:translateY(-4px);border-color:rgba(124,58,237,.12)}
+.why-icon{font-size:1.8rem;display:block;margin-bottom:.7rem}
+.why-card h3{font-size:.9rem;font-weight:700;margin-bottom:.2rem}
+.why-card p{font-size:.74rem;color:var(--tm);line-height:1.6}
 
-/* WA */
-.waf{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;display:flex;flex-direction:column;align-items:flex-end;gap:.6rem}
-.watip{background:#fff;color:#1a1a2e;padding:.5rem .9rem;border-radius:10px;font-size:.7rem;font-weight:600;box-shadow:0 6px 20px rgba(0,0,0,.18);position:relative;white-space:nowrap}
-.watip::after{content:'';position:absolute;bottom:-5px;right:18px;width:10px;height:10px;background:#fff;transform:rotate(45deg)}
-.wabtn{width:54px;height:54px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.5rem;color:#fff;box-shadow:0 3px 16px rgba(37,211,102,.4);transition:.3s;animation:wp 2.5s infinite}
-.wabtn:hover{transform:scale(1.08)}
-@keyframes wp{0%{box-shadow:0 3px 16px rgba(37,211,102,.4)}50%{box-shadow:0 3px 20px rgba(37,211,102,.7),0 0 0 10px rgba(37,211,102,.08)}100%{box-shadow:0 3px 16px rgba(37,211,102,.4)}}
+/* ============ PROCESS ============ */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;position:relative}
+.process-grid::before{
+content:'';position:absolute;top:32px;left:12%;right:12%;
+height:2px;background:linear-gradient(90deg,transparent,rgba(124,58,237,.2),rgba(6,182,212,.2),transparent);
+}
+.process-step{text-align:center;position:relative;padding:1rem}
+.step-num{
+width:44px;height:44px;border-radius:50%;background:var(--g1);
+display:flex;align-items:center;justify-content:center;
+font-size:1rem;font-weight:800;margin:0 auto .8rem;
+position:relative;z-index:2;
+}
+.process-step h3{font-size:.9rem;font-weight:700;margin-bottom:.2rem}
+.process-step p{font-size:.74rem;color:var(--tm);line-height:1.6}
 
-.stp{position:fixed;bottom:1.5rem;left:1.5rem;width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;color:var(--t);font-size:.8rem;z-index:999;opacity:0;visibility:hidden;transition:.3s;cursor:pointer}
-.stp.show{opacity:1;visibility:visible}
-.stp:hover{background:var(--g1);border-color:transparent;transform:translateY(-2px)}
+/* ============ PAYMENTS ============ */
+.payments-section{background:var(--d2)}
+.payments-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.payment-card{
+background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);
+border-radius:14px;padding:2rem 1.5rem;text-align:center;transition:.3s;
+}
+.payment-card:hover{transform:translateY(-3px);border-color:rgba(124,58,237,.12)}
+.payment-icon{
+width:56px;height:56px;border-radius:14px;margin:0 auto 1rem;
+display:flex;align-items:center;justify-content:center;font-size:1.4rem;
+}
+.payment-icon.enzona{background:rgba(255,107,0,.1)}
+.payment-icon.transfer{background:rgba(0,102,204,.1)}
+.payment-icon.crypto{background:rgba(247,147,26,.1)}
+.payment-card h3{font-size:1rem;font-weight:700;margin-bottom:.2rem}
+.payment-card>p{font-size:.78rem;color:var(--tm);line-height:1.6}
+.payment-badge{
+display:inline-flex;align-items:center;gap:.2rem;
+background:rgba(16,185,129,.1);color:var(--ok);
+padding:.22rem .6rem;border-radius:50px;font-size:.64rem;font-weight:600;margin-top:.8rem;
+}
 
-.rv{opacity:0;transform:translateY(20px);transition:.6s cubic-bezier(.4,0,.2,1)}
-.rv.show{opacity:1;transform:translateY(0)}
+/* ============ CTA SECTION ============ */
+.cta-section{padding:5rem 1.5rem}
+.cta-box{
+max-width:800px;margin:0 auto;
+background:linear-gradient(135deg,rgba(124,58,237,.08),rgba(6,182,212,.05));
+border:1px solid rgba(124,58,237,.15);
+border-radius:24px;padding:3rem 2.5rem;text-align:center;
+}
+.cta-box h2{font-size:2rem;font-weight:900;margin-bottom:.5rem;letter-spacing:-.5px}
+.cta-box>p{color:var(--tm);font-size:.92rem;margin-bottom:2rem;max-width:480px;margin-left:auto;margin-right:auto}
+.cta-buttons{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.contact-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.8rem;max-width:680px;margin:2.5rem auto 0}
+.contact-card{
+background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);
+border-radius:11px;padding:.8rem;display:flex;align-items:center;gap:.7rem;
+transition:.3s;text-decoration:none;color:var(--t);
+}
+.contact-card:hover{border-color:rgba(124,58,237,.12);transform:translateY(-2px)}
+.contact-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-icon.wa{background:rgba(37,211,102,.1)}
+.contact-icon.phone{background:rgba(124,58,237,.1)}
+.contact-icon.clock{background:rgba(6,182,212,.1)}
+.contact-card strong{display:block;font-size:.82rem}
+.contact-card span{font-size:.7rem;color:var(--tm)}
 
+/* ============ TESTIMONIALS ============ */
+.testimonials-section{background:var(--d2)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.testimonial{
+background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);
+border-radius:14px;padding:1.8rem;transition:.3s;
+}
+.testimonial:hover{transform:translateY(-3px);border-color:rgba(124,58,237,.1)}
+.testimonial-stars{color:var(--w);margin-bottom:.5rem;font-size:.75rem;letter-spacing:2px}
+.testimonial blockquote{color:var(--tm);font-size:.82rem;font-style:italic;margin-bottom:.8rem;line-height:1.7}
+.testimonial-author{display:flex;align-items:center;gap:.5rem;padding-top:.7rem;border-top:1px solid rgba(255,255,255,.05)}
+.testimonial-avatar{width:32px;height:32px;border-radius:8px;background:var(--g1);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem}
+.testimonial-author strong{display:block;font-size:.78rem}
+.testimonial-author span{font-size:.66rem;color:var(--tm)}
+
+/* ============ FAQ ============ */
+.faq-section{background:var(--d2)}
+.faq-list{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:.5rem}
+.faq-item{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:11px;overflow:hidden;transition:.3s}
+.faq-item:hover{border-color:rgba(124,58,237,.1)}
+.faq-question{
+width:100%;padding:1rem 1.2rem;background:none;border:none;
+color:var(--t);font-size:.84rem;font-weight:600;text-align:left;
+cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit;
+}
+.faq-toggle{
+width:22px;height:22px;border-radius:6px;
+background:rgba(255,255,255,.04);display:flex;
+align-items:center;justify-content:center;
+font-size:.8rem;transition:.3s;flex-shrink:0;color:var(--tm);
+}
+.faq-item.open .faq-toggle{background:var(--g1);color:#fff;transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-item.open .faq-answer{max-height:250px}
+.faq-answer p{padding:0 1.2rem 1rem;color:var(--tm);font-size:.8rem;line-height:1.7}
+
+/* ============ FOOTER ============ */
+.footer{position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.05);padding:2.5rem 1.5rem}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-brand{display:flex;align-items:center;gap:.5rem}
+.footer-brand-icon{width:32px;height:32px;background:var(--g1);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.footer-brand span{font-size:.9rem;font-weight:700;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.footer-links{display:flex;gap:1.5rem;list-style:none}
+.footer-links a{color:var(--tm);text-decoration:none;font-size:.74rem;transition:.2s}
+.footer-links a:hover{color:var(--t)}
+.footer-social{display:flex;gap:.4rem}
+.footer-social a{
+width:32px;height:32px;border-radius:9px;
+background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);
+display:flex;align-items:center;justify-content:center;
+text-decoration:none;font-size:.8rem;transition:.3s;
+}
+.footer-social a:hover{background:var(--g1);border-color:transparent;transform:translateY(-2px)}
+
+/* ============ WHATSAPP FLOAT ============ */
+.wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;display:flex;flex-direction:column;align-items:flex-end;gap:.6rem}
+.wa-tooltip{
+background:#fff;color:#1a1a2e;padding:.5rem .9rem;border-radius:10px;
+font-size:.72rem;font-weight:600;
+box-shadow:0 6px 20px rgba(0,0,0,.18);position:relative;white-space:nowrap;
+opacity:0;transform:translateY(10px);
+transition:opacity .4s ease,transform .4s ease;
+pointer-events:none;
+}
+.wa-tooltip.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.wa-tooltip::after{content:'';position:absolute;bottom:-5px;right:18px;width:10px;height:10px;background:#fff;transform:rotate(45deg)}
+.wa-btn{
+width:56px;height:56px;border-radius:50%;background:#25D366;
+display:flex;align-items:center;justify-content:center;
+text-decoration:none;font-size:1.6rem;color:#fff;
+box-shadow:0 3px 16px rgba(37,211,102,.4);transition:.3s;
+animation:waPulse 2.5s infinite;
+}
+.wa-btn:hover{transform:scale(1.08)}
+@keyframes waPulse{0%{box-shadow:0 3px 16px rgba(37,211,102,.4)}50%{box-shadow:0 3px 20px rgba(37,211,102,.7),0 0 0 10px rgba(37,211,102,.08)}100%{box-shadow:0 3px 16px rgba(37,211,102,.4)}}
+
+/* ============ SCROLL TOP ============ */
+.scroll-top{
+position:fixed;bottom:1.5rem;left:1.5rem;
+width:38px;height:38px;border-radius:10px;
+background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);
+display:flex;align-items:center;justify-content:center;
+color:var(--t);font-size:.8rem;z-index:999;
+opacity:0;visibility:hidden;transition:.3s;cursor:pointer;
+}
+.scroll-top.show{opacity:1;visibility:visible}
+.scroll-top:hover{background:var(--g1);border-color:transparent;transform:translateY(-2px)}
+
+/* ============ REVEAL ANIMATION ============ */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ============ RESPONSIVE ============ */
 @media(max-width:960px){
-.hero-in{grid-template-columns:1fr;text-align:center;gap:2.5rem}
-.hero p{margin:0 auto 1.5rem}
-.hero-btns{justify-content:center}
-.unlock-chips{justify-content:center}
-.stats{justify-content:center}
-.hero-vis{order:-1}
-.fcard{display:none}
-.phone{width:190px;height:380px}
+.hero-inner{grid-template-columns:1fr;text-align:center;gap:2.5rem}
+.hero-desc{margin:0 auto 1.5rem}
+.hero-buttons{justify-content:center}
+.hero-chips{justify-content:center}
+.hero-stats{justify-content:center}
+.hero-visual{order:-1}
+.float-card{display:none}
+.phone-device{width:190px;height:380px}
 .ub-inner{grid-template-columns:1fr;text-align:center}
-.ub-items{justify-content:center}
-.ub-visual{order:-1}
-.wgrd{grid-template-columns:repeat(2,1fr)}
-.pgrd{grid-template-columns:repeat(2,1fr)}
-.pgrd::before{display:none}
-.pygrd{grid-template-columns:repeat(2,1fr)}
-.tgrd{grid-template-columns:repeat(2,1fr)}
-.fi{flex-direction:column;text-align:center}
-.flk{justify-content:center;flex-wrap:wrap}
-.unlock-banner{margin:-1rem 1rem 0;padding:2rem 1.5rem}
+.ub-services{justify-content:center}
+.ub-phone-visual{order:-1}
+.why-grid{grid-template-columns:repeat(2,1fr)}
+.process-grid{grid-template-columns:repeat(2,1fr)}
+.process-grid::before{display:none}
+.payments-grid{grid-template-columns:repeat(2,1fr)}
+.testimonials-grid{grid-template-columns:repeat(2,1fr)}
+.footer-inner{flex-direction:column;text-align:center}
+.footer-links{justify-content:center;flex-wrap:wrap}
+.unlock-banner-section{padding:0 1rem 2rem}
+.unlock-banner{padding:2rem 1.5rem}
 }
 @media(max-width:700px){
-.links{position:fixed;top:0;right:-100%;width:75%;height:100vh;background:rgba(11,17,32,.97);flex-direction:column;justify-content:center;padding:2rem;gap:.2rem;transition:right .35s;border-left:1px solid rgba(255,255,255,.05)}
-.links.open{right:0}
-.links a{padding:.6rem 1rem;width:100%;text-align:center;font-size:.9rem}
-.burger{display:flex}
+.nav-links{
+position:fixed;top:0;right:-100%;width:78%;height:100vh;
+background:rgba(11,17,32,.98);flex-direction:column;
+justify-content:center;padding:2rem;gap:.2rem;
+transition:right .35s ease;border-left:1px solid rgba(255,255,255,.05);
+}
+.nav-links.open{right:0}
+.nav-links a{padding:.6rem 1rem;width:100%;text-align:center;font-size:.9rem}
+.hamburger{display:flex}
 .hero{padding:6rem 1.2rem 2rem}
-.hero h1{font-size:1.8rem}
-.sh h2{font-size:1.5rem}
-.grd{grid-template-columns:1fr}
-.wgrd{grid-template-columns:1fr}
-.pgrd{grid-template-columns:1fr}
-.pygrd{grid-template-columns:1fr}
-.tgrd{grid-template-columns:1fr}
-.stats{flex-direction:column;gap:.8rem;align-items:center}
+.hero-title{font-size:1.9rem}
+.section-header h2{font-size:1.6rem}
+.cards-grid{grid-template-columns:1fr}
+.why-grid{grid-template-columns:1fr}
+.process-grid{grid-template-columns:1fr}
+.payments-grid{grid-template-columns:1fr}
+.testimonials-grid{grid-template-columns:1fr}
+.hero-stats{flex-direction:column;gap:.8rem;align-items:center}
 .cta-box{padding:2rem 1.3rem}
-.cta-box h2{font-size:1.3rem}
-.hero-btns,.ctbtns{flex-direction:column;align-items:center}
+.cta-box h2{font-size:1.4rem}
+.hero-buttons,.cta-buttons{flex-direction:column;align-items:center}
 .btn{width:100%;justify-content:center}
-.tabs-wrap{gap:.3rem}
+.tabs-container{gap:.3rem}
 .tab-btn{padding:.42rem .7rem;font-size:.7rem}
-.unlock-banner{margin:-1rem .5rem 0;padding:1.5rem 1rem}
-.ub-items{flex-direction:column;align-items:center}
+.unlock-banner-section{padding:0 .5rem 2rem}
+.unlock-banner{padding:1.5rem 1rem}
+.ub-services{flex-direction:column;align-items:center}
 }
 </style>
 </head>
 <body>
 
 <!-- LOADER -->
-<div class="loader" id="loader"><span>PedritoTech</span><div class="loader-bar"><i></i></div></div>
+<div class="loader" id="loader">
+<span>PedritoTech</span>
+<div class="loader-bar"><i></i></div>
+</div>
 
-<!-- BG -->
-<div class="orbs"><span class="o1"></span><span class="o2"></span><span class="o3"></span></div>
-<div class="grid-bg"></div>
+<!-- BACKGROUND -->
+<div class="bg-orbs"><span class="o1"></span><span class="o2"></span><span class="o3"></span></div>
+<div class="bg-grid"></div>
 
-<!-- NAV -->
+<!-- NAVIGATION -->
 <nav class="nav" id="nav">
-<div class="nav-in">
-<a href="#" class="logo"><div class="logo-box">⚡</div><div class="logo-t"><span class="n">PedritoTech</span><span class="u">Solutions</span></div></a>
-<ul class="links" id="links">
+<div class="nav-inner">
+<a href="#" class="logo">
+<div class="logo-box">⚡</div>
+<div class="logo-text">
+<span class="name">PedritoTech</span>
+<span class="sub">Solutions</span>
+</div>
+</a>
+<ul class="nav-links" id="navLinks">
 <li><a href="#unlock">🔓 Unlock</a></li>
 <li><a href="#servicios">Servicios</a></li>
 <li><a href="#nosotros">Nosotros</a></li>
 <li><a href="#proceso">Proceso</a></li>
 <li><a href="#pagos">Pagos</a></li>
-<li><a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20un%20servicio%20de%20unlock" target="_blank" class="cta">🔓 Unlock Ahora</a></li>
+<li><a href="https://wa.me/5359924051" target="_blank" class="nav-cta">💬 WhatsApp</a></li>
 </ul>
-<div class="burger" id="burger"><span></span><span></span><span></span></div>
+<div class="hamburger" id="hamburger">
+<span></span><span></span><span></span>
+</div>
 </div>
 </nav>
 
-<!-- HERO - UNLOCK FIRST -->
+<!-- HERO SECTION -->
 <section class="hero" id="inicio">
-<div class="hero-in">
-<div class="hero-text">
-<div class="badge"><span class="dot"></span> Unlock Tools — Servicio Remoto</div>
-<h1>Desbloquea tu<br><span class="g">dispositivo</span> al<br><span class="g2">instante</span></h1>
-<p>Eliminación de FRP, liberación de SIM, reparación de IMEI y más. Servicio remoto profesional, rápido y garantizado. También desarrollamos software a medida para tu negocio.</p>
-<div class="unlock-chips">
-<span class="uc">🛡️ FRP Bypass</span>
-<span class="uc">📡 SIM Unlock</span>
-<span class="uc">🔧 IMEI Repair</span>
-<span class="uc">🍎 iOS Services</span>
+<div class="hero-inner">
+<div class="hero-content">
+<div class="hero-badge">
+<span class="dot"></span>
+🔓 Unlock Tools — Servicio Remoto
 </div>
-<div class="hero-btns">
+<h1 class="hero-title">
+Desbloquea tu<br>
+<span class="grad1">dispositivo</span><br>
+al <span class="grad2">instante</span>
+</h1>
+<p class="hero-desc">
+Eliminación de FRP, liberación de SIM, reparación de IMEI y más.
+Servicio remoto profesional, rápido y garantizado.
+También desarrollamos software a medida para tu negocio.
+</p>
+<div class="hero-chips">
+<span class="chip">🛡️ FRP Bypass</span>
+<span class="chip">📡 SIM Unlock</span>
+<span class="chip">🔧 IMEI Repair</span>
+<span class="chip">🍎 iOS Services</span>
+</div>
+<div class="hero-buttons">
 <a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20un%20servicio%20de%20unlock%20remoto" target="_blank" class="btn btn-unlock">🔓 Desbloquear Ahora</a>
-<a href="https://wa.me/5359924051?text=Hola%2C%20quiero%20información%20sobre%20sus%20servicios" target="_blank" class="btn btn-wa">💬 WhatsApp</a>
-<a href="#servicios" class="btn btn-ghost">Ver más servicios ↓</a>
+<a href="https://wa.me/5359924051?text=Hola%2C%20quiero%20información%20sobre%20sus%20servicios" target="_blank" class="btn btn-whatsapp">💬 WhatsApp</a>
+<a href="#servicios" class="btn btn-ghost">Ver más ↓</a>
 </div>
-<div class="stats">
-<div class="stat"><h3 id="c1">0+</h3><p>Dispositivos unlockeados</p></div>
-<div class="stat"><h3>99%</h3><p>Tasa de éxito</p></div>
-<div class="stat"><h3>24/7</h3><p>Soporte remoto</p></div>
+<div class="hero-stats">
+<div class="stat-item"><h3 id="counter">0+</h3><p>Dispositivos</p></div>
+<div class="stat-item"><h3>99%</h3><p>Éxito</p></div>
+<div class="stat-item"><h3>24/7</h3><p>Soporte</p></div>
 </div>
 </div>
-<div class="hero-vis">
-<div class="ph-wrap">
-<div class="ph-glow"></div>
-<div class="fcard"><span>✅</span> FRP Eliminado</div>
-<div class="fcard"><span>📡</span> SIM Liberada</div>
-<div class="fcard"><span>🔓</span> 100% Remote</div>
-<div class="phone">
-<div class="phone-screen">
-<div class="notch"></div>
-<div class="scr">
-<span class="scr-icon">🔓</span>
-<div class="scr-title">UNLOCKING...</div>
-<div class="scr-sub">Proceso remoto activo</div>
-<div class="prog"><span></span></div>
+<div class="hero-visual">
+<div class="phone-wrapper">
+<div class="phone-glow"></div>
+<div class="float-card"><span>✅</span> FRP Eliminado</div>
+<div class="float-card"><span>📡</span> SIM Liberada</div>
+<div class="float-card"><span>🔓</span> 100% Remote</div>
+<div class="phone-device">
+<div class="phone-display">
+<div class="phone-notch"></div>
+<div class="screen-content">
+<span class="screen-icon">🔓</span>
+<div class="screen-title">UNLOCKING...</div>
+<div class="screen-sub">Proceso remoto activo</div>
+<div class="progress-bar"><span></span></div>
 </div>
 </div>
 </div>
@@ -369,214 +666,430 @@ section{position:relative;z-index:1;padding:4.5rem 1.5rem}
 </div>
 </section>
 
-<!-- UNLOCK BANNER - Quick access right below hero -->
-<section style="padding:0 1.5rem 2rem;position:relative;z-index:1">
-<div class="unlock-banner rv">
+<!-- UNLOCK BANNER -->
+<div class="unlock-banner-section" id="unlock">
+<div class="unlock-banner reveal">
 <div class="ub-inner">
-<div class="ub-text">
-<h3>🔓 <span>Contrata tu Unlock</span> ahora</h3>
+<div class="ub-content">
+<h3>🔓 <span class="red">Contrata tu Unlock</span> ahora</h3>
 <p>Selecciona el servicio que necesitas y contáctanos directamente por WhatsApp. Proceso 100% remoto, rápido y seguro.</p>
-<div class="ub-items">
-<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20eliminar%20FRP%20de%20mi%20dispositivo" target="_blank" class="ub-item">🛡️ Eliminar FRP</a>
-<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20liberar%20SIM%20de%20mi%20teléfono" target="_blank" class="ub-item">📡 Liberar SIM</a>
-<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20reparar%20el%20IMEI%20de%20mi%20dispositivo" target="_blank" class="ub-item">🔧 Reparar IMEI</a>
-<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20servicios%20para%20mi%20iPhone" target="_blank" class="ub-item">🍎 Servicios iOS</a>
+<div class="ub-services">
+<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20eliminar%20FRP%20de%20mi%20dispositivo" target="_blank" class="ub-svc">🛡️ Eliminar FRP</a>
+<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20liberar%20SIM%20de%20mi%20teléfono" target="_blank" class="ub-svc">📡 Liberar SIM</a>
+<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20reparar%20el%20IMEI%20de%20mi%20dispositivo" target="_blank" class="ub-svc">🔧 Reparar IMEI</a>
+<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20servicios%20para%20mi%20iPhone" target="_blank" class="ub-svc">🍎 Servicios iOS</a>
 </div>
-<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20un%20servicio%20de%20unlock" target="_blank" class="btn btn-unlock" style="display:inline-flex">🔓 Contratar Unlock Ahora</a>
+<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20un%20servicio%20de%20unlock" target="_blank" class="btn btn-unlock">🔓 Contratar Unlock Ahora</a>
 </div>
-<div class="ub-visual">
+<div class="ub-phone-visual">
 <div class="ub-phone">
-<div class="ub-screen">
-<div class="ub-notch"></div>
-<div class="ub-list">
-<div class="li done"><span class="ic">🛡️</span> FRP — Eliminado</div>
-<div class="li done"><span class="ic">📡</span> SIM — Liberada</div>
-<div class="li done"><span class="ic">🔧</span> IMEI — Reparado</div>
-<div class="li"><span class="ic">🍎</span> iCloud — Listo</div>
-<div class="li"><span class="ic">✅</span> ¡Todo funciona!</div>
+<div class="ub-phone-screen">
+<div class="ub-phone-notch"></div>
+<div class="ub-checklist">
+<div class="ub-check-item complete"><span class="icon">🛡️</span> FRP — Eliminado</div>
+<div class="ub-check-item complete"><span class="icon">📡</span> SIM — Liberada</div>
+<div class="ub-check-item complete"><span class="icon">🔧</span> IMEI — Reparado</div>
+<div class="ub-check-item"><span class="icon">🍎</span> iCloud — Listo</div>
+<div class="ub-check-item"><span class="icon">✅</span> ¡Todo funciona!</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-</section>
+</div>
+</div>
 
-<!-- SERVICES -->
-<section id="servicios">
-<div class="wrap">
-<div class="sh rv">
-<div class="sl">💻 Todos los Servicios</div>
-<h2>Soluciones <span class="g">integrales</span></h2>
+<!-- SERVICES SECTION -->
+<section class="section" id="servicios">
+<div class="section-wrap">
+<div class="section-header reveal">
+<div class="section-label">💻 Todos los Servicios</div>
+<h2>Soluciones <span style="background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">integrales</span></h2>
 <p>Desde desbloqueo de dispositivos hasta desarrollo web completo. Todo lo que necesitas, en un solo lugar.</p>
 </div>
-<div class="tabs-wrap rv">
-<button class="tab-btn active" data-t="unlock">🔓 Unlock</button>
-<button class="tab-btn" data-t="web">🌐 Web</button>
-<button class="tab-btn" data-t="dev">⚡ Desarrollo</button>
-<button class="tab-btn" data-t="biz">🏢 Negocios</button>
-<button class="tab-btn" data-t="inf">🖧 Infraestructura</button>
+<div class="tabs-container reveal">
+<button class="tab-btn active" data-tab="unlock">🔓 Unlock</button>
+<button class="tab-btn" data-tab="web">🌐 Web</button>
+<button class="tab-btn" data-tab="dev">⚡ Desarrollo</button>
+<button class="tab-btn" data-tab="biz">🏢 Negocios</button>
+<button class="tab-btn" data-tab="inf">🖧 Infraestructura</button>
 </div>
 
-<div class="tab-content active" id="p-unlock">
-<div class="grd">
-<div class="cd rv"><div class="ci pk">🛡️</div><h3>Eliminación FRP</h3><p>Remove Factory Reset Protection de Google en Android de todas las marcas.</p><ul class="cf"><li><span class="ok">✓</span> Samsung, Xiaomi, Huawei</li><li><span class="ok">✓</span> Todas las versiones</li><li><span class="ok">✓</span> Proceso 100% remoto</li></ul><a href="https://wa.me/5359924051?text=Necesito%20eliminar%20FRP" target="_blank" class="cbtn pk">Contratar →</a></div>
-<div class="cd rv"><div class="ci c">📡</div><h3>Liberación SIM</h3><p>Desbloquea tu dispositivo para usarlo con cualquier operador del mundo.</p><ul class="cf"><li><span class="ok">✓</span> Todas las operadoras</li><li><span class="ok">✓</span> Código oficial</li><li><span class="ok">✓</span> iPhone y Android</li></ul><a href="https://wa.me/5359924051?text=Necesito%20liberación%20SIM" target="_blank" class="cbtn pk">Contratar →</a></div>
-<div class="cd rv"><div class="ci pk">🔧</div><h3>Reparación IMEI</h3><p>Restauración de IMEI null/0 con herramientas profesionales.</p><ul class="cf"><li><span class="ok">✓</span> IMEI reparado</li><li><span class="ok">✓</span> Base band restoration</li><li><span class="ok">✓</span> Todas las marcas</li></ul><a href="https://wa.me/5359924051?text=Necesito%20reparar%20IMEI" target="_blank" class="cbtn pk">Contratar →</a></div>
-<div class="cd rv"><div class="ci a">🍎</div><h3>Servicios iOS</h3><p>iCloud removal, bypass de activación y liberación para iPhone/iPad.</p><ul class="cf"><li><span class="ok">✓</span> iCloud removal</li><li><span class="ok">✓</span> Bypass activación</li><li><span class="ok">✓</span> Eliminación MDM</li></ul><a href="https://wa.me/5359924051?text=Necesito%20servicio%20iOS" target="_blank" class="cbtn pk">Contratar →</a></div>
+<!-- UNLOCK TAB -->
+<div class="tab-panel active" id="tab-unlock">
+<div class="cards-grid">
+<div class="service-card reveal">
+<div class="card-icon pink">🛡️</div>
+<h3>Eliminación FRP</h3>
+<p>Remove Factory Reset Protection de Google en Android de todas las marcas.</p>
+<ul class="card-features">
+<li><span class="check">✓</span> Samsung, Xiaomi, Huawei</li>
+<li><span class="check">✓</span> Todas las versiones Android</li>
+<li><span class="check">✓</span> Proceso 100% remoto</li>
+</ul>
+<a href="https://wa.me/5359924051?text=Necesito%20eliminar%20FRP" target="_blank" class="card-btn pink">Contratar →</a>
+</div>
+<div class="service-card reveal">
+<div class="card-icon cyan">📡</div>
+<h3>Liberación SIM</h3>
+<p>Desbloquea tu dispositivo para usarlo con cualquier operador del mundo.</p>
+<ul class="card-features">
+<li><span class="check">✓</span> Todas las operadoras</li>
+<li><span class="check">✓</span> Código oficial</li>
+<li><span class="check">✓</span> iPhone y Android</li>
+</ul>
+<a href="https://wa.me/5359924051?text=Necesito%20liberación%20SIM" target="_blank" class="card-btn pink">Contratar →</a>
+</div>
+<div class="service-card reveal">
+<div class="card-icon pink">🔧</div>
+<h3>Reparación IMEI</h3>
+<p>Restauración de IMEI null/0 con herramientas profesionales.</p>
+<ul class="card-features">
+<li><span class="check">✓</span> IMEI reparado</li>
+<li><span class="check">✓</span> Base band restoration</li>
+<li><span class="check">✓</span> Todas las marcas</li>
+</ul>
+<a href="https://wa.me/5359924051?text=Necesito%20reparar%20IMEI" target="_blank" class="card-btn pink">Contratar →</a>
+</div>
+<div class="service-card reveal">
+<div class="card-icon amber">🍎</div>
+<h3>Servicios iOS</h3>
+<p>iCloud removal, bypass de activación y liberación para iPhone/iPad.</p>
+<ul class="card-features">
+<li><span class="check">✓</span> iCloud removal</li>
+<li><span class="check">✓</span> Bypass activación</li>
+<li><span class="check">✓</span> Eliminación MDM</li>
+</ul>
+<a href="https://wa.me/5359924051?text=Necesito%20servicio%20iOS" target="_blank" class="card-btn pink">Contratar →</a>
+</div>
 </div>
 </div>
 
-<div class="tab-content" id="p-web">
-<div class="grd">
-<div class="cd rv"><div class="ci p">🌐</div><h3>Páginas Web</h3><p>Sitios web profesionales, modernos y optimizados para buscadores.</p><ul class="cf"><li><span class="ok">✓</span> Diseño responsive</li><li><span class="ok">✓</span> SEO integrado</li><li><span class="ok">✓</span> Panel administrable</li></ul><a href="https://wa.me/5359924051?text=Quiero%20una%20página%20web" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci c">🛒</div><h3>Tiendas Online</h3><p>E-commerce con catálogo, carrito y pasarela de pago.</p><ul class="cf"><li><span class="ok">✓</span> Catálogo de productos</li><li><span class="ok">✓</span> Pagos integrados</li><li><span class="ok">✓</span> Panel admin</li></ul><a href="https://wa.me/5359924051?text=Quiero%20una%20tienda%20online" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci a">🎨</div><h3>Landing Pages</h3><p>Páginas de alto impacto para convertir visitantes en clientes.</p><ul class="cf"><li><span class="ok">✓</span> Diseño persuasivo</li><li><span class="ok">✓</span> Formularios</li><li><span class="ok">✓</span> Entrega rápida</li></ul><a href="https://wa.me/5359924051?text=Quiero%20una%20landing%20page" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci gr">✏️</div><h3>Rediseño Web</h3><p>¿Tu web se ve antigua? La renovamos con tecnología actual.</p><ul class="cf"><li><span class="ok">✓</span> Diseño moderno</li><li><span class="ok">✓</span> Mejora rendimiento</li><li><span class="ok">✓</span> Migración segura</li></ul><a href="https://wa.me/5359924051?text=Quiero%20rediseñar%20mi%20web" target="_blank" class="cbtn">Consultar →</a></div>
+<!-- WEB TAB -->
+<div class="tab-panel" id="tab-web">
+<div class="cards-grid">
+<div class="service-card reveal">
+<div class="card-icon purple">🌐</div>
+<h3>Páginas Web</h3>
+<p>Sitios web profesionales, modernos y optimizados para buscadores.</p>
+<ul class="card-features">
+<li><span class="check">✓</span> Diseño responsive</li>
+<li><span class="check">✓</span> SEO integrado</li>
+<li><span class="check">✓</span> Panel administrable</li>
+</ul>
+<a href="https://wa.me/5359924051?text=Quiero%20una%20página%20web" target="_blank" class="card-btn">Consultar →</a>
+</div>
+<div class="service-card reveal">
+<div class="card-icon cyan">🛒</div>
+<h3>Tiendas Online</h3>
+<p>E-commerce con catálogo, carrito y pasarela de pago.</p>
+<ul class="card-features">
+<li><span class="check">✓</span> Catálogo de productos</li>
+<li><span class="check">✓</span> Pagos integrados</li>
+<li><span class="check">✓</span> Panel admin</li>
+</ul>
+<a href="https://wa.me/5359924051?text=Quiero%20una%20tienda%20online" target="_blank" class="card-btn">Consultar →</a>
+</div>
+<div class="service-card reveal">
+<div class="card-icon amber">🎨</div>
+<h3>Landing Pages</h3>
+<p>Páginas de alto impacto para convertir visitantes en clientes.</p>
+<ul class="card-features">
+<li><span class="check">✓</span> Diseño persuasivo</li>
+<li><span class="check">✓</span> Formularios</li>
+<li><span class="check">✓</span> Entrega rápida</li>
+</ul>
+<a href="https://wa.me/5359924051?text=Quiero%20una%20landing%20page" target="_blank" class="card-btn">Consultar →</a>
+</div>
+<div class="service-card reveal">
+<div class="card-icon green">✏️</div>
+<h3>Rediseño Web</h3>
+<p>¿Tu web se ve antigua? La renovamos con tecnología actual.</p>
+<ul class="card-features">
+<li><span class="check">✓</span> Diseño moderno</li>
+<li><span class="check">✓</span> Mejora rendimiento</li>
+<li><span class="check">✓</span> Migración segura</li>
+</ul>
+<a href="https://wa.me/5359924051?text=Quiero%20rediseñar%20mi%20web" target="_blank" class="card-btn">Consultar →</a>
+</div>
 </div>
 </div>
 
-<div class="tab-content" id="p-dev">
-<div class="grd">
-<div class="cd rv"><div class="ci p">💻</div><h3>Software a Medida</h3><p>Aplicaciones diseñadas específicamente para tu negocio.</p><ul class="cf"><li><span class="ok">✓</span> Análisis de requerimientos</li><li><span class="ok">✓</span> Desarrollo desde cero</li><li><span class="ok">✓</span> Código escalable</li></ul><a href="https://wa.me/5359924051?text=Quiero%20software%20a%20medida" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci c">📱</div><h3>Aplicaciones Móviles</h3><p>Apps nativas y multiplataforma para Android.</p><ul class="cf"><li><span class="ok">✓</span> Apps Android nativas</li><li><span class="ok">✓</span> Interfaces modernas</li><li><span class="ok">✓</span> Notificaciones push</li></ul><a href="https://wa.me/5359924051?text=Quiero%20una%20app%20móvil" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci gr">🔧</div><h3>Automatización</h3><p>Scripts que automatizan tareas repetitivas.</p><ul class="cf"><li><span class="ok">✓</span> Bots personalizados</li><li><span class="ok">✓</span> Integración de APIs</li><li><span class="ok">✓</span> Procesos automáticos</li></ul><a href="https://wa.me/5359924051?text=Quiero%20automatizar%20procesos" target="_blank" class="cbtn">Consultar →</a></div>
+<!-- DEV TAB -->
+<div class="tab-panel" id="tab-dev">
+<div class="cards-grid">
+<div class="service-card reveal">
+<div class="card-icon purple">💻</div>
+<h3>Software a Medida</h3>
+<p>Aplicaciones diseñadas específicamente para las necesidades de tu negocio.</p>
+<ul class="card-features">
+<li><span class="check">✓</span> Análisis de requerimientos</li>
+<li><span class="check">✓</span> Desarrollo desde cero</li>
+<li><span class="check">✓</span> Código escalable</li>
+</ul>
+<a href="https://wa.me/5359924051?text=Quiero%20software%20a%20medida" target="_blank" class="card-btn">Consultar →</a>
+</div>
+<div class="service-card reveal">
+<div class="card-icon cyan">📱</div>
+<h3>Aplicaciones Móviles</h3>
+<p>Apps nativas y multiplataforma para Android.</p>
+<ul class="card-features">
+<li><span class="check">✓</span> Apps Android nativas</li>
+<li><span class="check">✓</span> Interfaces modernas</li>
+<li><span class="check">✓</span> Notificaciones push</li>
+</ul>
+<a href="https://wa.me/5359924051?text=Quiero%20una%20app%20móvil" target="_blank" class="card-btn">Consultar →</a>
+</div>
+<div class="service-card reveal">
+<div class="card-icon green">🔧</div>
+<h3>Automatización</h3>
+<p>Scripts y herramientas que automatizan tareas repetitivas.</p>
+<ul class="card-features">
+<li><span class="check">✓</span> Bots personalizados</li>
+<li><span class="check">✓</span> Integración de APIs</li>
+<li><span class="check">✓</span> Procesos automáticos</li>
+</ul>
+<a href="https://wa.me/5359924051?text=Quiero%20automatizar%20procesos" target="_blank" class="card-btn">Consultar →</a>
+</div>
 </div>
 </div>
 
-<div class="tab-content" id="p-biz">
-<div class="grd">
-<div class="cd rv"><div class="ci p">🏢</div><h3>Sistemas de Gestión</h3><p>CRM, inventario, facturación y control total de tu negocio.</p><ul class="cf"><li><span class="ok">✓</span> CRM personalizado</li><li><span class="ok">✓</span> Control de inventario</li><li><span class="ok">✓</span> Reportes en tiempo real</li></ul><a href="https://wa.me/5359924051?text=Necesito%20sistema%20de%20gestión" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci c">🎯</div><h3>Soluciones para PYMES</h3><p>Software accesible para pequeños negocios.</p><ul class="cf"><li><span class="ok">✓</span> Presupuesto adaptado</li><li><span class="ok">✓</span> Escalable según creces</li><li><span class="ok">✓</span> Capacitación incluida</li></ul><a href="https://wa.me/5359924051?text=Necesito%20soluciones%20para%20mi%20negocio" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci pk">📊</div><h3>Dashboards</h3><p>Paneles de control para monitorear métricas clave.</p><ul class="cf"><li><span class="ok">✓</span> Gráficos interactivos</li><li><span class="ok">✓</span> KPIs personalizados</li><li><span class="ok">✓</span> Acceso remoto</li></ul><a href="https://wa.me/5359924051?text=Necesito%20un%20dashboard" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci a">🎨</div><h3>Branding Digital</h3><p>Logos, identidad visual y diseño para tu marca.</p><ul class="cf"><li><span class="ok">✓</span> Diseño de logos</li><li><span class="ok">✓</span> Identidad visual</li><li><span class="ok">✓</span> Material publicitario</li></ul><a href="https://wa.me/5359924051?text=Necesito%20branding" target="_blank" class="cbtn">Consultar →</a></div>
+<!-- BIZ TAB -->
+<div class="tab-panel" id="tab-biz">
+<div class="cards-grid">
+<div class="service-card reveal">
+<div class="card-icon purple">🏢</div>
+<h3>Sistemas de Gestión</h3>
+<p>CRM, inventario, facturación y control total de tu negocio.</p>
+<ul class="card-features">
+<li><span class="check">✓</span> CRM personalizado</li>
+<li><span class="check">✓</span> Control de inventario</li>
+<li><span class="check">✓</span> Reportes en tiempo real</li>
+</ul>
+<a href="https://wa.me/5359924051?text=Necesito%20sistema%20de%20gestión" target="_blank" class="card-btn">Consultar →</a>
+</div>
+<div class="service-card reveal">
+<div class="card-icon cyan">🎯</div>
+<h3>Soluciones para PYMES</h3>
+<p>Software accesible para pequeños negocios que necesitan digitalizarse.</p>
+<ul class="card-features">
+<li><span class="check">✓</span> Presupuesto adaptado</li>
+<li><span class="check">✓</span> Escalable según creces</li>
+<li><span class="check">✓</span> Capacitación incluida</li>
+</ul>
+<a href="https://wa.me/5359924051?text=Necesito%20soluciones%20para%20mi%20negocio" target="_blank" class="card-btn">Consultar →</a>
+</div>
+<div class="service-card reveal">
+<div class="card-icon pink">📊</div>
+<h3>Dashboards</h3>
+<p>Paneles de control visuales para monitorear métricas clave.</p>
+<ul class="card-features">
+<li><span class="check">✓</span> Gráficos interactivos</li>
+<li><span class="check">✓</span> KPIs personalizados</li>
+<li><span class="check">✓</span> Acceso remoto</li>
+</ul>
+<a href="https://wa.me/5359924051?text=Necesito%20un%20dashboard" target="_blank" class="card-btn">Consultar →</a>
+</div>
+<div class="service-card reveal">
+<div class="card-icon amber">🎨</div>
+<h3>Branding Digital</h3>
+<p>Logos, identidad visual y diseño gráfico para tu marca.</p>
+<ul class="card-features">
+<li><span class="check">✓</span> Diseño de logos</li>
+<li><span class="check">✓</span> Identidad visual</li>
+<li><span class="check">✓</span> Material publicitario</li>
+</ul>
+<a href="https://wa.me/5359924051?text=Necesito%20branding" target="_blank" class="card-btn">Consultar →</a>
+</div>
 </div>
 </div>
 
-<div class="tab-content" id="p-inf">
-<div class="grd">
-<div class="cd rv"><div class="ci c">🖧</div><h3>Despliegue de Servidores</h3><p>Servidores web, bases de datos y aplicaciones en la nube.</p><ul class="cf"><li><span class="ok">✓</span> Apache, Nginx, Node.js</li><li><span class="ok">✓</span> MySQL / PostgreSQL</li><li><span class="ok">✓</span> SSL y seguridad</li></ul><a href="https://wa.me/5359924051?text=Necesito%20desplegar%20un%20servidor" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci p">🖥️</div><h3>Instalación de Sistemas</h3><p>Instalación y configuración de sistemas operativos.</p><ul class="cf"><li><span class="ok">✓</span> Windows 10 / 11</li><li><span class="ok">✓</span> Linux (Ubuntu, Mint)</li><li><span class="ok">✓</span> Drivers y software</li></ul><a href="https://wa.me/5359924051?text=Necesito%20instalar%20un%20sistema" target="_blank" class="cbtn">Consultar →</a></div>
-<div class="cd rv"><div class="ci gr">🔒</div><h3>Seguridad Informática</h3><p>Protección de datos, firewalls, backups y auditorías.</p><ul class="cf"><li><span class="ok">✓</span> Configuración firewalls</li><li><span class="ok">✓</span> Backup automatizado</li><li><span class="ok">✓</span> Limpieza de malware</li></ul><a href="https://wa.me/5359924051?text=Necesito%20seguridad%20informática" target="_blank" class="cbtn">Consultar →</a></div>
+<!-- INFRA TAB -->
+<div class="tab-panel" id="tab-inf">
+<div class="cards-grid">
+<div class="service-card reveal">
+<div class="card-icon cyan">🖧</div>
+<h3>Despliegue de Servidores</h3>
+<p>Configuración de servidores web, bases de datos y aplicaciones en la nube.</p>
+<ul class="card-features">
+<li><span class="check">✓</span> Apache, Nginx, Node.js</li>
+<li><span class="check">✓</span> MySQL / PostgreSQL</li>
+<li><span class="check">✓</span> SSL y seguridad</li>
+</ul>
+<a href="https://wa.me/5359924051?text=Necesito%20desplegar%20un%20servidor" target="_blank" class="card-btn">Consultar →</a>
+</div>
+<div class="service-card reveal">
+<div class="card-icon purple">🖥️</div>
+<h3>Instalación de Sistemas</h3>
+<p>Instalación y configuración de sistemas operativos con optimización.</p>
+<ul class="card-features">
+<li><span class="check">✓</span> Windows 10 / 11</li>
+<li><span class="check">✓</span> Linux (Ubuntu, Mint)</li>
+<li><span class="check">✓</span> Drivers y software</li>
+</ul>
+<a href="https://wa.me/5359924051?text=Necesito%20instalar%20un%20sistema" target="_blank" class="card-btn">Consultar →</a>
+</div>
+<div class="service-card reveal">
+<div class="card-icon green">🔒</div>
+<h3>Seguridad Informática</h3>
+<p>Protección de datos, firewalls, backups y auditorías de seguridad.</p>
+<ul class="card-features">
+<li><span class="check">✓</span> Configuración firewalls</li>
+<li><span class="check">✓</span> Backup automatizado</li>
+<li><span class="check">✓</span> Limpieza de malware</li>
+</ul>
+<a href="https://wa.me/5359924051?text=Necesito%20seguridad%20informática" target="_blank" class="card-btn">Consultar →</a>
+</div>
 </div>
 </div>
 </div>
 </section>
 
-<!-- WHY -->
-<section id="nosotros" class="wbg">
-<div class="wrap">
-<div class="sh rv">
-<div class="sl">💎 ¿Por qué elegirnos?</div>
-<h2>Lo que nos <span class="g">diferencia</span></h2>
+<!-- WHY US -->
+<section class="section why-section" id="nosotros">
+<div class="section-wrap">
+<div class="section-header reveal">
+<div class="section-label">💎 ¿Por qué elegirnos?</div>
+<h2>Lo que nos <span style="background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">diferencia</span></h2>
 <p>Compromiso con la excelencia en cada proyecto</p>
 </div>
-<div class="wgrd">
-<div class="wc rv"><span class="wi">🚀</span><h3>Entrega Rápida</h3><p>Proyectos entregados a tiempo sin sacrificar calidad.</p></div>
-<div class="wc rv"><span class="wi">🛡️</span><h3>Garantía Total</h3><p>Respaldamos cada trabajo con garantía de satisfacción.</p></div>
-<div class="wc rv"><span class="wi">💬</span><h3>Soporte Continuo</h3><p>Te acompañamos antes, durante y después del proyecto.</p></div>
-<div class="wc rv"><span class="wi">💰</span><h3>Precios Justos</h3><p>La mejor relación calidad-precio con pagos flexibles.</p></div>
+<div class="why-grid">
+<div class="why-card reveal"><span class="why-icon">🚀</span><h3>Entrega Rápida</h3><p>Proyectos entregados a tiempo sin sacrificar calidad.</p></div>
+<div class="why-card reveal"><span class="why-icon">🛡️</span><h3>Garantía Total</h3><p>Respaldamos cada trabajo con garantía de satisfacción.</p></div>
+<div class="why-card reveal"><span class="why-icon">💬</span><h3>Soporte Continuo</h3><p>Te acompañamos antes, durante y después del proyecto.</p></div>
+<div class="why-card reveal"><span class="why-icon">💰</span><h3>Precios Justos</h3><p>La mejor relación calidad-precio con pagos flexibles.</p></div>
 </div>
 </div>
 </section>
 
 <!-- PROCESS -->
-<section id="proceso">
-<div class="wrap">
-<div class="sh rv">
-<div class="sl">📋 Proceso</div>
-<h2>Cómo <span class="g">trabajamos</span></h2>
+<section class="section" id="proceso">
+<div class="section-wrap">
+<div class="section-header reveal">
+<div class="section-label">📋 Proceso</div>
+<h2>Cómo <span style="background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">trabajamos</span></h2>
 <p>De la consulta al producto final en 4 pasos</p>
 </div>
-<div class="pgrd">
-<div class="pc2 rv"><div class="pn">1</div><h3>Consulta</h3><p>Cuéntanos qué necesitas por WhatsApp. Te asesoramos sin compromiso.</p></div>
-<div class="pc2 rv"><div class="pn">2</div><h3>Propuesta</h3><p>Solución a medida con alcance, tiempos y costos claros.</p></div>
-<div class="pc2 rv"><div class="pn">3</div><h3>Ejecución</h3><p>Realizamos el servicio con actualizaciones constantes.</p></div>
-<div class="pc2 rv"><div class="pn">4</div><h3>Entrega</h3><p>Trabajo terminado con garantía y soporte incluido.</p></div>
+<div class="process-grid">
+<div class="process-step reveal"><div class="step-num">1</div><h3>Consulta</h3><p>Cuéntanos qué necesitas por WhatsApp. Te asesoramos sin compromiso.</p></div>
+<div class="process-step reveal"><div class="step-num">2</div><h3>Propuesta</h3><p>Solución a medida con alcance, tiempos y costos claros.</p></div>
+<div class="process-step reveal"><div class="step-num">3</div><h3>Ejecución</h3><p>Realizamos el servicio con actualizaciones constantes.</p></div>
+<div class="process-step reveal"><div class="step-num">4</div><h3>Entrega</h3><p>Trabajo terminado con garantía y soporte incluido.</p></div>
 </div>
 </div>
 </section>
 
 <!-- PAYMENTS -->
-<section id="pagos" class="paybg">
-<div class="wrap">
-<div class="sh rv">
-<div class="sl">💳 Pagos</div>
-<h2>Métodos de <span class="g">pago</span></h2>
+<section class="section payments-section" id="pagos">
+<div class="section-wrap">
+<div class="section-header reveal">
+<div class="section-label">💳 Métodos de Pago</div>
+<h2>Pagos <span style="background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">flexibles</span></h2>
 <p>Opciones flexibles para tu comodidad</p>
 </div>
-<div class="pygrd">
-<div class="py rv"><div class="pyi e">🟠</div><h3>Enzona</h3><p>Transferencia instantánea y segura.</p><span class="pyb">✓ Instantáneo</span></div>
-<div class="py rv"><div class="pyi t">🔵</div><h3>TransferMóvil</h3><p>Paga desde cualquier teléfono.</p><span class="pyb">✓ 24/7</span></div>
-<div class="py rv"><div class="pyi c">🪙</div><h3>Criptomonedas</h3><p>Bitcoin, USDT, Ethereum y más.</p><span class="pyb">✓ BTC, USDT, ETH</span></div>
+<div class="payments-grid">
+<div class="payment-card reveal"><div class="payment-icon enzona">🟠</div><h3>Enzona</h3><p>Transferencia instantánea y segura.</p><span class="payment-badge">✓ Instantáneo</span></div>
+<div class="payment-card reveal"><div class="payment-icon transfer">🔵</div><h3>TransferMóvil</h3><p>Paga desde cualquier teléfono.</p><span class="payment-badge">✓ 24/7</span></div>
+<div class="payment-card reveal"><div class="payment-icon crypto">🪙</div><h3>Criptomonedas</h3><p>Bitcoin, USDT, Ethereum y más.</p><span class="payment-badge">✓ BTC, USDT, ETH</span></div>
 </div>
 </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="tbg">
-<div class="wrap">
-<div class="sh rv">
-<div class="sl">⭐ Opiniones</div>
-<h2>Nuestros <span class="g">clientes</span></h2>
+<section class="section testimonials-section">
+<div class="section-wrap">
+<div class="section-header reveal">
+<div class="section-label">⭐ Opiniones</div>
+<h2>Nuestros <span style="background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">clientes</span></h2>
 </div>
-<div class="tgrd">
-<div class="tt rv"><div class="tt-stars">★★★★★</div><blockquote>"Me desbloquearon el Samsung en 20 minutos. Servicio rápido, profesional y a buen precio."</blockquote><div class="tt-a"><div class="tt-av">CM</div><div><strong>Carlos M.</strong><span>FRP — Samsung A54</span></div></div></div>
-<div class="tt rv"><div class="tt-stars">★★★★★</div><blockquote>"Me crearon una página web profesional y el logo de mi negocio. Ahora mis clientes me encuentran en Google."</blockquote><div class="tt-a"><div class="tt-av">YS</div><div><strong>Yanet S.</strong><span>Web + Logo</span></div></div></div>
-<div class="tt rv"><div class="tt-stars">★★★★★</div><blockquote>"Desplegaron mi servidor con todo configurado perfecto. Excelente soporte técnico post-entrega."</blockquote><div class="tt-a"><div class="tt-av">DL</div><div><strong>Daniel L.</strong><span>Servidor cloud</span></div></div></div>
+<div class="testimonials-grid">
+<div class="testimonial reveal">
+<div class="testimonial-stars">★★★★★</div>
+<blockquote>"Me desbloquearon el Samsung en 20 minutos. Servicio rápido, profesional y a buen precio."</blockquote>
+<div class="testimonial-author"><div class="testimonial-avatar">CM</div><div><strong>Carlos M.</strong><span>FRP — Samsung A54</span></div></div>
+</div>
+<div class="testimonial reveal">
+<div class="testimonial-stars">★★★★★</div>
+<blockquote>"Me crearon una página web profesional y el logo de mi negocio. Ahora mis clientes me encuentran en Google."</blockquote>
+<div class="testimonial-author"><div class="testimonial-avatar">YS</div><div><strong>Yanet S.</strong><span>Web + Logo</span></div></div>
+</div>
+<div class="testimonial reveal">
+<div class="testimonial-stars">★★★★★</div>
+<blockquote>"Desplegaron mi servidor con todo configurado perfecto. Excelente soporte técnico post-entrega."</blockquote>
+<div class="testimonial-author"><div class="testimonial-avatar">DL</div><div><strong>Daniel L.</strong><span>Servidor cloud</span></div></div>
+</div>
 </div>
 </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section">
-<div class="wrap">
-<div class="cta-box rv">
-<h2>¿Necesitas un <span class="g">unlock</span> o un <span class="g2">proyecto</span>?</h2>
+<!-- CTA SECTION -->
+<section class="section cta-section">
+<div class="section-wrap">
+<div class="cta-box reveal">
+<h2>¿Necesitas un <span style="background:var(--g2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">unlock</span> o un <span style="background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">proyecto</span>?</h2>
 <p>Contáctanos ahora. Te respondemos en minutos por WhatsApp.</p>
-<div class="ctbtns">
+<div class="cta-buttons">
 <a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20un%20servicio%20de%20unlock" target="_blank" class="btn btn-unlock">🔓 Contratar Unlock</a>
-<a href="https://wa.me/5359924051?text=Hola%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" class="btn btn-wa">💬 Cotizar Proyecto</a>
+<a href="https://wa.me/5359924051?text=Hola%2C%20quiero%20cotizar%20un%20proyecto" target="_blank" class="btn btn-whatsapp">💬 Cotizar Proyecto</a>
 </div>
-<div class="ccrds">
-<a href="https://wa.me/5359924051" target="_blank" class="ccrd"><div class="cci w">💬</div><div><strong>WhatsApp</strong><span>+53 59924051</span></div></a>
-<a href="tel:+5359924051" class="ccrd"><div class="cci ph">📞</div><div><strong>Teléfono</strong><span>+53 59924051</span></div></a>
-<div class="ccrd"><div class="cci t">⏰</div><div><strong>Horario</strong><span>Lun-Sáb: 9AM-10PM</span></div></div>
+<div class="contact-cards">
+<a href="https://wa.me/5359924051" target="_blank" class="contact-card"><div class="contact-icon wa">💬</div><div><strong>WhatsApp</strong><span>+53 59924051</span></div></a>
+<a href="tel:+5359924051" class="contact-card"><div class="contact-icon phone">📞</div><div><strong>Teléfono</strong><span>+53 59924051</span></div></a>
+<div class="contact-card"><div class="contact-icon clock">⏰</div><div><strong>Horario</strong><span>Lun-Sáb: 9AM-10PM</span></div></div>
 </div>
 </div>
 </div>
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="wbg">
-<div class="wrap">
-<div class="sh rv">
-<div class="sl">❓ FAQ</div>
-<h2>Preguntas <span class="g">frecuentes</span></h2>
+<section class="section faq-section" id="faq">
+<div class="section-wrap">
+<div class="section-header reveal">
+<div class="section-label">❓ FAQ</div>
+<h2>Preguntas <span style="background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">frecuentes</span></h2>
 </div>
-<div class="fl">
-<div class="fq rv"><button class="fq-btn">¿El desbloqueo remoto es seguro?<span class="fq-t">+</span></button><div class="fq-a"><p>Sí, usamos herramientas profesionales. Tu dispositivo no pierde garantía ni se daña. Trabajamos con conexión remota segura.</p></div></div>
-<div class="fq rv"><button class="fq-btn">¿Cuánto tarda un unlock?<span class="fq-t">+</span></button><div class="fq-a"><p>La mayoría se completa entre 15 minutos y 2 horas. Casos complejos pueden tomar hasta 24 horas.</p></div></div>
-<div class="fq rv"><button class="fq-btn">¿Cuánto cuesta un proyecto web?<span class="fq-t">+</span></button><div class="fq-a"><p>Depende de la complejidad. Ofrecemos opciones para todos los presupuestos. Contáctanos y te damos cotización gratuita.</p></div></div>
-<div class="fq rv"><button class="fq-btn">¿Puedo pagar en CUP?<span class="fq-t">+</span></button><div class="fq-a"><p>Sí, aceptamos Enzona y TransferMóvil en CUP. También criptomonedas (USDT, BTC, ETH).</p></div></div>
-<div class="fq rv"><button class="fq-btn">¿Ofrecen garantía?<span class="fq-t">+</span></button><div class="fq-a"><p>¡Sí! Todos los servicios incluyen garantía. La liberación de SIM tiene garantía de por vida.</p></div></div>
-<div class="fq rv"><button class="fq-btn">¿Trabajan con negocios pequeños?<span class="fq-t">+</span></button><div class="fq-a"><p>¡Claro! Tenemos soluciones adaptadas para PYMES y emprendedores.</p></div></div>
+<div class="faq-list">
+<div class="faq-item reveal">
+<button class="faq-question">¿El desbloqueo remoto es seguro?<span class="faq-toggle">+</span></button>
+<div class="faq-answer"><p>Sí, usamos herramientas profesionales. Tu dispositivo no pierde garantía ni se daña. Trabajamos con conexión remota segura.</p></div>
+</div>
+<div class="faq-item reveal">
+<button class="faq-question">¿Cuánto tarda un unlock?<span class="faq-toggle">+</span></button>
+<div class="faq-answer"><p>La mayoría se completa entre 15 minutos y 2 horas. Casos complejos pueden tomar hasta 24 horas.</p></div>
+</div>
+<div class="faq-item reveal">
+<button class="faq-question">¿Cuánto cuesta un proyecto web?<span class="faq-toggle">+</span></button>
+<div class="faq-answer"><p>Depende de la complejidad. Ofrecemos opciones para todos los presupuestos. Contáctanos y te damos cotización gratuita.</p></div>
+</div>
+<div class="faq-item reveal">
+<button class="faq-question">¿Puedo pagar en CUP?<span class="faq-toggle">+</span></button>
+<div class="faq-answer"><p>Sí, aceptamos Enzona y TransferMóvil en CUP. También criptomonedas (USDT, BTC, ETH).</p></div>
+</div>
+<div class="faq-item reveal">
+<button class="faq-question">¿Ofrecen garantía?<span class="faq-toggle">+</span></button>
+<div class="faq-answer"><p>¡Sí! Todos los servicios incluyen garantía. La liberación de SIM tiene garantía de por vida.</p></div>
+</div>
+<div class="faq-item reveal">
+<button class="faq-question">¿Trabajan con negocios pequeños?<span class="faq-toggle">+</span></button>
+<div class="faq-answer"><p>¡Claro! Tenemos soluciones adaptadas para PYMES y emprendedores que necesitan digitalizarse.</p></div>
+</div>
 </div>
 </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="ft">
-<div class="fi">
-<div class="fb"><div class="fbi">⚡</div><span>PedritoTech Solutions</span></div>
-<ul class="flk">
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-brand"><div class="footer-brand-icon">⚡</div><span>PedritoTech Solutions</span></div>
+<ul class="footer-links">
 <li><a href="#unlock">Unlock</a></li>
 <li><a href="#servicios">Servicios</a></li>
 <li><a href="#nosotros">Nosotros</a></li>
 <li><a href="#pagos">Pagos</a></li>
 <li><a href="#faq">FAQ</a></li>
 </ul>
-<div class="fsc">
+<div class="footer-social">
 <a href="https://wa.me/5359924051" target="_blank">💬</a>
 <a href="#">✈️</a>
 <a href="#">📘</a>
@@ -584,79 +1097,216 @@ section{position:relative;z-index:1;padding:4.5rem 1.5rem}
 </div>
 </footer>
 
-<!-- WA -->
-<div class="waf">
-<div class="watip">🔓 ¿Necesitas un unlock? ¡Escríbenos!</div>
-<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20un%20servicio%20de%20unlock" target="_blank" class="wabtn">💬</a>
+<!-- WHATSAPP FLOAT -->
+<div class="wa-float">
+<div class="wa-tooltip" id="waTooltip">🔓 ¿Necesitas un unlock? ¡Escríbenos!</div>
+<a href="https://wa.me/5359924051?text=Hola%2C%20necesito%20un%20servicio%20de%20unlock" target="_blank" class="wa-btn">💬</a>
 </div>
-<button class="stp" id="stp">↑</button>
+
+<!-- SCROLL TOP -->
+<button class="scroll-top" id="scrollTop">↑</button>
 
 <script>
 (function(){
 'use strict';
 
-// Loader
-var ld=document.getElementById('loader');
-setTimeout(function(){ld.classList.add('hide');},1500);
+// === LOADER ===
+var loader = document.getElementById('loader');
+setTimeout(function(){
+    loader.classList.add('hide');
+    setTimeout(function(){ loader.style.display='none'; }, 600);
+}, 1600);
 
-// Nav scroll
-var nv=document.getElementById('nav');
-window.addEventListener('scroll',function(){nv.classList.toggle('on',window.scrollY>40);},{passive:true});
+// === NAV SCROLL ===
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function(){
+    if(window.scrollY > 40){
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+}, {passive:true});
 
-// Burger
-var br=document.getElementById('burger'),lk=document.getElementById('links');
-br.addEventListener('click',function(){br.classList.toggle('on');lk.classList.toggle('open');});
-lk.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){br.classList.remove('on');lk.classList.remove('open');});});
-
-// Counter
-var cd=false,c1=document.getElementById('c1');
-function countUp(){
-if(cd)return;cd=true;
-var n=0,t=setInterval(function(){n+=8;if(n>=2500){n=2500;clearInterval(t);}c1.textContent=n.toLocaleString()+'+';},20);
-}
-if(typeof IntersectionObserver!=='undefined'){
-new IntersectionObserver(function(e){if(e[0].isIntersecting)countUp();},{threshold:.5}).observe(c1);
-}
-
-// Tabs
-document.querySelectorAll('.tab-btn').forEach(function(b){
-b.addEventListener('click',function(){
-document.querySelectorAll('.tab-btn').forEach(function(t){t.classList.remove('active');});
-document.querySelectorAll('.tab-content').forEach(function(p){p.classList.remove('active');});
-b.classList.add('active');
-var panel=document.getElementById('p-'+b.dataset.t);
-if(panel)panel.classList.add('active');
+// === BURGER MENU ===
+var burger = document.getElementById('hamburger');
+var navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', function(){
+    burger.classList.toggle('active');
+    navLinks.classList.toggle('open');
 });
-});
-
-// Reveal
-if(typeof IntersectionObserver!=='undefined'){
-new IntersectionObserver(function(entries){
-entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('show');});
-},{threshold:.08}).observe(document.querySelectorAll('.rv'));
+var navAs = navLinks.querySelectorAll('a');
+for(var i=0; i<navAs.length; i++){
+    navAs[i].addEventListener('click', function(){
+        burger.classList.remove('active');
+        navLinks.classList.remove('open');
+    });
 }
 
-// FAQ
-document.querySelectorAll('.fq-btn').forEach(function(b){
-b.addEventListener('click',function(){
-var p=b.parentElement;
-document.querySelectorAll('.fq').forEach(function(f){if(f!==p)f.classList.remove('on');});
-p.classList.toggle('on');
-});
+// === COUNTER ANIMATION ===
+var counterEl = document.getElementById('counter');
+var counterDone = false;
+function animateCounter(){
+    if(counterDone) return;
+    counterDone = true;
+    var n = 0;
+    var target = 2500;
+    var step = Math.ceil(target / 80);
+    var timer = setInterval(function(){
+        n += step;
+        if(n >= target){
+            n = target;
+            clearInterval(timer);
+        }
+        counterEl.textContent = n.toLocaleString() + '+';
+    }, 25);
+}
+if(typeof IntersectionObserver !== 'undefined'){
+    var co = new IntersectionObserver(function(entries){
+        if(entries[0].isIntersecting) animateCounter();
+    }, {threshold: 0.5});
+    co.observe(counterEl);
+}
+
+// === TABS ===
+var tabBtns = document.querySelectorAll('.tab-btn');
+for(var t=0; t<tabBtns.length; t++){
+    tabBtns[t].addEventListener('click', function(){
+        var tabId = this.getAttribute('data-tab');
+        // Remove active from all buttons
+        for(var b=0; b<tabBtns.length; b++){
+            tabBtns[b].classList.remove('active');
+        }
+        // Remove active from all panels
+        var panels = document.querySelectorAll('.tab-panel');
+        for(var p=0; p<panels.length; p++){
+            panels[p].classList.remove('active');
+        }
+        // Activate clicked tab
+        this.classList.add('active');
+        var panel = document.getElementById('tab-' + tabId);
+        if(panel) panel.classList.add('active');
+        // Re-trigger reveal for newly visible cards
+        var reveals = panel.querySelectorAll('.reveal');
+        for(var r=0; r<reveals.length; r++){
+            reveals[r].classList.remove('visible');
+            (function(el){
+                setTimeout(function(){ el.classList.add('visible'); }, 100);
+            })(reveals[r]);
+        }
+    });
+}
+
+// === REVEAL ON SCROLL ===
+if(typeof IntersectionObserver !== 'undefined'){
+    var revealObserver = new IntersectionObserver(function(entries){
+        for(var e=0; e<entries.length; e++){
+            if(entries[e].isIntersecting){
+                entries[e].target.classList.add('visible');
+            }
+        }
+    }, {
+        threshold: 0.05,
+        rootMargin: '0px 0px -30px 0px'
+    });
+    var reveals = document.querySelectorAll('.reveal');
+    for(var rv=0; rv<reveals.length; rv++){
+        revealObserver.observe(reveals[rv]);
+    }
+} else {
+    // Fallback: show everything
+    var allReveals = document.querySelectorAll('.reveal');
+    for(var f=0; f<allReveals.length; f++){
+        allReveals[f].classList.add('visible');
+    }
+}
+
+// === FAQ ACCORDION ===
+var faqBtns = document.querySelectorAll('.faq-question');
+for(var q=0; q<faqBtns.length; q++){
+    faqBtns[q].addEventListener('click', function(){
+        var parent = this.parentElement;
+        var isOpen = parent.classList.contains('open');
+        // Close all
+        var allFaqs = document.querySelectorAll('.faq-item');
+        for(var a=0; a<allFaqs.length; a++){
+            allFaqs[a].classList.remove('open');
+        }
+        // Toggle current
+        if(!isOpen){
+            parent.classList.add('open');
+        }
+    });
+}
+
+// === SCROLL TOP BUTTON ===
+var scrollTopBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', function(){
+    if(window.scrollY > 400){
+        scrollTopBtn.classList.add('show');
+    } else {
+        scrollTopBtn.classList.remove('show');
+    }
+}, {passive:true});
+scrollTopBtn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
 });
 
-// Scroll top
-var stp=document.getElementById('stp');
-window.addEventListener('scroll',function(){stp.classList.toggle('show',window.scrollY>400);},{passive:true});
-stp.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+// === SMOOTH SCROLL FOR ANCHOR LINKS ===
+var anchors = document.querySelectorAll('a[href^="#"]');
+for(var anc=0; anc<anchors.length; anc++){
+    anchors[anc].addEventListener('click', function(e){
+        e.preventDefault();
+        var href = this.getAttribute('href');
+        if(href === '#') return;
+        var target = document.querySelector(href);
+        if(target){
+            var top = target.getBoundingClientRect().top + window.scrollY - 70;
+            window.scrollTo({top: top, behavior:'smooth'});
+        }
+    });
+}
 
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(function(a){
-a.addEventListener('click',function(e){
-e.preventDefault();
-var t=document.querySelector(this.getAttribute('href'));
-if(t)window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'});
+// === WHATSAPP TOOLTIP SHOW/HIDE ===
+var tooltip = document.getElementById('waTooltip');
+var tooltipVisible = false;
+var tooltipTimer = null;
+
+function showTooltip(){
+    tooltip.classList.add('visible');
+    tooltipVisible = true;
+}
+
+function hideTooltip(){
+    tooltip.classList.remove('visible');
+    tooltipVisible = false;
+}
+
+function toggleTooltipLoop(){
+    if(tooltipVisible){
+        hideTooltip();
+        tooltipTimer = setTimeout(showTooltip, 8000);
+    } else {
+        showTooltip();
+        tooltipTimer = setTimeout(hideTooltip, 5000);
+    }
+}
+
+// Show tooltip after 4 seconds, then cycle
+setTimeout(function(){
+    showTooltip();
+    tooltipTimer = setTimeout(hideTooltip, 5000);
+    // Then start cycling
+    setInterval(toggleTooltipLoop, 13000);
+}, 4000);
+
+// Hide tooltip on hover over the button
+var waBtn = document.querySelector('.wa-btn');
+waBtn.addEventListener('mouseenter', function(){
+    clearTimeout(tooltipTimer);
+    hideTooltip();
 });
+waBtn.addEventListener('mouseleave', function(){
+    tooltipTimer = setTimeout(showTooltip, 3000);
 });
 
 })();
