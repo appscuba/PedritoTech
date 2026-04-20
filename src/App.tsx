@@ -19,8 +19,8 @@ import {
   Zap,
   Menu,
   X,
+  Globe,
   Github,
-  Linkedin,
   Twitter
 } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -341,10 +341,10 @@ export default function App() {
               Soluciones de Software Profesional
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-black mb-6 md:mb-8 leading-[1.1] tracking-tight">
-              Potencia tu <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400">Tecnología</span> al Máximo
+              Expertos en <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400">Soluciones de Software</span>
             </h1>
             <p className="max-w-2xl mx-auto text-base md:text-xl text-slate-400 mb-8 md:mb-12 leading-relaxed px-4">
-              En PedritoTech Solutions, transformamos problemas de software en soluciones rápidas. Liberación de dispositivos, recuperación de datos y mantenimiento experto.
+              En PedritoTech Solutions, nos especializamos exclusivamente en software informático. Brindamos servicios técnicos de élite, desde liberaciones hasta recuperación de datos, con estándares internacionales.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
               <a 
@@ -386,12 +386,40 @@ export default function App() {
         </div>
       </section>
 
+      {/* Payment Methods Section */}
+      <section className="py-12 bg-slate-950 border-y border-slate-900">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="text-left">
+              <h3 className="text-xl md:text-2xl font-display font-bold text-white mb-2">Pagos Flexibles</h3>
+              <p className="text-slate-400 text-sm">Aceptamos pagos nacionales e internacionales para tu comodidad.</p>
+            </div>
+            <div className="flex flex-wrap justify-center gap-4 md:gap-8 opacity-70 hover:opacity-100 transition-opacity">
+              <div className="flex items-center gap-2 px-4 py-2 bg-slate-900 rounded-xl border border-slate-800">
+                <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                <span className="text-xs font-bold text-slate-300 uppercase tracking-tighter">CUP (Pesos Cubanos)</span>
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2 bg-slate-900 rounded-xl border border-slate-800">
+                <span className="text-xs font-bold text-slate-300 uppercase tracking-tighter">Transfermóvil</span>
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2 bg-slate-900 rounded-xl border border-slate-800">
+                <span className="text-xs font-bold text-slate-300 uppercase tracking-tighter">ENZONA</span>
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2 bg-slate-900 rounded-xl border border-slate-800">
+                <Globe className="w-4 h-4 text-sky-400" />
+                <span className="text-xs font-bold text-slate-300 uppercase tracking-tighter">Pagos Internacionales</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
       <section id="servicios" className="py-20 md:py-32 bg-slate-900/30">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12 md:mb-20">
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">Nuestros Servicios</h2>
-            <p className="text-slate-400 max-w-xl mx-auto text-sm md:text-base">Ofrecemos soluciones integrales para tus dispositivos y sistemas informáticos con la mayor seguridad.</p>
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">Soluciones de Software</h2>
+            <p className="text-slate-400 max-w-xl mx-auto text-sm md:text-base italic">Especialización exclusiva en entornos digitales y sistemas operativos. No trabajamos hardware.</p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
@@ -439,9 +467,9 @@ export default function App() {
             </div>
             
             <div className="w-full lg:w-1/2">
-              <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">Experiencia y Compromiso</h2>
+              <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">Expertos en Software</h2>
               <p className="text-slate-400 text-base md:text-lg leading-relaxed mb-8">
-                Soy Pedro Martinez Figueredo, fundador de PedritoTech Solutions. Mi pasión es resolver los desafíos tecnológicos más complejos. Con años de experiencia en el sector del software informático, me especializo en dar una segunda vida a tus dispositivos y asegurar que tu información esté siempre disponible y protegida.
+                Soy Pedro Martinez Figueredo, fundador de PedritoTech Solutions. Mi enfoque es 100% digital: resolver los desafíos de software más complejos con precisión técnica. Con años de especialización en sistemas operativos y seguridad móvil, garantizo que tu tecnología funcione de manera óptima y segura.
               </p>
               <ul className="space-y-4 mb-10">
                 {[
@@ -477,7 +505,7 @@ export default function App() {
             
             <h2 className="text-3xl md:text-6xl font-display font-black text-white mb-6 md:mb-8 leading-tight">¿Listo para solucionar tu problema?</h2>
             <p className="text-sky-100 text-base md:text-xl mb-10 md:mb-12 max-w-2xl mx-auto opacity-90">
-              No esperes más. Contáctame ahora mismo y obtén un diagnóstico rápido para tu dispositivo o sistema.
+              No esperes más. Contáctame ahora mismo y obtén un diagnóstico rápido. Aceptamos CUP, Transfermóvil, ENZONA y pagos internacionales.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
@@ -512,9 +540,12 @@ export default function App() {
             </div>
             
             <div className="flex gap-6">
-              <a href="#" className="text-slate-500 hover:text-white transition-colors p-2 hover:bg-slate-900 rounded-lg"><Twitter className="w-5 h-5" /></a>
-              <a href="#" className="text-slate-500 hover:text-white transition-colors p-2 hover:bg-slate-900 rounded-lg"><Linkedin className="w-5 h-5" /></a>
-              <a href="#" className="text-slate-500 hover:text-white transition-colors p-2 hover:bg-slate-900 rounded-lg"><Github className="w-5 h-5" /></a>
+              <a href="https://x.com/pedritoTech" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white transition-colors p-2 hover:bg-slate-900 rounded-lg" aria-label="X (Twitter)">
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a href="https://github.com/appscuba" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white transition-colors p-2 hover:bg-slate-900 rounded-lg" aria-label="GitHub">
+                <Github className="w-5 h-5" />
+              </a>
             </div>
           </div>
           
